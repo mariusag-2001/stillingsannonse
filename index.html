@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Vi søker folk – produksjonsmedarbeider og møbelsnekker – Faginnredning AS</title>
+<meta name="description" content="Faginnredning AS søker produksjonsmedarbeider og møbelsnekker til vår fabrikk på Årland i Samnanger. Bli med på å skape spesialinnredning i vestnorsk kvalitet.">
+<style>
+  :root{
+    --ink:#1c342e;        /* dyp skoggrønn */
+    --ink2:#274940;       /* mellomgrønn */
+    --cream:#dfd8c4;      /* cream */
+    --lime:#dcf263;       /* lime-aksent */
+    --lime-dark:#cbe24f;
+    --paper:#ffffff;
+    --mist:#f4f2ea;       /* lys, varm seksjonsbakgrunn */
+    --line:#e7e3d6;
+    --text:#22332e;
+    --text-soft:#5b6b64;
+    --radius:16px;
+    --shadow:0 18px 50px -22px rgba(28,52,46,.45);
+    --maxw:1120px;
+    --serif:"Georgia","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--text);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img,video{display:block;max-width:100%}
+  a{color:inherit}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .eyebrow{text-transform:uppercase;letter-spacing:.2em;font-size:.74rem;font-weight:700;color:var(--ink2);margin-bottom:14px}
+  .eyebrow.on-dark{color:var(--lime)}
+  h1,h2,h3{line-height:1.12;letter-spacing:-.01em}
+  h1,h2{font-family:var(--serif);font-weight:700}
+  h2{font-size:clamp(1.8rem,3.6vw,2.6rem);margin-bottom:8px}
+  h3{font-weight:800}
+  .lead{font-size:1.12rem;color:var(--text-soft);max-width:60ch}
+
+  /* ---------- BUTTONS ---------- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;background:var(--lime);color:var(--ink);font-weight:800;
+    padding:14px 26px;border-radius:999px;text-decoration:none;border:none;cursor:pointer;font-size:1rem;font-family:var(--sans);
+    transition:transform .15s ease,background .15s ease,box-shadow .15s ease;box-shadow:0 12px 26px -12px rgba(28,52,46,.5)}
+  .btn:hover{background:var(--lime-dark);transform:translateY(-2px)}
+  .btn.lg{padding:17px 34px;font-size:1.06rem}
+  .btn.ghost{background:transparent;color:var(--cream);box-shadow:none;border:1.5px solid rgba(223,216,196,.5)}
+  .btn.ghost:hover{background:rgba(223,216,196,.12);border-color:var(--cream)}
+
+  /* ---------- TOPBAR ---------- */
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(28,52,46,.92);backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid rgba(223,216,196,.14)}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .topbar img{height:36px}
+  .topbar .btn{padding:11px 22px;font-size:.95rem}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;min-height:88vh;min-height:88svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink)}
+  .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,52,46,.55) 0%,rgba(28,52,46,.2) 32%,rgba(28,52,46,.92) 100%)}
+  .hero .wrap{position:relative;z-index:2;color:#fff;padding-top:70px;padding-bottom:64px;width:100%}
+  .hero .logo-w{height:46px;margin-bottom:28px}
+  .hero h1{font-size:clamp(2.1rem,5.6vw,4rem);color:#fff;max-width:22ch;line-height:1.08;hyphens:manual;overflow-wrap:break-word}
+  .hero h1 em{font-style:italic;color:var(--cream)}
+  .hero p.tagline{font-size:clamp(1.1rem,2.4vw,1.45rem);color:#eef0e7;margin-top:18px;max-width:46ch;font-family:var(--sans)}
+  .meta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+  .chip{display:inline-flex;align-items:center;gap:.55em;background:rgba(223,216,196,.14);border:1px solid rgba(223,216,196,.3);color:#fff;padding:9px 16px;border-radius:999px;font-size:.92rem;font-weight:600}
+  .chip svg{width:16px;height:16px;color:var(--lime)}
+  .hero-cta{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap}
+
+  /* ---------- SECTIONS ---------- */
+  section.pad{padding:88px 0}
+  .mist{background:var(--mist)}
+
+  .intro-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+  .intro-grid .media{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/5}
+  .intro-grid .media video{width:100%;height:100%;object-fit:cover}
+
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;transition:transform .2s ease,box-shadow .2s ease}
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .card .ic{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;background:var(--ink);color:var(--lime);margin-bottom:18px}
+  .card .ic svg{width:25px;height:25px}
+  .card h3{font-size:1.12rem;margin-bottom:6px;color:var(--ink)}
+  .card p{font-size:.97rem;color:var(--text-soft)}
+
+  .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:48px}
+  .vclip{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:16/9;background:#10201b}
+  .vclip video{width:100%;height:100%;object-fit:cover}
+  .vclip .cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:42px 22px 18px;color:#fff;font-weight:700;font-size:1.06rem;background:linear-gradient(180deg,transparent,rgba(16,32,27,.85))}
+  .vclip .cap small{display:block;font-weight:600;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--lime);margin-bottom:2px}
+
+  /* SUMO showcase */
+  .showcase{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
+  .showcase .film{position:relative;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:16/9;background:#10201b}
+  .showcase .film video{width:100%;height:100%;object-fit:cover}
+  .showcase .film .tag{position:absolute;top:16px;left:16px;z-index:2;background:var(--lime);color:var(--ink);font-weight:800;font-size:.76rem;letter-spacing:.04em;padding:6px 13px;border-radius:999px;text-transform:uppercase}
+
+  /* Maskinpark (drone) */
+  .machines{background:var(--ink)}
+  .machines h2{color:#fff}
+  .machines .lead{color:#d7d3c5}
+  .machine-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:44px}
+  .machine-grid .feature{grid-column:1 / -1;aspect-ratio:21/9}
+
+  /* Stillingskort */
+  .role{border:1px solid var(--line);border-radius:20px;padding:34px 38px;margin-bottom:22px;background:var(--paper)}
+  .role.featured{border:2px solid var(--ink);background:var(--mist);box-shadow:var(--shadow)}
+  .role-head{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .role-head h3{font-family:var(--serif);font-size:1.65rem;font-weight:700;color:var(--ink)}
+  .role-tag{background:var(--lime);color:var(--ink);font-weight:800;font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;padding:6px 14px;border-radius:999px}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+  .listblock h3{font-size:1.25rem;margin-bottom:20px;display:flex;align-items:center;gap:10px;color:var(--ink)}
+  .listblock h3 .dot{width:11px;height:11px;border-radius:3px;background:var(--lime);border:1px solid var(--ink2)}
+  ul.ticks{list-style:none;display:flex;flex-direction:column;gap:14px}
+  ul.ticks li{position:relative;padding-left:34px;color:var(--text-soft);break-inside:avoid}
+  ul.ticks li::before{content:"";position:absolute;left:0;top:2px;width:21px;height:21px;border-radius:6px;
+    background:var(--ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23dcf263' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/13px no-repeat}
+
+  .band{position:relative;border-radius:24px;overflow:hidden;box-shadow:var(--shadow)}
+  .band video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .band::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,rgba(28,52,46,.92) 0%,rgba(28,52,46,.62) 55%,rgba(28,52,46,.28) 100%)}
+  .band .inner{position:relative;z-index:2;color:#fff;padding:64px 56px;max-width:620px}
+  .band .inner h2{color:#fff}
+  .band .inner p{color:#eceadf;margin-top:10px}
+  .stats{display:flex;gap:40px;margin-top:32px;flex-wrap:wrap}
+  .stat .n{font-family:var(--serif);font-size:2.2rem;font-weight:700;color:var(--lime);line-height:1}
+  .stat .l{font-size:.84rem;text-transform:uppercase;letter-spacing:.08em;color:#d7d3c5;margin-top:6px}
+
+  .apply{background:var(--ink);color:#fff;border-radius:24px;padding:60px 56px;text-align:center}
+  .apply h2{color:#fff}
+  .apply p{color:#dfe2da;max-width:52ch;margin:12px auto 0}
+  .contacts{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:38px}
+  .contact{background:rgba(223,216,196,.07);border:1px solid rgba(223,216,196,.16);border-radius:var(--radius);padding:24px 30px;min-width:240px;text-align:left}
+  .contact .role{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--lime);font-weight:700}
+  .contact .name{font-family:var(--serif);font-size:1.25rem;font-weight:700;margin:4px 0 10px}
+  .contact a{display:flex;align-items:center;gap:9px;color:#fff;text-decoration:none;font-weight:600;margin-top:6px}
+  .contact a:hover{color:var(--lime)}
+  .contact a svg{width:17px;height:17px;color:var(--lime);flex:none}
+  .apply .note{margin-top:30px;font-size:.92rem;color:#aebbb1}
+
+  footer{background:#142620;color:#cdd3c9;padding:48px 0}
+  footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  footer img{height:40px}
+  footer .addr{font-size:.92rem;text-align:right;color:#9aa79c}
+  footer a{color:var(--cream)}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    .intro-grid{grid-template-columns:1fr;gap:30px}
+    .intro-grid .media{aspect-ratio:16/11;order:-1}
+    .cards{grid-template-columns:1fr 1fr}
+    .showcase{grid-template-columns:1fr;gap:28px}
+    .showcase .copy{order:2}
+    .split{grid-template-columns:1fr;gap:34px}
+    .band .inner,.apply{padding:44px 30px}
+  }
+  @media (max-width:600px){
+    .wrap{padding:0 18px}
+    section.pad{padding:56px 0}
+    .eyebrow{margin-bottom:10px}
+    .hero{min-height:92vh;min-height:92svh}
+    .hero .wrap{padding-bottom:48px}
+    .hero .logo-w{height:38px;margin-bottom:22px}
+    .hero h1{font-size:clamp(1.85rem,9.2vw,2.5rem)}
+    .hero p.tagline{font-size:1.08rem}
+    .hero-cta{flex-direction:column;align-items:stretch}
+    .hero-cta .btn{width:100%}
+    .cards{grid-template-columns:1fr;gap:14px}
+    .card{padding:22px 20px}
+    .gallery{grid-template-columns:1fr;gap:16px}
+    .machine-grid{grid-template-columns:1fr;gap:14px}
+    .machine-grid .feature{aspect-ratio:16/9}
+    ul.ticks.cols{columns:1 !important}
+    .stats{gap:26px}
+    .contact{width:100%;min-width:0}
+    .role{padding:24px 20px}
+    .role.featured{padding:26px 20px}
+    footer .wrap{flex-direction:column;text-align:center}
+    footer .addr{text-align:center}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="wrap">
+    <img src="assets/fag_logo_cream.svg" alt="Faginnredning">
+    <a href="#sok" class="btn">Søk her</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <video src="clips/clip_2_handverk.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_2_handverk.jpg"></video>
+  <div class="wrap">
+    <img class="logo-w" src="assets/fag_logo_cream.svg" alt="Faginnredning">
+    <div class="eyebrow on-dark">Ledige stillinger · Fast ansettelse</div>
+    <h1>Vi søker<br><em>produksjons&shy;medarbeider</em><br>og møbelsnekker</h1>
+    <p class="tagline">Bli med på å skape spesialinnredning i vestnorsk kvalitet – for landets mest spennende næringsbygg.</p>
+    <div class="meta-row">
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Årland, Samnanger</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Flere ledige stillinger</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Oppstart snarest</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#sok" class="btn lg">Søk nå</a>
+      <a href="#hverdagen" class="btn lg ghost">Se hverdagen vår</a>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="pad">
+  <div class="wrap intro-grid">
+    <div>
+      <div class="eyebrow">Om stillingene</div>
+      <h2>Et håndverk det er stas å være god på</h2>
+      <p class="lead" style="margin-top:14px">
+        Hos Faginnredning lager vi spesialinnredning fra bunnen av – skreddersydd til arkitekter, entreprenører
+        og krevende kunder over hele landet. Nå trenger vi flere folk i produksjonen: en engasjert
+        <strong>produksjonsmedarbeider</strong> og en dyktig <strong>møbelsnekker</strong> som vil være med
+        å løfte kvaliteten enda et hakk.
+      </p>
+      <p class="lead" style="margin-top:16px">
+        Du blir en del av et solid fagmiljø på rundt 25 kollegaer, med en moderne maskinpark og varierte
+        oppgaver i et trivelig arbeidsmiljø. Her får du bryne deg på alt fra finsnekring til store
+        prosjektleveranser – og se resultatet bli til ferdige rom mennesker bruker hver dag.
+      </p>
+    </div>
+    <div class="media">
+      <video src="clips/clip_1_maskinpark.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_1_maskinpark.jpg"></video>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE CARDS -->
+<section class="pad mist">
+  <div class="wrap">
+    <div class="eyebrow">Hvorfor Faginnredning</div>
+    <h2>Et sted å bygge fagstoltheten din</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <h3>Variert håndverk</h3>
+        <p>Ingen dag er lik. Du jobber med spesialinnredning i tre, laminat, Corian og massiv kvalitet.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+        <h3>Moderne maskinpark</h3>
+        <p>CNC, Biesse og topp utstyr gjør at du får tid til det som teller – presisjon og finish.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Solid fagmiljø</h3>
+        <p>Rundt 25 erfarne kollegaer som deler kunnskap og heier hverandre fram. Godt arbeidsmiljø.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <h3>Prosjekter i hele Norge</h3>
+        <p>Vi leverer over hele landet. Arbeidet ditt ender opp i bygg folk legger merke til.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MASKINPARK (drone) -->
+<section class="pad machines" id="maskinpark">
+  <div class="wrap">
+    <div class="eyebrow on-dark">Maskinparken</div>
+    <h2>Moderne maskiner – sett ovenfra</h2>
+    <p class="lead" style="margin-top:12px">Vi investerer i topp moderne utstyr. Her er et dronetitt inn i vår egen fabrikk på Årland – fra CNC-senter til hele produksjonslinja.</p>
+    <div class="machine-grid">
+      <div class="vclip feature"><video src="clips/clip_7_cnc.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_7_cnc.jpg"></video><div class="cap"><small>CNC-senter · Biesse</small>Presisjon i stor skala</div></div>
+      <div class="vclip"><video src="clips/clip_8_hall.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_8_hall.jpg"></video><div class="cap"><small>Produksjonshallen</small>En moderne maskinpark</div></div>
+      <div class="vclip"><video src="clips/clip_9_maskin.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_9_maskin.jpg"></video><div class="cap"><small>Nesting &amp; fresing</small>Fra tegning til ferdig del</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO GALLERY -->
+<section class="pad" id="hverdagen">
+  <div class="wrap">
+    <div class="eyebrow">Et innblikk</div>
+    <h2>Slik ser hverdagen ut hos oss</h2>
+    <p class="lead" style="margin-top:12px">Korte glimt fra fabrikken på Årland – fra råemne til ferdig rom.</p>
+    <div class="gallery">
+      <div class="vclip"><video src="clips/clip_1_maskinpark.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_1_maskinpark.jpg"></video><div class="cap"><small>Maskinpark</small>Presisjon i hvert kutt</div></div>
+      <div class="vclip"><video src="clips/clip_2_handverk.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_2_handverk.jpg"></video><div class="cap"><small>Håndverk</small>Fagfolk med øye for detaljer</div></div>
+      <div class="vclip"><video src="clips/clip_3_detalj.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_3_detalj.jpg"></video><div class="cap"><small>Produksjon</small>Kvalitet helt inn i fingerspissene</div></div>
+      <div class="vclip"><video src="clips/clip_4_resultat.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_4_resultat.jpg"></video><div class="cap"><small>Resultatet</small>Rom mennesker bruker hver dag</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SUMO SHOWCASE -->
+<section class="pad mist">
+  <div class="wrap showcase">
+    <div class="copy">
+      <div class="eyebrow">Referanseprosjekt</div>
+      <h2>Se hva du er med på å skape</h2>
+      <p class="lead" style="margin-top:14px">
+        SUMO-restauranten er et godt eksempel på hva vi leverer: skreddersydde løsninger der
+        materialbruk, buede former og detaljer må stemme helt ned i millimeteren. Buede sittegrupper,
+        spesialtilpasset bar og finsnekring i et krevende interiør.
+      </p>
+      <p class="lead" style="margin-top:14px">
+        Jobber du i produksjonen hos oss, er det nettopp slike prosjekter du får sette ditt preg på.
+      </p>
+    </div>
+    <div class="film">
+      <span class="tag">SUMO Restaurant</span>
+      <video src="clips/clip_6_sumo.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_6_sumo.jpg"></video>
+    </div>
+  </div>
+</section>
+
+<!-- STILLINGENE -->
+<section class="pad" id="stillingene">
+  <div class="wrap">
+    <div class="eyebrow">Ledige stillinger</div>
+    <h2>Hvem vi ser etter</h2>
+  </div>
+  <div class="wrap" style="margin-top:36px">
+    <div class="role featured">
+      <div class="role-head">
+        <h3>Produksjonsmedarbeider</h3>
+        <span class="role-tag">Fremhevet stilling</span>
+      </div>
+      <div class="split" style="gap:40px;margin-top:20px">
+        <div class="listblock">
+          <h3 style="font-size:1.05rem"><span class="dot"></span>Arbeidsoppgaver</h3>
+          <ul class="ticks">
+            <li>Betjening av moderne maskiner i produksjonen (CNC, kantlimer m.m.)</li>
+            <li>Montering og sammenstilling av innredning</li>
+            <li>Pakking, klargjøring og logistikk i verkstedet</li>
+            <li>Bidra til god flyt og orden i produksjonen</li>
+          </ul>
+        </div>
+        <div class="listblock">
+          <h3 style="font-size:1.05rem"><span class="dot"></span>Vi ser etter deg som</h3>
+          <ul class="ticks">
+            <li>Er praktisk anlagt og liker å jobbe med hendene</li>
+            <li>Er pålitelig, lærevillig og tar ansvar</li>
+            <li>Erfaring fra industri/produksjon er et pluss – ikke et krav</li>
+            <li>Opplæring gis – godt humør teller mest!</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="role">
+      <div class="role-head">
+        <h3>Møbelsnekker</h3>
+      </div>
+      <div class="split" style="gap:40px;margin-top:20px">
+        <div class="listblock">
+          <h3 style="font-size:1.05rem"><span class="dot"></span>Arbeidsoppgaver</h3>
+          <ul class="ticks">
+            <li>Produksjon av spesialinnredning etter tegning og mål</li>
+            <li>Maskinering, tilpasning og montering av møbler og innredning</li>
+            <li>Arbeid med ulike materialer – tre, plate, laminat og Corian</li>
+            <li>Kvalitetssikring og finish på egne leveranser</li>
+          </ul>
+        </div>
+        <div class="listblock">
+          <h3 style="font-size:1.05rem"><span class="dot"></span>Vi ser etter deg som</h3>
+          <ul class="ticks">
+            <li>Har fagbrev som møbelsnekker eller tilsvarende erfaring</li>
+            <li>Har erfaring fra produksjon av spesialinnredning</li>
+            <li>Er nøyaktig, selvstendig og løsningsorientert</li>
+            <li>Trives med å jobbe i team og bidra til godt miljø</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:48px">
+    <div class="listblock">
+      <h3><span class="dot"></span>Vi tilbyr</h3>
+      <ul class="ticks cols" style="columns:2;column-gap:56px">
+        <li>Fast stilling i en solid og veletablert bedrift</li>
+        <li>Variert arbeid med høy faglig standard</li>
+        <li>Moderne maskinpark og gode verktøy</li>
+        <li>Dyktige kollegaer og et godt arbeidsmiljø</li>
+        <li>Konkurransedyktige betingelser</li>
+        <li>Mulighet til å sette spor i prosjekter over hele landet</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- COMPANY BAND -->
+<section class="pad mist">
+  <div class="wrap">
+    <div class="band">
+      <video src="clips/clip_5_anlegg.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_5_anlegg.jpg"></video>
+      <div class="inner">
+        <div class="eyebrow on-dark">Om Faginnredning</div>
+        <h2>Spesialinnredning i vestnorsk kvalitet</h2>
+        <p>
+          Faginnredning utformer spesialinnredning for næringsbygg og privatkunder, og innreder
+          hverdagen med varige løsninger. Fra fabrikken vår på Årland i Samnanger er vi en
+          samarbeidspartner for arkitekter, entreprenører og profesjonelle kunder – og en
+          autorisert Corian-forhandler.
+        </p>
+        <div class="stats">
+          <div class="stat"><div class="n">~25</div><div class="l">Medarbeidere</div></div>
+          <div class="stat"><div class="n">Hele</div><div class="l">Norge – levering</div></div>
+          <div class="stat"><div class="n">Corian</div><div class="l">Autorisert forhandler</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLY -->
+<section class="pad" id="sok" style="padding-top:20px">
+  <div class="wrap">
+    <div class="apply">
+      <div class="eyebrow on-dark">Søk stillingene</div>
+      <h2>Høres dette ut som deg?</h2>
+      <p>Ta kontakt med oss for en uforpliktende prat, eller send en søknad. Vi vurderer søkere fortløpende – så ikke vent for lenge.</p>
+      <div class="contacts">
+        <div class="contact">
+          <div class="role">Daglig leder</div>
+          <div class="name">Birger Aga</div>
+          <a href="tel:+4790663022"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.7 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.74-1.27a2 2 0 0 1 2.11-.45c.74.34 1.53.57 2.34.7A2 2 0 0 1 22 16.92z"/></svg>906 63 022</a>
+          <a href="mailto:birger@faginnredning.no?subject=Søknad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>birger@faginnredning.no</a>
+        </div>
+        <div class="contact">
+          <div class="role">Produksjonsleder</div>
+          <div class="name">Magne Engjom</div>
+          <a href="tel:+4740841880"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.7 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.74-1.27a2 2 0 0 1 2.11-.45c.74.34 1.53.57 2.34.7A2 2 0 0 1 22 16.92z"/></svg>408 41 880</a>
+        </div>
+      </div>
+      <div class="note">Du kan også sende oss en melding eller SMS – så tar vi kontakt.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <img src="assets/fag_logo_cream.svg" alt="Faginnredning">
+    <div class="addr">
+      Faginnredning AS · Sætravegen 48, 5652 Årland<br>
+      Tlf 56 58 90 40 · <a href="https://www.faginnredning.no">faginnredning.no</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var vids = Array.prototype.slice.call(document.querySelectorAll('video'));
+  vids.forEach(function(v){ v.muted = true; v.defaultMuted = true; v.setAttribute('muted',''); v.playsInline = true; });
+  function tryplay(v){ try{ var p = v.play(); if(p && p.catch){ p.catch(function(){}); } }catch(e){} }
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ tryplay(e.target); }
+        else { try{ e.target.pause(); }catch(e2){} }
+      });
+    }, {threshold:0.2});
+    vids.forEach(function(v){ io.observe(v); });
+  } else { vids.forEach(tryplay); }
+  function kick(){ vids.forEach(tryplay); }
+  document.addEventListener('touchstart', kick, {passive:true});
+  document.addEventListener('click', kick);
+  window.addEventListener('load', function(){ vids.forEach(tryplay); });
+})();
+</script>
+
+</body>
+</html>
