@@ -51,6 +51,15 @@
   .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
   .topbar img{height:36px}
   .topbar .btn{padding:11px 22px;font-size:.95rem}
+  .topbar .actions{display:flex;align-items:center;gap:10px}
+
+  /* ---------- SPRÅKVELGER ---------- */
+  .langwrap{position:relative;display:inline-flex;align-items:center}
+  .langwrap .globe{position:absolute;left:13px;width:15px;height:15px;color:var(--lime);pointer-events:none}
+  .langwrap::after{content:"";position:absolute;right:14px;width:7px;height:7px;border-right:1.6px solid var(--cream);border-bottom:1.6px solid var(--cream);transform:rotate(45deg);margin-top:-3px;pointer-events:none}
+  #lang{appearance:none;-webkit-appearance:none;background:rgba(223,216,196,.12);border:1px solid rgba(223,216,196,.35);color:#fff;font-weight:600;font-size:.9rem;font-family:var(--sans);padding:10px 32px 10px 36px;border-radius:999px;cursor:pointer;transition:border-color .15s ease,background .15s ease}
+  #lang:hover{border-color:var(--cream);background:rgba(223,216,196,.2)}
+  #lang option{color:var(--ink);background:#fff}
 
   /* ---------- HERO ---------- */
   .hero{position:relative;min-height:88vh;min-height:88svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink)}
@@ -161,6 +170,13 @@
   @media (max-width:600px){
     .wrap{padding:0 18px}
     section.pad{padding:56px 0}
+    .topbar .wrap{height:60px}
+    .topbar img{height:26px}
+    .topbar .actions{gap:8px}
+    .topbar .btn{padding:9px 14px;font-size:.84rem}
+    #lang{padding:8px 26px 8px 30px;font-size:.8rem}
+    .langwrap .globe{left:11px;width:13px;height:13px}
+    .langwrap::after{right:12px;width:6px;height:6px}
     .eyebrow{margin-bottom:10px}
     .hero{min-height:92vh;min-height:92svh}
     .hero .wrap{padding-bottom:48px}
@@ -192,7 +208,20 @@
 <header class="topbar">
   <div class="wrap">
     <img src="assets/fag_logo_cream.svg" alt="Faginnredning">
-    <a href="#sok" class="btn">Søk her</a>
+    <div class="actions">
+      <span class="langwrap">
+        <svg class="globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <select id="lang" aria-label="Velg språk / Choose language">
+          <option value="no">Norsk</option>
+          <option value="en">English</option>
+          <option value="lt">Lietuvių</option>
+          <option value="pl">Polski</option>
+          <option value="de">Deutsch</option>
+          <option value="it">Italiano</option>
+        </select>
+      </span>
+      <a href="#sok" class="btn" data-i18n="topbar.apply">Søk her</a>
+    </div>
   </div>
 </header>
 
@@ -201,17 +230,17 @@
   <video src="clips/clip_2_handverk.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_2_handverk.jpg"></video>
   <div class="wrap">
     <img class="logo-w" src="assets/fag_logo_cream.svg" alt="Faginnredning">
-    <div class="eyebrow on-dark">Ledige stillinger · Fast ansettelse</div>
-    <h1>Vi søker<br><em>produksjons&shy;medarbeider</em><br>og møbelsnekker</h1>
-    <p class="tagline">Bli med på å skape spesialinnredning i vestnorsk kvalitet – for landets mest spennende næringsbygg.</p>
+    <div class="eyebrow on-dark" data-i18n="hero.eyebrow">Ledige stillinger · Fast ansettelse</div>
+    <h1 data-i18n="hero.title">Vi søker<br><em>produksjons&shy;medarbeider</em><br>og møbelsnekker</h1>
+    <p class="tagline" data-i18n="hero.tagline">Bli med på å skape spesialinnredning i vestnorsk kvalitet – for landets mest spennende næringsbygg.</p>
     <div class="meta-row">
       <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Årland, Samnanger</span>
-      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Flere ledige stillinger</span>
-      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Oppstart snarest</span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg><span data-i18n="hero.chip2">Flere ledige stillinger</span></span>
+      <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span data-i18n="hero.chip3">Oppstart snarest</span></span>
     </div>
     <div class="hero-cta">
-      <a href="#sok" class="btn lg">Søk nå</a>
-      <a href="#hverdagen" class="btn lg ghost">Se hverdagen vår</a>
+      <a href="#sok" class="btn lg" data-i18n="hero.cta1">Søk nå</a>
+      <a href="#hverdagen" class="btn lg ghost" data-i18n="hero.cta2">Se hverdagen vår</a>
     </div>
   </div>
 </section>
@@ -220,15 +249,15 @@
 <section class="pad">
   <div class="wrap intro-grid">
     <div>
-      <div class="eyebrow">Om stillingene</div>
-      <h2>Et håndverk det er stas å være god på</h2>
-      <p class="lead" style="margin-top:14px">
+      <div class="eyebrow" data-i18n="intro.eyebrow">Om stillingene</div>
+      <h2 data-i18n="intro.h2">Et håndverk det er stas å være god på</h2>
+      <p class="lead" style="margin-top:14px" data-i18n="intro.p1">
         Hos Faginnredning lager vi spesialinnredning fra bunnen av – skreddersydd til arkitekter, entreprenører
         og krevende kunder over hele landet. Nå trenger vi flere folk i produksjonen: en engasjert
         <strong>produksjonsmedarbeider</strong> og en dyktig <strong>møbelsnekker</strong> som vil være med
         å løfte kvaliteten enda et hakk.
       </p>
-      <p class="lead" style="margin-top:16px">
+      <p class="lead" style="margin-top:16px" data-i18n="intro.p2">
         Du blir en del av et solid fagmiljø på rundt 25 kollegaer, med en moderne maskinpark og varierte
         oppgaver i et trivelig arbeidsmiljø. Her får du bryne deg på alt fra finsnekring til store
         prosjektleveranser – og se resultatet bli til ferdige rom mennesker bruker hver dag.
@@ -243,28 +272,28 @@
 <!-- VALUE CARDS -->
 <section class="pad mist">
   <div class="wrap">
-    <div class="eyebrow">Hvorfor Faginnredning</div>
-    <h2>Et sted å bygge fagstoltheten din</h2>
+    <div class="eyebrow" data-i18n="cards.eyebrow">Hvorfor Faginnredning</div>
+    <h2 data-i18n="cards.h2">Et sted å bygge fagstoltheten din</h2>
     <div class="cards">
       <div class="card">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-        <h3>Variert håndverk</h3>
-        <p>Ingen dag er lik. Du jobber med spesialinnredning i tre, laminat, Corian og massiv kvalitet.</p>
+        <h3 data-i18n="card1.h3">Variert håndverk</h3>
+        <p data-i18n="card1.p">Ingen dag er lik. Du jobber med spesialinnredning i tre, laminat, Corian og massiv kvalitet.</p>
       </div>
       <div class="card">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
-        <h3>Moderne maskinpark</h3>
-        <p>CNC, Biesse og topp utstyr gjør at du får tid til det som teller – presisjon og finish.</p>
+        <h3 data-i18n="card2.h3">Moderne maskinpark</h3>
+        <p data-i18n="card2.p">CNC, Biesse og topp utstyr gjør at du får tid til det som teller – presisjon og finish.</p>
       </div>
       <div class="card">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <h3>Solid fagmiljø</h3>
-        <p>Rundt 25 erfarne kollegaer som deler kunnskap og heier hverandre fram. Godt arbeidsmiljø.</p>
+        <h3 data-i18n="card3.h3">Solid fagmiljø</h3>
+        <p data-i18n="card3.p">Rundt 25 erfarne kollegaer som deler kunnskap og heier hverandre fram. Godt arbeidsmiljø.</p>
       </div>
       <div class="card">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-        <h3>Prosjekter i hele Norge</h3>
-        <p>Vi leverer over hele landet. Arbeidet ditt ender opp i bygg folk legger merke til.</p>
+        <h3 data-i18n="card4.h3">Prosjekter i hele Norge</h3>
+        <p data-i18n="card4.p">Vi leverer over hele landet. Arbeidet ditt ender opp i bygg folk legger merke til.</p>
       </div>
     </div>
   </div>
@@ -273,13 +302,13 @@
 <!-- MASKINPARK (drone) -->
 <section class="pad machines" id="maskinpark">
   <div class="wrap">
-    <div class="eyebrow on-dark">Maskinparken</div>
-    <h2>Moderne maskiner – sett ovenfra</h2>
-    <p class="lead" style="margin-top:12px">Vi investerer i topp moderne utstyr. Her er et dronetitt inn i vår egen fabrikk på Årland – fra CNC-senter til hele produksjonslinja.</p>
+    <div class="eyebrow on-dark" data-i18n="mach.eyebrow">Maskinparken</div>
+    <h2 data-i18n="mach.h2">Moderne maskiner – sett ovenfra</h2>
+    <p class="lead" style="margin-top:12px" data-i18n="mach.lead">Vi investerer i topp moderne utstyr. Her er et dronetitt inn i vår egen fabrikk på Årland – fra CNC-senter til hele produksjonslinja.</p>
     <div class="machine-grid">
-      <div class="vclip feature"><video src="clips/clip_7_cnc.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_7_cnc.jpg"></video><div class="cap"><small>CNC-senter · Biesse</small>Presisjon i stor skala</div></div>
-      <div class="vclip"><video src="clips/clip_8_hall.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_8_hall.jpg"></video><div class="cap"><small>Produksjonshallen</small>En moderne maskinpark</div></div>
-      <div class="vclip"><video src="clips/clip_9_maskin.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_9_maskin.jpg"></video><div class="cap"><small>Nesting &amp; fresing</small>Fra tegning til ferdig del</div></div>
+      <div class="vclip feature"><video src="clips/clip_7_cnc.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_7_cnc.jpg"></video><div class="cap" data-i18n="mach.cap1"><small>CNC-senter · Biesse</small>Presisjon i stor skala</div></div>
+      <div class="vclip"><video src="clips/clip_8_hall.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_8_hall.jpg"></video><div class="cap" data-i18n="mach.cap2"><small>Produksjonshallen</small>En moderne maskinpark</div></div>
+      <div class="vclip"><video src="clips/clip_9_maskin.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_9_maskin.jpg"></video><div class="cap" data-i18n="mach.cap3"><small>Nesting &amp; fresing</small>Fra tegning til ferdig del</div></div>
     </div>
   </div>
 </section>
@@ -287,14 +316,14 @@
 <!-- VIDEO GALLERY -->
 <section class="pad" id="hverdagen">
   <div class="wrap">
-    <div class="eyebrow">Et innblikk</div>
-    <h2>Slik ser hverdagen ut hos oss</h2>
-    <p class="lead" style="margin-top:12px">Korte glimt fra fabrikken på Årland – fra råemne til ferdig rom.</p>
+    <div class="eyebrow" data-i18n="gal.eyebrow">Et innblikk</div>
+    <h2 data-i18n="gal.h2">Slik ser hverdagen ut hos oss</h2>
+    <p class="lead" style="margin-top:12px" data-i18n="gal.lead">Korte glimt fra fabrikken på Årland – fra råemne til ferdig rom.</p>
     <div class="gallery">
-      <div class="vclip"><video src="clips/clip_1_maskinpark.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_1_maskinpark.jpg"></video><div class="cap"><small>Maskinpark</small>Presisjon i hvert kutt</div></div>
-      <div class="vclip"><video src="clips/clip_2_handverk.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_2_handverk.jpg"></video><div class="cap"><small>Håndverk</small>Fagfolk med øye for detaljer</div></div>
-      <div class="vclip"><video src="clips/clip_3_detalj.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_3_detalj.jpg"></video><div class="cap"><small>Produksjon</small>Kvalitet helt inn i fingerspissene</div></div>
-      <div class="vclip"><video src="clips/clip_4_resultat.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_4_resultat.jpg"></video><div class="cap"><small>Resultatet</small>Rom mennesker bruker hver dag</div></div>
+      <div class="vclip"><video src="clips/clip_1_maskinpark.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_1_maskinpark.jpg"></video><div class="cap" data-i18n="gal.cap1"><small>Maskinpark</small>Presisjon i hvert kutt</div></div>
+      <div class="vclip"><video src="clips/clip_2_handverk.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_2_handverk.jpg"></video><div class="cap" data-i18n="gal.cap2"><small>Håndverk</small>Fagfolk med øye for detaljer</div></div>
+      <div class="vclip"><video src="clips/clip_3_detalj.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_3_detalj.jpg"></video><div class="cap" data-i18n="gal.cap3"><small>Produksjon</small>Kvalitet helt inn i fingerspissene</div></div>
+      <div class="vclip"><video src="clips/clip_4_resultat.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_4_resultat.jpg"></video><div class="cap" data-i18n="gal.cap4"><small>Resultatet</small>Rom mennesker bruker hver dag</div></div>
     </div>
   </div>
 </section>
@@ -303,14 +332,14 @@
 <section class="pad mist">
   <div class="wrap showcase">
     <div class="copy">
-      <div class="eyebrow">Referanseprosjekter</div>
-      <h2>Se hva du er med på å skape</h2>
-      <p class="lead" style="margin-top:14px">
+      <div class="eyebrow" data-i18n="show.eyebrow">Referanseprosjekter</div>
+      <h2 data-i18n="show.h2">Se hva du er med på å skape</h2>
+      <p class="lead" style="margin-top:14px" data-i18n="show.p1">
         SUMO-restauranten, kaffebaren hos PwC i Sundt-bygget og barene i Grieghallen er gode eksempler
         på hva vi leverer: skreddersydde løsninger der materialbruk, buede former og detaljer må
         stemme helt ned i millimeteren.
       </p>
-      <p class="lead" style="margin-top:14px">
+      <p class="lead" style="margin-top:14px" data-i18n="show.p2">
         Jobber du i produksjonen hos oss, er det nettopp slike prosjekter du får sette ditt preg på.
       </p>
     </div>
@@ -320,65 +349,65 @@
     </div>
   </div>
   <div class="wrap refs">
-    <div class="vclip"><video src="clips/clip_ref_pwc.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_ref_pwc.jpg"></video><div class="cap"><small>PwC · Sundt-bygget</small>Kaffebar, øyer og kjøkken</div></div>
-    <div class="vclip"><video src="clips/clip_ref_grieg.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_ref_grieg.jpg"></video><div class="cap"><small>Grieghallen · Bergen</small>Barer i betong og Corian</div></div>
+    <div class="vclip"><video src="clips/clip_ref_pwc.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_ref_pwc.jpg"></video><div class="cap" data-i18n="show.cappwc"><small>PwC · Sundt-bygget</small>Kaffebar, øyer og kjøkken</div></div>
+    <div class="vclip"><video src="clips/clip_ref_grieg.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_ref_grieg.jpg"></video><div class="cap" data-i18n="show.capgrieg"><small>Grieghallen · Bergen</small>Barer i betong og Corian</div></div>
   </div>
 </section>
 
 <!-- STILLINGENE -->
 <section class="pad" id="stillingene">
   <div class="wrap">
-    <div class="eyebrow">Ledige stillinger</div>
-    <h2>Hvem vi ser etter</h2>
+    <div class="eyebrow" data-i18n="roles.eyebrow">Ledige stillinger</div>
+    <h2 data-i18n="roles.h2">Hvem vi ser etter</h2>
   </div>
   <div class="wrap" style="margin-top:36px">
     <div class="role featured">
       <div class="role-head">
-        <h3>Produksjonsmedarbeider</h3>
-        <span class="role-tag">Fremhevet stilling</span>
+        <h3 data-i18n="r1.h3">Produksjonsmedarbeider</h3>
+        <span class="role-tag" data-i18n="r1.tag">Fremhevet stilling</span>
       </div>
       <div class="split" style="gap:40px;margin-top:20px">
         <div class="listblock">
-          <h3 style="font-size:1.05rem"><span class="dot"></span>Arbeidsoppgaver</h3>
+          <h3 style="font-size:1.05rem"><span class="dot"></span><span data-i18n="lb.tasks">Arbeidsoppgaver</span></h3>
           <ul class="ticks">
-            <li>Betjening av moderne maskiner i produksjonen (CNC, kantlimer m.m.)</li>
-            <li>Montering og sammenstilling av innredning</li>
-            <li>Pakking, klargjøring og logistikk i verkstedet</li>
-            <li>Bidra til god flyt og orden i produksjonen</li>
+            <li data-i18n="r1.t1">Betjening av moderne maskiner i produksjonen (CNC, kantlimer m.m.)</li>
+            <li data-i18n="r1.t2">Montering og sammenstilling av innredning</li>
+            <li data-i18n="r1.t3">Pakking, klargjøring og logistikk i verkstedet</li>
+            <li data-i18n="r1.t4">Bidra til god flyt og orden i produksjonen</li>
           </ul>
         </div>
         <div class="listblock">
-          <h3 style="font-size:1.05rem"><span class="dot"></span>Vi ser etter deg som</h3>
+          <h3 style="font-size:1.05rem"><span class="dot"></span><span data-i18n="lb.you">Vi ser etter deg som</span></h3>
           <ul class="ticks">
-            <li>Er praktisk anlagt og liker å jobbe med hendene</li>
-            <li>Er pålitelig, lærevillig og tar ansvar</li>
-            <li>Erfaring fra industri/produksjon er et pluss – ikke et krav</li>
-            <li>Opplæring gis – godt humør teller mest!</li>
+            <li data-i18n="r1.y1">Er praktisk anlagt og liker å jobbe med hendene</li>
+            <li data-i18n="r1.y2">Er pålitelig, lærevillig og tar ansvar</li>
+            <li data-i18n="r1.y3">Erfaring fra industri/produksjon er et pluss – ikke et krav</li>
+            <li data-i18n="r1.y4">Opplæring gis – godt humør teller mest!</li>
           </ul>
         </div>
       </div>
     </div>
     <div class="role">
       <div class="role-head">
-        <h3>Møbelsnekker</h3>
+        <h3 data-i18n="r2.h3">Møbelsnekker</h3>
       </div>
       <div class="split" style="gap:40px;margin-top:20px">
         <div class="listblock">
-          <h3 style="font-size:1.05rem"><span class="dot"></span>Arbeidsoppgaver</h3>
+          <h3 style="font-size:1.05rem"><span class="dot"></span><span data-i18n="lb.tasks">Arbeidsoppgaver</span></h3>
           <ul class="ticks">
-            <li>Produksjon av spesialinnredning etter tegning og mål</li>
-            <li>Maskinering, tilpasning og montering av møbler og innredning</li>
-            <li>Arbeid med ulike materialer – tre, plate, laminat og Corian</li>
-            <li>Kvalitetssikring og finish på egne leveranser</li>
+            <li data-i18n="r2.t1">Produksjon av spesialinnredning etter tegning og mål</li>
+            <li data-i18n="r2.t2">Maskinering, tilpasning og montering av møbler og innredning</li>
+            <li data-i18n="r2.t3">Arbeid med ulike materialer – tre, plate, laminat og Corian</li>
+            <li data-i18n="r2.t4">Kvalitetssikring og finish på egne leveranser</li>
           </ul>
         </div>
         <div class="listblock">
-          <h3 style="font-size:1.05rem"><span class="dot"></span>Vi ser etter deg som</h3>
+          <h3 style="font-size:1.05rem"><span class="dot"></span><span data-i18n="lb.you">Vi ser etter deg som</span></h3>
           <ul class="ticks">
-            <li>Har fagbrev som møbelsnekker eller tilsvarende erfaring</li>
-            <li>Har erfaring fra produksjon av spesialinnredning</li>
-            <li>Er nøyaktig, selvstendig og løsningsorientert</li>
-            <li>Trives med å jobbe i team og bidra til godt miljø</li>
+            <li data-i18n="r2.y1">Har fagbrev som møbelsnekker eller tilsvarende erfaring</li>
+            <li data-i18n="r2.y2">Har erfaring fra produksjon av spesialinnredning</li>
+            <li data-i18n="r2.y3">Er nøyaktig, selvstendig og løsningsorientert</li>
+            <li data-i18n="r2.y4">Trives med å jobbe i team og bidra til godt miljø</li>
           </ul>
         </div>
       </div>
@@ -386,14 +415,14 @@
   </div>
   <div class="wrap" style="margin-top:48px">
     <div class="listblock">
-      <h3><span class="dot"></span>Vi tilbyr</h3>
+      <h3><span class="dot"></span><span data-i18n="offer.h">Vi tilbyr</span></h3>
       <ul class="ticks cols" style="columns:2;column-gap:56px">
-        <li>Fast stilling i en solid og veletablert bedrift</li>
-        <li>Variert arbeid med høy faglig standard</li>
-        <li>Moderne maskinpark og gode verktøy</li>
-        <li>Dyktige kollegaer og et godt arbeidsmiljø</li>
-        <li>Konkurransedyktige betingelser</li>
-        <li>Mulighet til å sette spor i prosjekter over hele landet</li>
+        <li data-i18n="offer.i1">Fast stilling i en solid og veletablert bedrift</li>
+        <li data-i18n="offer.i2">Variert arbeid med høy faglig standard</li>
+        <li data-i18n="offer.i3">Moderne maskinpark og gode verktøy</li>
+        <li data-i18n="offer.i4">Dyktige kollegaer og et godt arbeidsmiljø</li>
+        <li data-i18n="offer.i5">Konkurransedyktige betingelser</li>
+        <li data-i18n="offer.i6">Mulighet til å sette spor i prosjekter over hele landet</li>
       </ul>
     </div>
   </div>
@@ -405,18 +434,18 @@
     <div class="band">
       <video src="clips/clip_5_anlegg.mp4" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="clips/clip_5_anlegg.jpg"></video>
       <div class="inner">
-        <div class="eyebrow on-dark">Om Faginnredning</div>
-        <h2>Spesialinnredning i vestnorsk kvalitet</h2>
-        <p>
+        <div class="eyebrow on-dark" data-i18n="band.eyebrow">Om Faginnredning</div>
+        <h2 data-i18n="band.h2">Spesialinnredning i vestnorsk kvalitet</h2>
+        <p data-i18n="band.p">
           Faginnredning utformer spesialinnredning for næringsbygg og privatkunder, og innreder
           hverdagen med varige løsninger. Fra fabrikken vår på Årland i Samnanger er vi en
           samarbeidspartner for arkitekter, entreprenører og profesjonelle kunder – og en
           autorisert Corian-forhandler.
         </p>
         <div class="stats">
-          <div class="stat"><div class="n">~25</div><div class="l">Medarbeidere</div></div>
-          <div class="stat"><div class="n">Hele</div><div class="l">Norge – levering</div></div>
-          <div class="stat"><div class="n">Corian</div><div class="l">Autorisert forhandler</div></div>
+          <div class="stat"><div class="n">~25</div><div class="l" data-i18n="band.stat1l">Medarbeidere</div></div>
+          <div class="stat"><div class="n" data-i18n="band.stat2n">Hele</div><div class="l" data-i18n="band.stat2l">Norge – levering</div></div>
+          <div class="stat"><div class="n">Corian</div><div class="l" data-i18n="band.stat3l">Autorisert forhandler</div></div>
         </div>
       </div>
     </div>
@@ -427,23 +456,24 @@
 <section class="pad" id="sok" style="padding-top:20px">
   <div class="wrap">
     <div class="apply">
-      <div class="eyebrow on-dark">Søk stillingene</div>
-      <h2>Høres dette ut som deg?</h2>
-      <p>Ta kontakt med oss for en uforpliktende prat, eller send en søknad. Vi vurderer søkere fortløpende – så ikke vent for lenge.</p>
+      <div class="eyebrow on-dark" data-i18n="apply.eyebrow">Søk stillingene</div>
+      <h2 data-i18n="apply.h2">Høres dette ut som deg?</h2>
+      <p data-i18n="apply.p">Ta kontakt med oss for en uforpliktende prat, eller send en søknad. Vi vurderer søkere fortløpende – så ikke vent for lenge.</p>
       <div class="contacts">
         <div class="contact">
-          <div class="role">Daglig leder</div>
+          <div class="role" data-i18n="c1.role">Daglig leder</div>
           <div class="name">Birger Aga</div>
           <a href="tel:+4790663022"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.7 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.74-1.27a2 2 0 0 1 2.11-.45c.74.34 1.53.57 2.34.7A2 2 0 0 1 22 16.92z"/></svg>906 63 022</a>
           <a href="mailto:birger@faginnredning.no?subject=Søknad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>birger@faginnredning.no</a>
         </div>
         <div class="contact">
-          <div class="role">Produksjonsleder</div>
+          <div class="role" data-i18n="c2.role">Produksjonsleder</div>
           <div class="name">Magne Engjom</div>
           <a href="tel:+4740841880"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.7 2.34a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.74-1.27a2 2 0 0 1 2.11-.45c.74.34 1.53.57 2.34.7A2 2 0 0 1 22 16.92z"/></svg>408 41 880</a>
+          <a href="mailto:magne@faginnredning.no?subject=Søknad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>magne@faginnredning.no</a>
         </div>
       </div>
-      <div class="note">Du kan også sende oss en melding eller SMS – så tar vi kontakt.</div>
+      <div class="note" data-i18n="apply.note">Du kan også sende oss en melding eller SMS – så tar vi kontakt.</div>
     </div>
   </div>
 </section>
@@ -477,6 +507,477 @@
   document.addEventListener('touchstart', kick, {passive:true});
   document.addEventListener('click', kick);
   window.addEventListener('load', function(){ vids.forEach(tryplay); });
+})();
+</script>
+
+<script>
+(function(){
+  var TITLES = {
+    no: "Vi søker folk – produksjonsmedarbeider og møbelsnekker – Faginnredning AS",
+    en: "We're hiring – production worker and cabinetmaker – Faginnredning AS",
+    lt: "Ieškome darbuotojų – gamybos darbuotojas ir baldžius – Faginnredning AS",
+    pl: "Szukamy ludzi – pracownik produkcji i stolarz meblowy – Faginnredning AS",
+    de: "Wir suchen Verstärkung – Produktionsmitarbeiter und Möbeltischler – Faginnredning AS",
+    it: "Cerchiamo personale – operaio di produzione e falegname ebanista – Faginnredning AS"
+  };
+  var I18N = {
+  en: {
+    "topbar.apply":"Apply here",
+    "hero.eyebrow":"Open positions · Permanent employment",
+    "hero.title":"We're looking for a<br><em>production worker</em><br>and a cabinetmaker",
+    "hero.tagline":"Join us in creating custom interiors of West Norwegian quality – for Norway's most exciting commercial buildings.",
+    "hero.chip2":"Several open positions",
+    "hero.chip3":"Start as soon as possible",
+    "hero.cta1":"Apply now",
+    "hero.cta2":"See our workday",
+    "intro.eyebrow":"About the positions",
+    "intro.h2":"A craft to take pride in",
+    "intro.p1":"At Faginnredning we build custom interiors from scratch – tailor-made for architects, contractors and demanding clients all over Norway. We now need more people in production: a motivated <strong>production worker</strong> and a skilled <strong>cabinetmaker</strong> who want to help lift the quality another notch.",
+    "intro.p2":"You'll join a solid team of around 25 colleagues, with modern machinery and varied tasks in a great working environment. You'll get to work on everything from fine joinery to large project deliveries – and see the result become finished spaces people use every day.",
+    "cards.eyebrow":"Why Faginnredning",
+    "cards.h2":"A place to build your professional pride",
+    "card1.h3":"Varied craftsmanship",
+    "card1.p":"No two days are alike. You'll work with custom interiors in wood, laminate, Corian and solid quality.",
+    "card2.h3":"Modern machinery",
+    "card2.p":"CNC, Biesse and top equipment give you time for what matters – precision and finish.",
+    "card3.h3":"Strong professional community",
+    "card3.p":"Around 25 experienced colleagues who share knowledge and cheer each other on. A great working environment.",
+    "card4.h3":"Projects all over Norway",
+    "card4.p":"We deliver nationwide. Your work ends up in buildings people notice.",
+    "mach.eyebrow":"The machine park",
+    "mach.h2":"Modern machines – seen from above",
+    "mach.lead":"We invest in state-of-the-art equipment. Here's a drone's-eye view of our own factory at Årland – from the CNC centre to the entire production line.",
+    "mach.cap1":"<small>CNC centre · Biesse</small>Precision at scale",
+    "mach.cap2":"<small>The production hall</small>A modern machine park",
+    "mach.cap3":"<small>Nesting &amp; milling</small>From drawing to finished part",
+    "gal.eyebrow":"A glimpse inside",
+    "gal.h2":"What everyday life looks like here",
+    "gal.lead":"Short glimpses from the factory at Årland – from raw material to finished space.",
+    "gal.cap1":"<small>Machine park</small>Precision in every cut",
+    "gal.cap2":"<small>Craftsmanship</small>Skilled people with an eye for detail",
+    "gal.cap3":"<small>Production</small>Quality down to the fingertips",
+    "gal.cap4":"<small>The result</small>Spaces people use every day",
+    "show.eyebrow":"Reference projects",
+    "show.h2":"See what you'll help create",
+    "show.p1":"The SUMO restaurant, the coffee bar at PwC in the Sundt building and the bars in Grieghallen are good examples of what we deliver: tailor-made solutions where materials, curved shapes and details have to be right down to the millimetre.",
+    "show.p2":"If you work in our production, these are exactly the projects you'll put your mark on.",
+    "show.cappwc":"<small>PwC · Sundt building</small>Coffee bar, islands and kitchen",
+    "show.capgrieg":"<small>Grieghallen · Bergen</small>Bars in concrete and Corian",
+    "roles.eyebrow":"Open positions",
+    "roles.h2":"Who we're looking for",
+    "r1.h3":"Production worker",
+    "r1.tag":"Featured position",
+    "lb.tasks":"Responsibilities",
+    "lb.you":"We're looking for someone who",
+    "r1.t1":"Operating modern production machinery (CNC, edgebander, etc.)",
+    "r1.t2":"Assembly and joining of interior fittings",
+    "r1.t3":"Packing, preparation and logistics in the workshop",
+    "r1.t4":"Contributing to good flow and order in production",
+    "r1.y1":"Is practical and enjoys working with their hands",
+    "r1.y2":"Is reliable, eager to learn and takes responsibility",
+    "r1.y3":"Experience from industry/production is a plus – not a requirement",
+    "r1.y4":"Training provided – a good attitude counts most!",
+    "r2.h3":"Cabinetmaker",
+    "r2.t1":"Production of custom interiors from drawings and measurements",
+    "r2.t2":"Machining, fitting and assembly of furniture and interiors",
+    "r2.t3":"Working with a range of materials – wood, board, laminate and Corian",
+    "r2.t4":"Quality control and finish on your own deliveries",
+    "r2.y1":"Holds a trade certificate in cabinetmaking or equivalent experience",
+    "r2.y2":"Has experience producing custom interiors",
+    "r2.y3":"Is precise, independent and solution-oriented",
+    "r2.y4":"Enjoys working in a team and contributing to a good environment",
+    "offer.h":"We offer",
+    "offer.i1":"A permanent position in a solid, well-established company",
+    "offer.i2":"Varied work to a high professional standard",
+    "offer.i3":"Modern machinery and good tools",
+    "offer.i4":"Skilled colleagues and a great working environment",
+    "offer.i5":"Competitive terms",
+    "offer.i6":"The chance to leave your mark on projects all over Norway",
+    "band.eyebrow":"About Faginnredning",
+    "band.h2":"Custom interiors of West Norwegian quality",
+    "band.p":"Faginnredning designs custom interiors for commercial buildings and private clients, furnishing everyday life with lasting solutions. From our factory at Årland in Samnanger we are a partner for architects, contractors and professional clients – and an authorised Corian dealer.",
+    "band.stat1l":"Employees",
+    "band.stat2n":"All of",
+    "band.stat2l":"Norway – delivery",
+    "band.stat3l":"Authorised dealer",
+    "apply.eyebrow":"Apply",
+    "apply.h2":"Does this sound like you?",
+    "apply.p":"Get in touch for an informal chat, or send an application. We review applicants continuously – so don't wait too long.",
+    "c1.role":"Managing director",
+    "c2.role":"Production manager",
+    "apply.note":"You can also send us a message or a text – and we'll get in touch."
+  },
+  lt: {
+    "topbar.apply":"Kandidatuok čia",
+    "hero.eyebrow":"Laisvos darbo vietos · Nuolatinis darbas",
+    "hero.title":"Ieškome<br><em>gamybos darbuotojo</em><br>ir baldžiaus",
+    "hero.tagline":"Prisijunk ir kurk aukščiausios Vakarų Norvegijos kokybės nestandartinius interjerus – įspūdingiausiems šalies komerciniams pastatams.",
+    "hero.chip2":"Kelios laisvos darbo vietos",
+    "hero.chip3":"Darbo pradžia – kuo greičiau",
+    "hero.cta1":"Kandidatuoti",
+    "hero.cta2":"Pažiūrėk mūsų kasdienybę",
+    "intro.eyebrow":"Apie pareigas",
+    "intro.h2":"Amatas, kuriuo verta didžiuotis",
+    "intro.p1":"Faginnredning nestandartinius interjerus gaminame nuo nulio – pagal užsakymą architektams, rangovams ir reikliems klientams visoje Norvegijoje. Dabar mums reikia daugiau žmonių gamyboje: motyvuoto <strong>gamybos darbuotojo</strong> ir nagingo <strong>baldžiaus</strong>, kurie padės kelti kokybę dar aukščiau.",
+    "intro.p2":"Prisijungsi prie tvirto maždaug 25 kolegų kolektyvo su moderniu staklių parku ir įvairiomis užduotimis puikioje darbo aplinkoje. Dirbsi su viskuo – nuo smulkių staliaus darbų iki didelių projektų – ir matysi, kaip tavo darbas virsta erdvėmis, kuriomis žmonės naudojasi kasdien.",
+    "cards.eyebrow":"Kodėl Faginnredning",
+    "cards.h2":"Vieta auginti profesinį pasididžiavimą",
+    "card1.h3":"Įvairus amatas",
+    "card1.p":"Nė viena diena nepanaši į kitą. Dirbsi su nestandartiniais interjerais iš medžio, laminato, Corian ir masyvo.",
+    "card2.h3":"Modernios staklės",
+    "card2.p":"CNC, Biesse ir geriausia įranga leidžia skirti laiką svarbiausiam – tikslumui ir apdailai.",
+    "card3.h3":"Stiprus profesionalų kolektyvas",
+    "card3.p":"Apie 25 patyrę kolegos, kurie dalijasi žiniomis ir palaiko vieni kitus. Puiki darbo aplinka.",
+    "card4.h3":"Projektai visoje Norvegijoje",
+    "card4.p":"Tiekiame visoje šalyje. Tavo darbas atsiduria pastatuose, kuriuos žmonės pastebi.",
+    "mach.eyebrow":"Staklių parkas",
+    "mach.h2":"Modernios staklės – iš paukščio skrydžio",
+    "mach.lead":"Investuojame į moderniausią įrangą. Štai žvilgsnis dronu į mūsų gamyklą Årland – nuo CNC centro iki visos gamybos linijos.",
+    "mach.cap1":"<small>CNC centras · Biesse</small>Tikslumas dideliu mastu",
+    "mach.cap2":"<small>Gamybos cechas</small>Modernus staklių parkas",
+    "mach.cap3":"<small>Pjaustymas ir frezavimas</small>Nuo brėžinio iki gatavos detalės",
+    "gal.eyebrow":"Žvilgsnis į vidų",
+    "gal.h2":"Kaip atrodo mūsų kasdienybė",
+    "gal.lead":"Trumpi kadrai iš gamyklos Årland – nuo žaliavos iki gatavos erdvės.",
+    "gal.cap1":"<small>Staklių parkas</small>Tikslumas kiekviename pjūvyje",
+    "gal.cap2":"<small>Amatas</small>Meistrai, matantys kiekvieną detalę",
+    "gal.cap3":"<small>Gamyba</small>Kokybė iki pirštų galiukų",
+    "gal.cap4":"<small>Rezultatas</small>Erdvės, kuriomis žmonės naudojasi kasdien",
+    "show.eyebrow":"Referenciniai projektai",
+    "show.h2":"Pamatyk, ką padėsi kurti",
+    "show.p1":"Restoranas SUMO, kavos baras PwC biure Sundt pastate ir barai Grieghallen koncertų salėje – geri pavyzdžiai, ką gaminame: pagal užsakymą kuriami sprendimai, kuriuose medžiagos, lenktos formos ir detalės turi sutapti milimetro tikslumu.",
+    "show.p2":"Dirbdamas mūsų gamyboje, savo ženklą paliksi būtent tokiuose projektuose.",
+    "show.cappwc":"<small>PwC · Sundt pastatas</small>Kavos baras, salos ir virtuvė",
+    "show.capgrieg":"<small>Grieghallen · Bergenas</small>Barai iš betono ir Corian",
+    "roles.eyebrow":"Laisvos darbo vietos",
+    "roles.h2":"Ko ieškome",
+    "r1.h3":"Gamybos darbuotojas",
+    "r1.tag":"Išskirtinė pozicija",
+    "lb.tasks":"Darbo užduotys",
+    "lb.you":"Ieškome žmogaus, kuris",
+    "r1.t1":"Modernių gamybos staklių valdymas (CNC, kraštų klijavimo staklės ir kt.)",
+    "r1.t2":"Interjero elementų montavimas ir surinkimas",
+    "r1.t3":"Pakavimas, paruošimas ir logistika ceche",
+    "r1.t4":"Prisidėjimas prie sklandžios ir tvarkingos gamybos",
+    "r1.y1":"Yra praktiškas ir mėgsta dirbti rankomis",
+    "r1.y2":"Yra patikimas, noriai mokosi ir prisiima atsakomybę",
+    "r1.y3":"Patirtis pramonėje/gamyboje – privalumas, bet ne reikalavimas",
+    "r1.y4":"Apmokome – svarbiausia gera nuotaika!",
+    "r2.h3":"Baldžius",
+    "r2.t1":"Nestandartinių interjerų gamyba pagal brėžinius ir matmenis",
+    "r2.t2":"Baldų ir interjero elementų apdirbimas, derinimas ir montavimas",
+    "r2.t3":"Darbas su įvairiomis medžiagomis – medžiu, plokštėmis, laminatu ir Corian",
+    "r2.t4":"Savo gaminių kokybės kontrolė ir apdaila",
+    "r2.y1":"Turi baldžiaus profesinę kvalifikaciją arba lygiavertę patirtį",
+    "r2.y2":"Turi nestandartinių interjerų gamybos patirties",
+    "r2.y3":"Yra tikslus, savarankiškas ir randantis sprendimus",
+    "r2.y4":"Mėgsta dirbti komandoje ir kurti gerą atmosferą",
+    "offer.h":"Siūlome",
+    "offer.i1":"Nuolatinį darbą tvirtoje, seniai veikiančioje įmonėje",
+    "offer.i2":"Įvairų darbą pagal aukštus profesinius standartus",
+    "offer.i3":"Modernias stakles ir gerus įrankius",
+    "offer.i4":"Nagingus kolegas ir puikią darbo aplinką",
+    "offer.i5":"Konkurencingas sąlygas",
+    "offer.i6":"Galimybę palikti savo ženklą projektuose visoje Norvegijoje",
+    "band.eyebrow":"Apie Faginnredning",
+    "band.h2":"Nestandartiniai interjerai – Vakarų Norvegijos kokybė",
+    "band.p":"Faginnredning kuria nestandartinius interjerus komerciniams pastatams ir privatiems klientams – ilgaamžius sprendimus kasdienybei. Iš savo gamyklos Årland, Samnangerio komunoje, esame architektų, rangovų ir profesionalių klientų partneris bei įgaliotasis Corian atstovas.",
+    "band.stat1l":"Darbuotojai",
+    "band.stat2n":"Visa",
+    "band.stat2l":"Norvegija – pristatymas",
+    "band.stat3l":"Įgaliotasis atstovas",
+    "apply.eyebrow":"Kandidatuok",
+    "apply.h2":"Skamba kaip tu?",
+    "apply.p":"Susisiek dėl neįpareigojančio pokalbio arba atsiųsk paraišką. Kandidatus vertiname iš karto – nelauk per ilgai.",
+    "c1.role":"Vadovas",
+    "c2.role":"Gamybos vadovas",
+    "apply.note":"Gali mums parašyti žinutę ar SMS – susisieksime."
+  },
+  pl: {
+    "topbar.apply":"Aplikuj tutaj",
+    "hero.eyebrow":"Wolne stanowiska · Zatrudnienie na stałe",
+    "hero.title":"Szukamy:<br><em>pracownika produkcji</em><br>i stolarza meblowego",
+    "hero.tagline":"Dołącz do nas i twórz meble na wymiar w zachodnionorweskiej jakości – dla najciekawszych budynków komercyjnych w kraju.",
+    "hero.chip2":"Kilka wolnych stanowisk",
+    "hero.chip3":"Start od zaraz",
+    "hero.cta1":"Aplikuj teraz",
+    "hero.cta2":"Zobacz naszą codzienność",
+    "intro.eyebrow":"O stanowiskach",
+    "intro.h2":"Rzemiosło, z którego można być dumnym",
+    "intro.p1":"W Faginnredning tworzymy zabudowy i meble na wymiar od podstaw – szyte na miarę dla architektów, wykonawców i wymagających klientów w całej Norwegii. Teraz potrzebujemy więcej ludzi na produkcji: zaangażowanego <strong>pracownika produkcji</strong> i zdolnego <strong>stolarza meblowego</strong>, którzy pomogą podnieść jakość o kolejny poziom.",
+    "intro.p2":"Dołączysz do solidnego zespołu około 25 osób, z nowoczesnym parkiem maszynowym i różnorodnymi zadaniami w przyjaznym środowisku pracy. Zajmiesz się wszystkim – od precyzyjnej stolarki po duże realizacje projektowe – i zobaczysz, jak Twoja praca zamienia się w gotowe wnętrza, z których ludzie korzystają każdego dnia.",
+    "cards.eyebrow":"Dlaczego Faginnredning",
+    "cards.h2":"Miejsce, w którym budujesz zawodową dumę",
+    "card1.h3":"Różnorodne rzemiosło",
+    "card1.p":"Żaden dzień nie jest taki sam. Pracujesz z meblami na wymiar z drewna, laminatu, Corianu i litych materiałów.",
+    "card2.h3":"Nowoczesny park maszynowy",
+    "card2.p":"CNC, Biesse i najlepszy sprzęt dają Ci czas na to, co najważniejsze – precyzję i wykończenie.",
+    "card3.h3":"Solidny zespół fachowców",
+    "card3.p":"Około 25 doświadczonych kolegów, którzy dzielą się wiedzą i wspierają się nawzajem. Dobra atmosfera pracy.",
+    "card4.h3":"Projekty w całej Norwegii",
+    "card4.p":"Dostarczamy w całym kraju. Twoja praca trafia do budynków, które ludzie zauważają.",
+    "mach.eyebrow":"Park maszynowy",
+    "mach.h2":"Nowoczesne maszyny – z lotu ptaka",
+    "mach.lead":"Inwestujemy w najnowocześniejszy sprzęt. Oto spojrzenie z drona na naszą fabrykę w Årland – od centrum CNC po całą linię produkcyjną.",
+    "mach.cap1":"<small>Centrum CNC · Biesse</small>Precyzja na dużą skalę",
+    "mach.cap2":"<small>Hala produkcyjna</small>Nowoczesny park maszynowy",
+    "mach.cap3":"<small>Nesting i frezowanie</small>Od rysunku do gotowego elementu",
+    "gal.eyebrow":"Zajrzyj do środka",
+    "gal.h2":"Tak wygląda u nas codzienność",
+    "gal.lead":"Krótkie ujęcia z fabryki w Årland – od surowca po gotowe wnętrze.",
+    "gal.cap1":"<small>Park maszynowy</small>Precyzja w każdym cięciu",
+    "gal.cap2":"<small>Rzemiosło</small>Fachowcy z okiem do detali",
+    "gal.cap3":"<small>Produkcja</small>Jakość w każdym calu",
+    "gal.cap4":"<small>Efekt</small>Wnętrza, z których ludzie korzystają każdego dnia",
+    "show.eyebrow":"Projekty referencyjne",
+    "show.h2":"Zobacz, co będziesz współtworzyć",
+    "show.p1":"Restauracja SUMO, kawiarnia w biurze PwC w budynku Sundt i bary w Grieghallen to dobre przykłady tego, co dostarczamy: rozwiązania na wymiar, w których materiały, łukowe formy i detale muszą zgadzać się co do milimetra.",
+    "show.p2":"Pracując u nas na produkcji, właśnie na takich projektach zostawisz swój ślad.",
+    "show.cappwc":"<small>PwC · budynek Sundt</small>Kawiarnia, wyspy i kuchnia",
+    "show.capgrieg":"<small>Grieghallen · Bergen</small>Bary z betonu i Corianu",
+    "roles.eyebrow":"Wolne stanowiska",
+    "roles.h2":"Kogo szukamy",
+    "r1.h3":"Pracownik produkcji",
+    "r1.tag":"Wyróżnione stanowisko",
+    "lb.tasks":"Zakres obowiązków",
+    "lb.you":"Szukamy osoby, która",
+    "r1.t1":"Obsługa nowoczesnych maszyn produkcyjnych (CNC, okleiniarka itp.)",
+    "r1.t2":"Montaż i składanie zabudów meblowych",
+    "r1.t3":"Pakowanie, przygotowanie i logistyka na warsztacie",
+    "r1.t4":"Dbanie o płynność i porządek na produkcji",
+    "r1.y1":"Jest praktyczna i lubi pracować rękami",
+    "r1.y2":"Jest niezawodna, chętna do nauki i odpowiedzialna",
+    "r1.y3":"Doświadczenie w przemyśle/produkcji to plus – nie wymóg",
+    "r1.y4":"Zapewniamy przeszkolenie – najbardziej liczy się dobre nastawienie!",
+    "r2.h3":"Stolarz meblowy",
+    "r2.t1":"Produkcja mebli na wymiar według rysunków i wymiarów",
+    "r2.t2":"Obróbka maszynowa, dopasowanie i montaż mebli i zabudów",
+    "r2.t3":"Praca z różnymi materiałami – drewnem, płytą, laminatem i Corianem",
+    "r2.t4":"Kontrola jakości i wykończenie własnych realizacji",
+    "r2.y1":"Ma dyplom stolarza meblowego lub równoważne doświadczenie",
+    "r2.y2":"Ma doświadczenie w produkcji mebli na wymiar",
+    "r2.y3":"Jest dokładna, samodzielna i nastawiona na rozwiązania",
+    "r2.y4":"Lubi pracę w zespole i dba o dobrą atmosferę",
+    "offer.h":"Oferujemy",
+    "offer.i1":"Stałe zatrudnienie w solidnej firmie z ugruntowaną pozycją",
+    "offer.i2":"Różnorodną pracę na wysokim poziomie fachowym",
+    "offer.i3":"Nowoczesny park maszynowy i dobre narzędzia",
+    "offer.i4":"Zdolnych kolegów i dobrą atmosferę pracy",
+    "offer.i5":"Konkurencyjne warunki",
+    "offer.i6":"Możliwość zostawienia swojego śladu w projektach w całej Norwegii",
+    "band.eyebrow":"O Faginnredning",
+    "band.h2":"Meble na wymiar w zachodnionorweskiej jakości",
+    "band.p":"Faginnredning projektuje zabudowy na wymiar dla budynków komercyjnych i klientów prywatnych, urządzając codzienność trwałymi rozwiązaniami. Z naszej fabryki w Årland w gminie Samnanger jesteśmy partnerem architektów, wykonawców i klientów profesjonalnych – oraz autoryzowanym dystrybutorem Corianu.",
+    "band.stat1l":"Pracowników",
+    "band.stat2n":"Cała",
+    "band.stat2l":"Norwegia – dostawy",
+    "band.stat3l":"Autoryzowany dystrybutor",
+    "apply.eyebrow":"Aplikuj",
+    "apply.h2":"Brzmi jak Ty?",
+    "apply.p":"Skontaktuj się z nami na niezobowiązującą rozmowę lub wyślij aplikację. Kandydatów oceniamy na bieżąco – nie zwlekaj zbyt długo.",
+    "c1.role":"Dyrektor zarządzający",
+    "c2.role":"Kierownik produkcji",
+    "apply.note":"Możesz też wysłać nam wiadomość lub SMS – odezwiemy się."
+  },
+  de: {
+    "topbar.apply":"Hier bewerben",
+    "hero.eyebrow":"Offene Stellen · Festanstellung",
+    "hero.title":"Wir suchen<br><em>Produktions&shy;mitarbeiter</em><br>und Möbeltischler",
+    "hero.tagline":"Gestalte mit uns Spezialeinrichtungen in westnorwegischer Qualität – für die spannendsten Gewerbebauten des Landes.",
+    "hero.chip2":"Mehrere offene Stellen",
+    "hero.chip3":"Start schnellstmöglich",
+    "hero.cta1":"Jetzt bewerben",
+    "hero.cta2":"Unser Alltag im Video",
+    "intro.eyebrow":"Über die Stellen",
+    "intro.h2":"Ein Handwerk, auf das man stolz sein kann",
+    "intro.p1":"Bei Faginnredning fertigen wir Spezialeinrichtungen von Grund auf – maßgeschneidert für Architekten, Bauunternehmen und anspruchsvolle Kunden in ganz Norwegen. Jetzt brauchen wir Verstärkung in der Produktion: einen engagierten <strong>Produktionsmitarbeiter</strong> und einen versierten <strong>Möbeltischler</strong>, die die Qualität noch eine Stufe höher heben wollen.",
+    "intro.p2":"Du wirst Teil eines soliden Teams von rund 25 Kolleginnen und Kollegen, mit modernem Maschinenpark und abwechslungsreichen Aufgaben in einem angenehmen Arbeitsumfeld. Hier arbeitest du an allem – von feiner Tischlerarbeit bis zu großen Projektlieferungen – und siehst, wie daraus fertige Räume werden, die Menschen jeden Tag nutzen.",
+    "cards.eyebrow":"Warum Faginnredning",
+    "cards.h2":"Ein Ort für echten Berufsstolz",
+    "card1.h3":"Vielseitiges Handwerk",
+    "card1.p":"Kein Tag gleicht dem anderen. Du arbeitest mit Spezialeinrichtungen aus Holz, Laminat, Corian und massiver Qualität.",
+    "card2.h3":"Moderner Maschinenpark",
+    "card2.p":"CNC, Biesse und Top-Ausstattung geben dir Zeit für das Wesentliche – Präzision und Finish.",
+    "card3.h3":"Starkes Fachumfeld",
+    "card3.p":"Rund 25 erfahrene Kolleginnen und Kollegen, die Wissen teilen und einander unterstützen. Gutes Arbeitsklima.",
+    "card4.h3":"Projekte in ganz Norwegen",
+    "card4.p":"Wir liefern landesweit. Deine Arbeit landet in Gebäuden, die auffallen.",
+    "mach.eyebrow":"Der Maschinenpark",
+    "mach.h2":"Moderne Maschinen – von oben gesehen",
+    "mach.lead":"Wir investieren in topmoderne Ausstattung. Hier ein Drohnenblick in unsere Fabrik in Årland – vom CNC-Zentrum bis zur gesamten Produktionslinie.",
+    "mach.cap1":"<small>CNC-Zentrum · Biesse</small>Präzision im großen Maßstab",
+    "mach.cap2":"<small>Die Produktionshalle</small>Ein moderner Maschinenpark",
+    "mach.cap3":"<small>Nesting &amp; Fräsen</small>Von der Zeichnung zum fertigen Teil",
+    "gal.eyebrow":"Ein Einblick",
+    "gal.h2":"So sieht unser Alltag aus",
+    "gal.lead":"Kurze Einblicke aus der Fabrik in Årland – vom Rohmaterial zum fertigen Raum.",
+    "gal.cap1":"<small>Maschinenpark</small>Präzision bei jedem Schnitt",
+    "gal.cap2":"<small>Handwerk</small>Fachleute mit Blick fürs Detail",
+    "gal.cap3":"<small>Produktion</small>Qualität bis in die Fingerspitzen",
+    "gal.cap4":"<small>Das Ergebnis</small>Räume, die Menschen jeden Tag nutzen",
+    "show.eyebrow":"Referenzprojekte",
+    "show.h2":"Sieh, was du mitgestaltest",
+    "show.p1":"Das SUMO-Restaurant, die Kaffeebar bei PwC im Sundt-Gebäude und die Bars in der Grieghallen sind gute Beispiele für das, was wir liefern: maßgeschneiderte Lösungen, bei denen Material, geschwungene Formen und Details bis auf den Millimeter stimmen müssen.",
+    "show.p2":"Wer bei uns in der Produktion arbeitet, prägt genau solche Projekte mit.",
+    "show.cappwc":"<small>PwC · Sundt-Gebäude</small>Kaffeebar, Inseln und Küche",
+    "show.capgrieg":"<small>Grieghallen · Bergen</small>Bars aus Beton und Corian",
+    "roles.eyebrow":"Offene Stellen",
+    "roles.h2":"Wen wir suchen",
+    "r1.h3":"Produktionsmitarbeiter",
+    "r1.tag":"Hervorgehobene Stelle",
+    "lb.tasks":"Aufgaben",
+    "lb.you":"Das wünschen wir uns",
+    "r1.t1":"Bedienung moderner Maschinen in der Produktion (CNC, Kantenanleimer u. a.)",
+    "r1.t2":"Montage und Zusammenbau von Einrichtungen",
+    "r1.t3":"Verpackung, Vorbereitung und Logistik in der Werkstatt",
+    "r1.t4":"Beitrag zu gutem Ablauf und Ordnung in der Produktion",
+    "r1.y1":"Du bist praktisch veranlagt und arbeitest gern mit den Händen",
+    "r1.y2":"Du bist zuverlässig, lernwillig und übernimmst Verantwortung",
+    "r1.y3":"Erfahrung aus Industrie/Produktion ist ein Plus – kein Muss",
+    "r1.y4":"Einarbeitung wird geboten – gute Laune zählt am meisten!",
+    "r2.h3":"Möbeltischler",
+    "r2.t1":"Fertigung von Spezialeinrichtungen nach Zeichnung und Maß",
+    "r2.t2":"Maschinelle Bearbeitung, Anpassung und Montage von Möbeln und Einrichtungen",
+    "r2.t3":"Arbeit mit verschiedenen Materialien – Holz, Platte, Laminat und Corian",
+    "r2.t4":"Qualitätssicherung und Finish der eigenen Arbeit",
+    "r2.y1":"Du hast einen Gesellenbrief als Möbeltischler oder gleichwertige Erfahrung",
+    "r2.y2":"Du hast Erfahrung in der Fertigung von Spezialeinrichtungen",
+    "r2.y3":"Du bist genau, selbstständig und lösungsorientiert",
+    "r2.y4":"Du arbeitest gern im Team und trägst zu gutem Klima bei",
+    "offer.h":"Wir bieten",
+    "offer.i1":"Festanstellung in einem soliden, etablierten Betrieb",
+    "offer.i2":"Abwechslungsreiche Arbeit auf hohem fachlichem Niveau",
+    "offer.i3":"Moderner Maschinenpark und gutes Werkzeug",
+    "offer.i4":"Kompetente Kolleginnen und Kollegen und ein gutes Arbeitsklima",
+    "offer.i5":"Wettbewerbsfähige Konditionen",
+    "offer.i6":"Die Möglichkeit, Projekte in ganz Norwegen mitzuprägen",
+    "band.eyebrow":"Über Faginnredning",
+    "band.h2":"Spezialeinrichtung in westnorwegischer Qualität",
+    "band.p":"Faginnredning gestaltet Spezialeinrichtungen für Gewerbebauten und Privatkunden – langlebige Lösungen für den Alltag. Von unserer Fabrik in Årland in Samnanger aus sind wir Partner für Architekten, Bauunternehmen und professionelle Kunden – und autorisierter Corian-Händler.",
+    "band.stat1l":"Mitarbeitende",
+    "band.stat2n":"Ganz",
+    "band.stat2l":"Norwegen – Lieferung",
+    "band.stat3l":"Autorisierter Händler",
+    "apply.eyebrow":"Jetzt bewerben",
+    "apply.h2":"Klingt das nach dir?",
+    "apply.p":"Melde dich für ein unverbindliches Gespräch oder schick uns eine Bewerbung. Wir prüfen Bewerbungen laufend – also warte nicht zu lange.",
+    "c1.role":"Geschäftsführer",
+    "c2.role":"Produktionsleiter",
+    "apply.note":"Du kannst uns auch eine Nachricht oder SMS schicken – wir melden uns."
+  },
+  it: {
+    "topbar.apply":"Candidati qui",
+    "hero.eyebrow":"Posizioni aperte · Tempo indeterminato",
+    "hero.title":"Cerchiamo<br><em>operaio di produzione</em><br>e falegname ebanista",
+    "hero.tagline":"Unisciti a noi per creare arredi su misura di qualità norvegese – per gli edifici commerciali più interessanti del Paese.",
+    "hero.chip2":"Più posizioni aperte",
+    "hero.chip3":"Inizio il prima possibile",
+    "hero.cta1":"Candidati ora",
+    "hero.cta2":"Guarda la nostra quotidianità",
+    "intro.eyebrow":"Le posizioni",
+    "intro.h2":"Un mestiere di cui andare fieri",
+    "intro.p1":"In Faginnredning realizziamo arredi su misura partendo da zero – su progetto per architetti, imprese e clienti esigenti in tutta la Norvegia. Ora cerchiamo rinforzi in produzione: un <strong>operaio di produzione</strong> motivato e un <strong>falegname ebanista</strong> capace, che vogliano alzare ancora l'asticella della qualità.",
+    "intro.p2":"Entrerai in una squadra solida di circa 25 colleghi, con un parco macchine moderno e mansioni variegate in un ottimo ambiente di lavoro. Ti occuperai di tutto – dalla falegnameria di precisione alle grandi commesse – vedendo il tuo lavoro trasformarsi in spazi finiti che le persone usano ogni giorno.",
+    "cards.eyebrow":"Perché Faginnredning",
+    "cards.h2":"Un posto dove coltivare l'orgoglio del mestiere",
+    "card1.h3":"Artigianato variegato",
+    "card1.p":"Nessun giorno è uguale all'altro. Lavorerai con arredi su misura in legno, laminato, Corian e materiali di pregio.",
+    "card2.h3":"Parco macchine moderno",
+    "card2.p":"CNC, Biesse e attrezzature al top ti lasciano tempo per ciò che conta: precisione e finitura.",
+    "card3.h3":"Una squadra di professionisti",
+    "card3.p":"Circa 25 colleghi esperti che condividono le competenze e si sostengono a vicenda. Ottimo ambiente di lavoro.",
+    "card4.h3":"Progetti in tutta la Norvegia",
+    "card4.p":"Consegniamo in tutto il Paese. Il tuo lavoro finisce in edifici che si fanno notare.",
+    "mach.eyebrow":"Il parco macchine",
+    "mach.h2":"Macchine moderne, viste dall'alto",
+    "mach.lead":"Investiamo in attrezzature all'avanguardia. Ecco uno sguardo col drone dentro la nostra fabbrica di Årland – dal centro CNC all'intera linea di produzione.",
+    "mach.cap1":"<small>Centro CNC · Biesse</small>Precisione su grande scala",
+    "mach.cap2":"<small>Il capannone di produzione</small>Un parco macchine moderno",
+    "mach.cap3":"<small>Nesting e fresatura</small>Dal disegno al pezzo finito",
+    "gal.eyebrow":"Uno sguardo dentro",
+    "gal.h2":"Com'è la nostra quotidianità",
+    "gal.lead":"Brevi immagini dalla fabbrica di Årland – dalla materia prima allo spazio finito.",
+    "gal.cap1":"<small>Parco macchine</small>Precisione in ogni taglio",
+    "gal.cap2":"<small>Artigianato</small>Professionisti con l'occhio per i dettagli",
+    "gal.cap3":"<small>Produzione</small>Qualità fin nei minimi dettagli",
+    "gal.cap4":"<small>Il risultato</small>Spazi che le persone usano ogni giorno",
+    "show.eyebrow":"Progetti di riferimento",
+    "show.h2":"Guarda cosa contribuirai a creare",
+    "show.p1":"Il ristorante SUMO, la caffetteria di PwC nel palazzo Sundt e i bar della Grieghallen sono buoni esempi di ciò che realizziamo: soluzioni su misura in cui materiali, forme curve e dettagli devono tornare al millimetro.",
+    "show.p2":"Lavorando nella nostra produzione, è proprio su progetti così che lascerai il tuo segno.",
+    "show.cappwc":"<small>PwC · palazzo Sundt</small>Caffetteria, isole e cucina",
+    "show.capgrieg":"<small>Grieghallen · Bergen</small>Bar in cemento e Corian",
+    "roles.eyebrow":"Posizioni aperte",
+    "roles.h2":"Chi cerchiamo",
+    "r1.h3":"Operaio di produzione",
+    "r1.tag":"Posizione in evidenza",
+    "lb.tasks":"Mansioni",
+    "lb.you":"Cerchiamo una persona che",
+    "r1.t1":"Utilizzo di macchine moderne in produzione (CNC, bordatrice ecc.)",
+    "r1.t2":"Montaggio e assemblaggio degli arredi",
+    "r1.t3":"Imballaggio, preparazione e logistica in officina",
+    "r1.t4":"Contribuire a un flusso di lavoro ordinato ed efficiente",
+    "r1.y1":"Sia pratica e ami lavorare con le mani",
+    "r1.y2":"Sia affidabile, con voglia di imparare e senso di responsabilità",
+    "r1.y3":"Esperienza in industria/produzione è un plus, non un requisito",
+    "r1.y4":"La formazione la diamo noi – conta soprattutto l'atteggiamento!",
+    "r2.h3":"Falegname ebanista",
+    "r2.t1":"Produzione di arredi su misura da disegni e misure",
+    "r2.t2":"Lavorazione a macchina, adattamento e montaggio di mobili e arredi",
+    "r2.t3":"Lavoro con materiali diversi – legno, pannelli, laminato e Corian",
+    "r2.t4":"Controllo qualità e finitura delle proprie consegne",
+    "r2.y1":"Abbia una qualifica da falegname ebanista o esperienza equivalente",
+    "r2.y2":"Abbia esperienza nella produzione di arredi su misura",
+    "r2.y3":"Sia precisa, autonoma e orientata alle soluzioni",
+    "r2.y4":"Ami lavorare in squadra e contribuire a un buon clima",
+    "offer.h":"Offriamo",
+    "offer.i1":"Contratto stabile in un'azienda solida e affermata",
+    "offer.i2":"Lavoro variegato di alto livello professionale",
+    "offer.i3":"Parco macchine moderno e ottimi utensili",
+    "offer.i4":"Colleghi capaci e un ottimo ambiente di lavoro",
+    "offer.i5":"Condizioni competitive",
+    "offer.i6":"La possibilità di lasciare il segno in progetti in tutta la Norvegia",
+    "band.eyebrow":"Chi è Faginnredning",
+    "band.h2":"Arredi su misura di qualità norvegese",
+    "band.p":"Faginnredning progetta arredi su misura per edifici commerciali e clienti privati, arredando la quotidianità con soluzioni durevoli. Dalla nostra fabbrica di Årland, a Samnanger, siamo partner di architetti, imprese e clienti professionali – e rivenditore autorizzato Corian.",
+    "band.stat1l":"Collaboratori",
+    "band.stat2n":"Tutta",
+    "band.stat2l":"la Norvegia – consegne",
+    "band.stat3l":"Rivenditore autorizzato",
+    "apply.eyebrow":"Candidati",
+    "apply.h2":"Ti ci rivedi?",
+    "apply.p":"Contattaci per una chiacchierata senza impegno o invia la tua candidatura. Valutiamo i candidati man mano che arrivano: non aspettare troppo.",
+    "c1.role":"Direttore generale",
+    "c2.role":"Responsabile di produzione",
+    "apply.note":"Puoi anche mandarci un messaggio o un SMS: ti ricontatteremo."
+  }};
+
+  var els = document.querySelectorAll('[data-i18n]');
+  var NO = {};
+  els.forEach(function(el){ NO[el.getAttribute('data-i18n')] = el.innerHTML; });
+  I18N.no = NO;
+
+  var sel = document.getElementById('lang');
+  function setLang(l){
+    if(!I18N[l]) l = 'no';
+    var dict = I18N[l];
+    els.forEach(function(el){
+      var k = el.getAttribute('data-i18n');
+      if(dict[k] !== undefined) el.innerHTML = dict[k];
+    });
+    document.documentElement.lang = l;
+    document.title = TITLES[l] || TITLES.no;
+    if(sel) sel.value = l;
+    try{ localStorage.setItem('fag_lang', l); }catch(e){}
+  }
+  if(sel) sel.addEventListener('change', function(){ setLang(sel.value); });
+
+  var start = null;
+  try{
+    var qp = new URLSearchParams(window.location.search).get('lang');
+    start = qp || localStorage.getItem('fag_lang');
+  }catch(e){}
+  if(start && start !== 'no' && I18N[start]) setLang(start);
 })();
 </script>
 
