@@ -521,6 +521,21 @@
 
 <script>
 (function(){
+  try{
+    if(location.protocol.indexOf('http')!==0) return;
+    if(sessionStorage.getItem('fag_talt')) return;
+    sessionStorage.setItem('fag_talt','1');
+    var ns='faginnredning-annonse';
+    fetch('https://api.counterapi.dev/v1/'+ns+'/sidevisninger/up').catch(function(){});
+    var ref=(document.referrer||'').toLowerCase();
+    var src = (ref.indexOf('facebook')>-1||ref.indexOf('fb.')>-1) ? 'kilde-facebook' : (ref.indexOf('linkedin')>-1||ref.indexOf('lnkd')>-1) ? 'kilde-linkedin' : (ref==='' ? 'kilde-direkte-qr' : 'kilde-annet');
+    fetch('https://api.counterapi.dev/v1/'+ns+'/'+src+'/up').catch(function(){});
+  }catch(e){}
+})();
+</script>
+
+<script>
+(function(){
   var TITLES = {
     no: "Vi søker folk – produksjonsmedarbeider og møbelsnekker – Faginnredning AS",
     en: "We're hiring – production worker and cabinetmaker – Faginnredning AS",
