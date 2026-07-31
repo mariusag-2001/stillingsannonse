@@ -74,9 +74,12 @@
   .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink)}
   .hero .scene{position:absolute;inset:0}
   .hero .scene svg{width:100%;height:100%}
-  .hero .photo{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity .8s ease}
-  .hero.has-photo .photo{opacity:1}
-  .hero.has-photo .scene{opacity:0}
+  .hero .slides{position:absolute;inset:0}
+  .hero .slides .sl{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.6s ease;transform:scale(1.04)}
+  .hero .slides .sl.on{opacity:1;animation:kb 8s ease-in-out forwards}
+  @keyframes kb{from{transform:scale(1.04)}to{transform:scale(1.14)}}
+  .hero.has-photo .scene{opacity:0;transition:opacity 1s ease}
+  @media (prefers-reduced-motion: reduce){.hero .slides .sl.on{animation:none;transform:none}}
   .hero::after{content:"";position:absolute;inset:0;background:
     linear-gradient(100deg,rgba(9,28,25,.8) 0%,rgba(9,28,25,.4) 34%,rgba(9,28,25,0) 55%),
     linear-gradient(180deg,rgba(12,37,33,.18) 0%,rgba(12,37,33,0) 30%,rgba(9,28,25,.88) 92%);pointer-events:none}
@@ -142,6 +145,32 @@
   .frame.empty svg{width:44px;height:44px;opacity:.8}
   .frame.empty .t{font-weight:700;font-size:1rem}
   .frame.empty .s{font-size:.8rem;color:rgba(239,230,205,.55)}
+
+  /* ---------- KINO-MODUS (automatisk bildefremvisning) ---------- */
+  .kino{position:relative;border-radius:22px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:16/9;background:#0c2f3a;margin-top:48px}
+  .kino .sl{position:absolute;inset:0;opacity:0;transition:opacity 1.3s ease}
+  .kino .sl img{width:100%;height:100%;object-fit:cover}
+  .kino .sl.on{opacity:1}
+  .kino .sl.on img{animation:kb2 7s ease-in-out forwards}
+  .kino .sl:nth-child(even).on img{animation-name:kb3}
+  @keyframes kb2{from{transform:scale(1) translateX(0)}to{transform:scale(1.09) translateX(-1.5%)}}
+  @keyframes kb3{from{transform:scale(1.09) translateX(1.5%)}to{transform:scale(1) translateX(0)}}
+  @media (prefers-reduced-motion: reduce){.kino .sl.on img,.kino .sl:nth-child(even).on img{animation:none}}
+  .kino .cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:70px 28px 22px;color:#fff;font-weight:700;font-size:1.12rem;background:linear-gradient(180deg,transparent,rgba(9,28,25,.88))}
+  .kino .live{position:absolute;top:18px;left:18px;z-index:3;display:inline-flex;align-items:center;gap:9px;background:rgba(9,28,25,.62);backdrop-filter:blur(8px);color:#fff;font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:8px 16px;border-radius:999px}
+  .kino .live .dot{width:8px;height:8px;border-radius:50%;background:var(--lime);animation:blink 1.6s infinite}
+  @keyframes blink{50%{opacity:.2}}
+  .kino .nav{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:48px;height:48px;border-radius:50%;border:none;cursor:pointer;background:rgba(9,28,25,.55);color:#fff;font-size:1.35rem;display:grid;place-items:center;transition:background .15s ease}
+  .kino .nav:hover{background:rgba(9,28,25,.88)}
+  .kino .prev{left:16px}.kino .next{right:16px}
+  .kino .bar{position:absolute;left:0;bottom:0;height:4px;background:var(--lime);z-index:3;width:0}
+  .kino .bar.run{animation:bar 7s linear forwards}
+  @keyframes bar{from{width:0}to{width:100%}}
+  .thumbs{display:flex;gap:10px;margin-top:16px;overflow-x:auto;padding-bottom:8px;scrollbar-width:thin}
+  .thumbs button{flex:0 0 auto;width:104px;aspect-ratio:4/3;border-radius:10px;overflow:hidden;border:2px solid transparent;padding:0;cursor:pointer;opacity:.6;transition:opacity .15s ease,border-color .15s ease;background:#0c2f3a}
+  .thumbs button img{width:100%;height:100%;object-fit:cover}
+  .thumbs button.on{opacity:1;border-color:var(--lime)}
+  @media (max-width:900px){.kino .nav{width:40px;height:40px}.kino .cap{font-size:.98rem;padding:50px 18px 16px}}
 
   .band{position:relative;border-radius:26px;overflow:hidden;box-shadow:var(--shadow);background:linear-gradient(115deg,var(--ink) 0%,var(--sea2) 130%)}
   .band::after{content:"";position:absolute;right:-60px;bottom:-60px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(220,242,99,.16),transparent 70%)}
@@ -311,7 +340,7 @@
       </g>
     </svg>
   </div>
-  <div class="photo" id="hero-photo"></div>
+  <div class="slides" id="hero-slides"></div>
 
   <div class="wrap">
     <span class="badge" data-f="badge">Privat øy til salgs</span>
@@ -371,8 +400,9 @@
     <div class="reveal">
       <div class="eyebrow">Bildegalleri</div>
       <h2>Se deg rundt</h2>
+      <p class="lead">Len deg tilbake – visningen går av seg selv. Du kan også bla med pilene eller miniatyrbildene.</p>
     </div>
-    <div class="gallery" id="galleri"></div>
+    <div id="galleri"></div>
   </div>
 </section>
 
@@ -462,14 +492,18 @@ const EIENDOM = {
     ["Til fastlandet",  "Under 10 min med båt"]
   ],
 
-  // Bilder: legg filene i mappen eiendom/bilder/ og list dem opp her.
-  // Første bilde blir stort toppbilde i galleriet. Legg også et bilde som
-  // heter hero.jpg i samme mappe – det tar automatisk over som bakgrunn
-  // øverst på siden (i stedet for illustrasjonen).
-  // Tips: be megler om originalbildene (og dronefoto/video) fra fotografen.
+  // ======== BILDER – slik henter du dem fra megler sin nettside ========
+  // 1) Åpne annonsen: https://aktiv.no/bolig/boliger-til-salgs/uggdal-bardsund-10-117003569
+  // 2) Åpne bildegalleriet, HØYREKLIKK på et bilde → «Kopier bildeadresse»
+  // 3) Lim inn adressen her – én linje per bilde. Både fulle https://-adresser
+  //    (vises direkte fra meglers bildeserver) og lokale filer i eiendom/bilder/
+  //    fungerer. Ren tekst-URL eller { fil, tekst } med bildetekst – begge går.
+  // Første bilde brukes også som første bilde i toppen av siden.
+  // Så snart listen har bilder, starter den automatiske visningen av seg selv.
   bilder: [
-    // { fil: "bilder/oyen-dronefoto.jpg", tekst: "Litla Bjørnarøy fra luften" },
-    // { fil: "bilder/hytte-utsikt.jpg",   tekst: "Utsikt fra hovedhytten" },
+    // "https://…meglers-bildeserver…/bilde1.jpg",
+    // { fil: "https://…/drone.jpg", tekst: "Litla Bjørnarøy fra luften" },
+    // { fil: "bilder/strand.jpg",   tekst: "Egen sandstrand" },
   ],
 
   // Forslagsliste som vises i tomme rammer til bildene er på plass
@@ -538,14 +572,56 @@ const EIENDOM = {
     `<tr><td>${k}</td><td${isPh(v)?' class="ph"':''}>${v}</td></tr>`).join("");
   d.fakta.forEach(([,v]) => { if(isPh(v)) todo = true; });
 
+  // Normaliser bildelisten: både "url" og {fil, tekst} støttes
+  const BILDER = d.bilder.map(b => typeof b === "string" ? { fil: b, tekst: "" } : b);
+
   const gal = document.getElementById("galleri");
-  if (d.bilder.length) {
-    gal.innerHTML = d.bilder.map(b =>
-      `<div class="frame reveal"><img src="${b.fil}" alt="${b.tekst||''}" loading="lazy"><div class="cap">${b.tekst||''}</div></div>`).join("");
+  if (BILDER.length) {
+    // KINO-MODUS: automatisk fremvisning med Ken Burns-effekt
+    gal.innerHTML = `
+      <div class="kino reveal" id="kino">
+        ${BILDER.map(b => `<div class="sl"><img src="${b.fil}" alt="${b.tekst||''}" loading="lazy"><div class="cap">${b.tekst||''}</div></div>`).join("")}
+        <div class="live"><span class="dot"></span><span id="kino-count">1 / ${BILDER.length}</span></div>
+        <button class="nav prev" aria-label="Forrige bilde">‹</button>
+        <button class="nav next" aria-label="Neste bilde">›</button>
+        <div class="bar"></div>
+      </div>
+      <div class="thumbs" id="thumbs">
+        ${BILDER.map((b,i) => `<button aria-label="Bilde ${i+1}"><img src="${b.fil}" alt="" loading="lazy"></button>`).join("")}
+      </div>`;
+
+    const kino = document.getElementById("kino");
+    const slides = [...kino.querySelectorAll(".sl")];
+    const thumbs = [...document.querySelectorAll("#thumbs button")];
+    const bar = kino.querySelector(".bar");
+    const count = document.getElementById("kino-count");
+    let idx = 0, timer = null;
+    const VIS_MS = 7000;
+
+    function show(i){
+      idx = (i + slides.length) % slides.length;
+      slides.forEach((s,j) => s.classList.toggle("on", j === idx));
+      thumbs.forEach((t,j) => t.classList.toggle("on", j === idx));
+      count.textContent = (idx+1) + " / " + slides.length;
+      bar.classList.remove("run"); void bar.offsetWidth; bar.classList.add("run");
+      thumbs[idx].scrollIntoView({block:"nearest", inline:"nearest", behavior:"smooth"});
+    }
+    function play(){ stop(); timer = setInterval(() => show(idx+1), VIS_MS); }
+    function stop(){ if (timer) clearInterval(timer); timer = null; }
+
+    kino.querySelector(".prev").addEventListener("click", () => { show(idx-1); play(); });
+    kino.querySelector(".next").addEventListener("click", () => { show(idx+1); play(); });
+    thumbs.forEach((t,i) => t.addEventListener("click", () => { show(i); play(); }));
+    kino.addEventListener("mouseenter", stop);
+    kino.addEventListener("mouseleave", play);
+    document.addEventListener("visibilitychange", () => document.hidden ? stop() : play());
+
+    show(0); play();
   } else {
     const cam = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v12H4z"/><circle cx="12" cy="14" r="4"/></svg>';
+    gal.className = "gallery";
     gal.innerHTML = d.bildeForslag.map(t =>
-      `<div class="frame empty reveal">${cam}<div class="t">${t}</div><div class="s">Legg bildet i eiendom/bilder/</div></div>`).join("");
+      `<div class="frame empty reveal">${cam}<div class="t">${t}</div><div class="s">Lim inn bilde-URL fra meglers side i EIENDOM.bilder</div></div>`).join("");
     todo = true;
   }
 
@@ -553,13 +629,28 @@ const EIENDOM = {
     `<div class="v${isPh(v)?' ph':''}"><span>⚓</span> ${v}</div>`).join("");
   d.visninger.forEach(v => { if(isPh(v)) todo = true; });
 
-  // Hero: ekte foto tar over for illustrasjonen når bilder/hero.jpg finnes
-  const img = new Image();
-  img.onload = () => {
-    document.getElementById("hero-photo").style.backgroundImage = "url('bilder/hero.jpg')";
+  // Hero: automatisk bildefremvisning tar over for illustrasjonen så snart
+  // bildelisten har innhold (eller bilder/hero.jpg finnes lokalt)
+  const heroSlides = document.getElementById("hero-slides");
+  function startHeroShow(list){
     document.getElementById("hero").classList.add("has-photo");
-  };
-  img.src = "bilder/hero.jpg";
+    heroSlides.innerHTML = list.map(u => `<div class="sl" style="background-image:url('${u.replace(/'/g,"%27")}')"></div>`).join("");
+    const hs = [...heroSlides.children];
+    let hi = 0;
+    hs[0].classList.add("on");
+    if (hs.length > 1) setInterval(() => {
+      hs[hi].classList.remove("on");
+      hi = (hi + 1) % hs.length;
+      hs[hi].classList.add("on");
+    }, 8000);
+  }
+  if (BILDER.length) {
+    startHeroShow(BILDER.map(b => b.fil));
+  } else {
+    const img = new Image();
+    img.onload = () => startHeroShow(["bilder/hero.jpg"]);
+    img.src = "bilder/hero.jpg";
+  }
 
   if (todo) document.getElementById("todo-banner").style.display = "block";
 
