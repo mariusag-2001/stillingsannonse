@@ -501,9 +501,14 @@ const EIENDOM = {
   // Første bilde brukes også som første bilde i toppen av siden.
   // Så snart listen har bilder, starter den automatiske visningen av seg selv.
   bilder: [
-    // "https://…meglers-bildeserver…/bilde1.jpg",
-    // { fil: "https://…/drone.jpg", tekst: "Litla Bjørnarøy fra luften" },
-    // { fil: "bilder/strand.jpg",   tekst: "Egen sandstrand" },
+    { fil: "bilder/01-drone-oversikt.jpg",    tekst: "Litla Bjørnarøy fra luften – hytten troner over egen bukt" },
+    { fil: "bilder/02-drone-bukt.jpg",        tekst: "Øyen sett fra sjøen – begge hyttene mellom furuene" },
+    { fil: "bilder/03-hytten.jpg",            tekst: "Bårdsund 10 med terrasse rett over sjøkanten" },
+    { fil: "bilder/04-terrasse.jpg",          tekst: "Romslig terrasse med bålpanne og sjøutsikt" },
+    { fil: "bilder/05-sandstrand.jpg",        tekst: "Egen skjellsandstrand med krystallklart vann" },
+    { fil: "bilder/06-kveld-strand.jpg",      tekst: "Kveldsstemning ved stranden" },
+    { fil: "bilder/07-solnedgang-bukt.jpg",   tekst: "Solnedgang over badebukten" },
+    { fil: "bilder/08-solnedgang-veranda.jpg",tekst: "Utsikten fra verandaen en sommerkveld" },
   ],
 
   // Forslagsliste som vises i tomme rammer til bildene er på plass
@@ -604,7 +609,8 @@ const EIENDOM = {
       thumbs.forEach((t,j) => t.classList.toggle("on", j === idx));
       count.textContent = (idx+1) + " / " + slides.length;
       bar.classList.remove("run"); void bar.offsetWidth; bar.classList.add("run");
-      thumbs[idx].scrollIntoView({block:"nearest", inline:"nearest", behavior:"smooth"});
+      const tb = document.getElementById("thumbs"), t = thumbs[idx];
+      tb.scrollTo({ left: t.offsetLeft - tb.clientWidth/2 + t.clientWidth/2, behavior: "smooth" });
     }
     function play(){ stop(); timer = setInterval(() => show(idx+1), VIS_MS); }
     function stop(){ if (timer) clearInterval(timer); timer = null; }
