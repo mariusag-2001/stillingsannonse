@@ -1,76 +1,97 @@
-# Videomanus – boligsalg (TikTok / Reels / Shorts / Facebook)
+# Videomanus – Litla Bjørnarøy (TikTok / Reels / Shorts / Facebook)
 
-Ett opptak, fire plattformer. Filmes vertikalt (9:16) med mobil.
-Lengde: **30–40 sekunder**. Alt i klammer `[SLIK]` fylles inn med info fra FINN-annonsen.
+En privat øy er drømmeinnhold for sosiale medier – «egen øy til salgs» er en av de
+mest delbare eiendomshistoriene som finnes. Målet er ikke bare å nå kjøpere, men å
+skape så mye engasjement at videoen havner hos de som *kan* kjøpe – og i pressen.
+
+Ett opptak, fire plattformer. Filmes vertikalt (9:16). Lengde: **35–45 sekunder**.
+**Viktigst av alt: drone.** Har megler dronefoto/video fra fotografen – bruk det.
+Hvis ikke: lei/lån en drone én dag med godt vær. Øyen ER dronebildet.
 
 ---
 
-## Hovedmanus (ca. 35 sek)
+## Hovedmanus (ca. 40 sek)
 
 | Tid | Bilde | Voiceover / tekst på skjerm |
 |-----|-------|------------------------------|
-| 0–3 s | **Hook:** Det mest imponerende ved boligen – utsikten, stuen eller fasaden. Rask innzooming eller gå-inn-døra-bevegelse. | På skjerm: **«Denne selges nå for [PRISANTYDNING] 👀»** |
-| 3–8 s | Gå gjennom entré → stue i én jevn bevegelse (hold mobilen stødig, gå sakte). | VO: «Velkommen til [ADRESSE/OMRÅDE] – [X] soverom, [XXX] kvadrat.» |
-| 8–14 s | Kjøkkenet. Åpne en skuff/skap, stryk hånden over benkeplaten. | VO: «[Én setning om kjøkkenet – alder/standard/detalj].» |
-| 14–20 s | Beste rom nr. 2 (bad, hovedsoverom eller stue del 2). | VO: «[Én setning om rommet].» |
-| 20–26 s | Uteområde: hage, terrasse, utsikt, garasje. Gjerne drone eller løft mobilen høyt. | VO: «Og her får du [tomt/utsikt/sol – det sterkeste utekortet].» |
-| 26–32 s | Nærområdet: 2–3 superkorte klipp (butikk, sjø/natur, skolevei) ELLER kart-zoom. | VO: «[X] minutter til [sted folk bryr seg om].» |
-| 32–38 s | **Avslutning:** Tilbake til det beste bildet. Du kan gjerne stå i bildet og smile/peke. | VO + tekst: **«Visning [DATO]. Lenke i bio / kommentarfelt.»** |
+| 0–3 s | **Hook:** Dronebilde som avslører hele øyen ovenfra, eller båten som nærmer seg øyen i fart. | Tekst på skjerm: **«Denne øyen kan bli din 🏝️»** |
+| 3–8 s | Båten legger til kai. Hopp i land, kamera følger. | VO: «Litla Bjørnarøy – 75 mål, to hytter, egne sandstrender. Og du eier alt. Alene.» |
+| 8–14 s | Gå-sekvens: sti gjennom skog og lyng, åpne områder, svaberg. | VO: «Skog, lyng og åpne sletter – ti minutter med båt fra Uggdal på Tysnes.» |
+| 14–21 s | Hyttene: utvendig først, så inn – stue/kjøkken i åpen løsning, utsikten fra vinduet. | VO: «To hytter i god stand – nye tak, oppgradert innvendig, fire soverom totalt.» |
+| 21–28 s | **Sandstranden.** Gjerne føtter i sanden, vann som skvulper, panorering. | VO: «Egen sandstrand. Ingen naboer. Ingen som ser deg.» |
+| 28–34 s | To kaier, båtliv, ev. fiskestang/krabbeteine/bading – livet på øyen. | VO: «To solide kaier – og alt du trenger ligger en kort båttur unna.» |
+| 34–42 s | **Avslutning:** Drone som trekker seg oppover og bort fra øyen (klassisk «reveal exit»). | VO + tekst: **«Prisantydning 12,9 mill. Hele øyen. Lenke i bio.»** |
 
-**Musikk:** Velg en trending, rolig-men-positiv lyd i appen (lyder som trender gir mer rekkevidde). Lav voiceover over.
+**Musikk:** Rolig, drømmende, gjerne nordisk/naturstemning – eller en trending
+«peaceful/cinematic»-lyd i appen. Ikke høy energi; her selger roen.
 
-**Teknikk-tips:**
-- Film i god dagslys, alle lys på inne, vinduer åpne for luftig følelse.
-- Gå SAKTE og jevnt – halvparten av farten du tror er riktig.
-- Rydd alt. Fjern personlige ting fra syne (bilder, post, ladekabler).
-- Ta hvert klipp 2–3 ganger, klipp sammen i CapCut (gratis).
+**Teknikk:**
+- Film på en dag med sol eller lav kveldssol («golden hour» gjør sjøen magisk).
+- Gå SAKTE med mobilen, halvparten av farten du tror er riktig.
+- Ta hvert klipp 2–3 ganger, klipp i CapCut (gratis).
+- Ekstra klipp å ta mens du først er der: tidsopptak av solnedgang, bål på stranden, kaffe på kaien – innhold til video 2 og 3.
 
 ---
 
-## 3 alternative hooks (test alle – ulike videoer, samme innhold)
+## 3 alternative hooks (lag 2–3 videoer av samme materiale)
 
-1. **Pris-hook:** «Dette får du for [PRISANTYDNING] i [OMRÅDE]» *(fungerer best hvis prisen oppleves som god)*
-2. **Nysgjerrighets-hook:** «Ingen tror meg når jeg sier hva denne kostet…» / «Vent til du ser [det beste rommet] 👀»
-3. **Målgruppe-hook:** «Ser du etter [enebolig med hage / første bolig / plass til storfamilien] i [OMRÅDE]? Stopp å scrolle.»
+1. **Pris-perspektiv:** «En leilighet i Bergen sentrum – eller en HEL ØY?» *(sterk deler-effekt: folk tagger hverandre)*
+2. **Drømme-hook:** «POV: Du eier din egen øy i Vestland» *(POV-formatet gjør at seeren ser seg selv der)*
+3. **Sjeldenhets-hook:** «Hele øyer med hytter kommer nesten aldri for salg i Norge. Nå skjedde det.» *(fungerer også som pressevinkel)*
 
-> Publisér som 2–3 separate videoer med noen dagers mellomrom. Den som får best respons → bruk som betalt annonse.
+> Publisér med noen dagers mellomrom. Den som får best respons → bruk som betalt annonse.
 
 ---
 
 ## Bildetekst (caption) – kopier og tilpass
 
 **TikTok / Instagram Reels:**
-> [Fengende førstelinje – f.eks. «Drømmehjemmet i OMRÅDE er til salgs 🏡»]
-> ✨ [X] soverom · [XXX] m² · [høydepunkt]
-> 📍 [Område/sted]
-> 💰 Prisantydning [PRIS]
-> 📅 Visning [DATO]
-> Full annonse på FINN – lenke i bio!
-> #tilsalgs #boligtilsalgs #visning #bolig #[område] #[by] #eiendom #nytthjem #boligjakt #interiør
+> Din egen private øy er til salgs 🏝️
+> 📍 Litla Bjørnarøy, Tysnes – 10 min med båt fra Uggdal
+> ✨ 75 mål · 2 hytter · 4 soverom · 2 kaier · egne sandstrender
+> 💰 Prisantydning 12 900 000 kr
+> Hele annonsen på FINN – lenke i bio!
+> #egenøy #øytilsalgs #hytteliv #hyttedrøm #tilsalgs #tysnes #vestland #bergen #skjærgård #privatøy #norway #islandforsale #hytte
 
-**Facebook (viktigst for boligsalg i Norge!):**
-> [ADRESSE] er til salgs! 🏡
+**Facebook (viktigst i Norge – og der deles denne typen saker vilt):**
+> Nå kan du kjøpe din egen øy i Tysnes-skjærgården 🏝️
 >
-> [2–3 setninger med de sterkeste salgspunktene – skriv som du snakker.]
+> Litla Bjørnarøy – 75 mål med skog, lyng og egne sandstrender, to oppgraderte
+> hytter med fire soverom totalt, og to solide kaier. Ti minutter med båt fra
+> Uggdal, og du eier hele øyen helt alene.
 >
-> 🛏 [X] soverom · 📐 [XXX] m² · 💰 Prisantydning [PRIS]
-> 📅 Visning [DATO] kl. [TID]
+> 💰 Prisantydning 12 900 000 kr
+> 👉 Hele annonsen: https://www.finn.no/411431396
 >
-> Se hele annonsen her: https://www.finn.no/411431396
-> Del gjerne med noen du tror leter etter bolig i [OMRÅDE]! 🙏
+> Tagg noen som alltid har snakket om å kjøpe øy sammen! 😄
+> *(Den taggelinjen er ikke pynt – «kjøpe øy sammen med vennegjengen» er samtalen
+> som får posten til å spre seg.)*
 
-**YouTube Shorts:** Samme video, tittel: «[Boligtype] til salgs i [OMRÅDE] – [PRIS] | Visning [DATO]»
+**YouTube Shorts:** Samme video. Tittel: «Privat øy til salgs i Norge – Litla Bjørnarøy, Tysnes (12,9 mill)»
+– engelsk beskrivelse i tillegg: «Private island for sale in Norway – 75 acres, 2 cabins, sandy beaches.»
 
 ---
 
-## Publiseringsplan (2 uker før visning)
+## Internasjonalt (unikt for øy-salg!)
+
+Utenlandske kjøpere googler «private island for sale Norway». Lag én ekstra
+versjon av videoen med engelsk tekst/VO og publiser på samme kontoer:
+> «This entire private island in the Norwegian fjords is for sale – €1.1M.
+> 75 acres, 2 cabins, private beaches, 10 minutes by boat from the mainland.»
+
+Be også megler vurdere oppføring på internasjonale portaler (f.eks.
+Private Islands Inc. / islands-for-sale-sider) – de henter ofte annonser gratis.
+
+---
+
+## Publiseringsplan (2–3 uker)
 
 | Dag | Handling |
 |-----|----------|
 | Dag 1 | Video 1 (hovedmanus) på TikTok + Reels + Shorts. Facebook-post med lenke. |
-| Dag 2 | Del Facebook-posten i lokale grupper («Kjøp/salg [område]», «Du vet du er fra [sted]…»). |
-| Dag 4 | Video 2 (alternativ hook). Svar på ALLE kommentarer – det booster rekkevidden. |
-| Dag 7 | «Detalj-video»: 15 sek om ett rom eller én detalj folk kommenterte på. |
-| Dag 10 | Video 3 + «Visning på søndag!»-post med dato/tid tydelig. |
-| Visningsdag −1 | Story/kort video: «I morgen kl. [TID] – vi sees!» |
-| Etter visning | Hvis ikke solgt: «Fortsatt tilgjengelig – privat visning? Send melding.» |
+| Dag 2 | Del i Facebook-grupper: hytte-/båtlivgrupper, «Tysnes», Bergens-grupper, kjøp/salg Vestland. |
+| Dag 3 | **Pressepitch** (se salgsstrategi.md) – send videoen til lokalaviser og nettaviser. |
+| Dag 5 | Video 2 (alternativ hook). Svar på ALLE kommentarer – det booster rekkevidden. |
+| Dag 8 | «Innsiden av hyttene»-video (15–20 sek) – svar på det folk spør om i kommentarfeltet. |
+| Dag 10 | Engelsk versjon. |
+| Dag 12+ | Boost den best presterende videoen (se strategi). Repost «solnedgang på egen øy»-klipp. |

@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Til salgs – se boligen som alle snakker om</title>
-<meta name="description" content="Boligannonse – se bilder, nøkkelinfo og visningstider. Meld interesse i dag.">
+<title>Litla Bjørnarøy – din egen private øy til salgs | Tysnes</title>
+<meta name="description" content="Sjelden mulighet: hel privat øy på ca. 75 mål med to oppgraderte hytter, to kaier og sandstrender. Ti minutter med båt fra Uggdal på Tysnes. Prisantydning 12 900 000 kr.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Til salgs – se boligen som alle snakker om">
-<meta property="og:description" content="Se bilder, nøkkelinfo og visningstider. Meld interesse i dag.">
+<meta property="og:title" content="Din egen private øy – Litla Bjørnarøy er til salgs">
+<meta property="og:description" content="Ca. 75 mål, to hytter, to kaier og egne sandstrender – ti minutter med båt fra Uggdal på Tysnes. Prisantydning 12 900 000 kr.">
 <meta property="og:url" content="https://mariusag-2001.github.io/stillingsannonse/eiendom/">
 <meta property="og:image" content="https://mariusag-2001.github.io/stillingsannonse/eiendom/bilder/hero.jpg">
 <meta property="og:locale" content="nb_NO">
@@ -51,7 +51,7 @@
   .btn.ghost{background:transparent;color:var(--cream);box-shadow:none;border:1.5px solid rgba(223,216,196,.5)}
   .btn.ghost:hover{background:rgba(223,216,196,.12);border-color:var(--cream)}
 
-  /* Fyll-inn-varsel (vises kun når plassholdere gjenstår) */
+  /* Fyll-inn-varsel (vises kun når plassholdere/bilder gjenstår) */
   #todo-banner{display:none;background:#fff3cd;color:#6b5300;border-bottom:1px solid #e8d99a;padding:10px 24px;font-size:.92rem;text-align:center}
   .ph{background:#fff3cd;border-radius:4px;padding:0 4px;outline:1px dashed #d4b93c}
   .facts .ph,.band .ph{color:#6b5300}
@@ -93,6 +93,7 @@
   .facts td:first-child{color:#c9c5b5;padding-right:14px;white-space:nowrap}
   .facts td:last-child{text-align:right;font-weight:700}
   .facts tr:last-child td{border-bottom:none}
+  .facts .note{font-size:.8rem;color:#c9c5b5;margin-top:14px;font-weight:400}
 
   .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
   .gallery .ph-img{aspect-ratio:4/3;border-radius:var(--radius);overflow:hidden;background:linear-gradient(135deg,#274940,#1c342e);display:grid;place-items:center;color:rgba(223,216,196,.6);font-size:.85rem;font-weight:600;box-shadow:var(--shadow)}
@@ -134,11 +135,11 @@
 </head>
 <body>
 
-<div id="todo-banner">⚠️ Denne annonsen har felter som ikke er fylt ut ennå – åpne <code>eiendom/index.html</code> og fyll inn <code>EIENDOM</code>-blokken øverst i &lt;script&gt;-delen nederst i filen. Banneret forsvinner automatisk når alt er fylt ut.</div>
+<div id="todo-banner">⚠️ Annonsen mangler fortsatt bilder eller utfylte felter – legg bilder i <code>eiendom/bilder/</code> og sjekk <code>EIENDOM</code>-blokken nederst i <code>eiendom/index.html</code>. Banneret forsvinner automatisk når alt er på plass.</div>
 
 <header class="topbar">
   <div class="wrap">
-    <div class="addr" data-f="adresse">FYLL INN: Adresse</div>
+    <div class="addr" data-f="adresse">Litla Bjørnarøy, Uggdal – Tysnes</div>
     <a class="btn" href="#kontakt">Meld interesse</a>
   </div>
 </header>
@@ -146,10 +147,10 @@
 <section class="hero">
   <div class="bg" id="hero-bg"></div>
   <div class="wrap">
-    <span class="badge" data-f="badge">Til salgs</span>
-    <h1 data-f="overskrift">FYLL INN: Fengende overskrift om boligen</h1>
-    <p class="tagline" data-f="undertittel">FYLL INN: Én setning som selger drømmen – ikke bare boligen.</p>
-    <div class="price"><span data-f="prisantydning">FYLL INN: 0 000 000</span> <small>kr · prisantydning</small></div>
+    <span class="badge" data-f="badge">Privat øy til salgs</span>
+    <h1 data-f="overskrift">Din egen private øy i Tysnes-skjærgården</h1>
+    <p class="tagline" data-f="undertittel">Ca. 75 mål med skog, lyng og sandstrender. To oppgraderte hytter, to kaier – og ikke en eneste nabo. Ti minutter med båt fra Uggdal.</p>
+    <div class="price"><span data-f="prisantydning">12 900 000</span> <small>kr · prisantydning</small></div>
     <div class="meta-row" id="chips"></div>
     <div class="hero-cta">
       <a class="btn lg" href="#kontakt">Meld interesse</a>
@@ -162,7 +163,7 @@
   <div class="wrap">
     <div class="eyebrow">Høydepunkter</div>
     <h2>Dette må du få med deg</h2>
-    <p class="lead">De tre viktigste grunnene til at akkurat denne eiendommen skiller seg ut.</p>
+    <p class="lead">Hele øyer med bebyggelse kommer nesten aldri for salg. Her er de tre viktigste grunnene til at Litla Bjørnarøy skiller seg ut.</p>
     <div class="high-grid" id="highlights"></div>
   </div>
 </section>
@@ -172,12 +173,13 @@
     <div class="about-grid">
       <div class="desc">
         <div class="eyebrow">Om eiendommen</div>
-        <h2 data-f="omTittel">Velkommen inn</h2>
+        <h2 data-f="omTittel">Velkommen til Litla Bjørnarøy</h2>
         <div id="beskrivelse" style="margin-top:18px"></div>
       </div>
       <aside class="facts">
         <h3>Nøkkelinfo</h3>
         <table id="fakta"></table>
+        <p class="note">Se komplett salgsoppgave hos megler for alle detaljer og forbehold.</p>
       </aside>
     </div>
   </div>
@@ -196,22 +198,22 @@
     <div class="band">
       <div class="inner">
         <div class="eyebrow on-dark">Visning</div>
-        <h2>Kom og opplev den selv</h2>
-        <p>Bilder forteller mye – men ikke alt. Bli med på visning, eller ta kontakt for privat visning når det passer deg.</p>
+        <h2>Opplev øyen selv</h2>
+        <p>Bilder yter ikke en hel øy rettferdighet. Ta kontakt med megler for å avtale visning – så ordner vi båtturen ut.</p>
         <div class="visning" id="visninger"></div>
       </div>
     </div>
     <div style="height:26px"></div>
     <div class="broker">
-      <div class="avatar" data-f="meglerInitialer">M</div>
+      <div class="avatar" data-f="meglerInitialer">AL</div>
       <div>
-        <h3 data-f="meglerNavn">FYLL INN: Meglers navn</h3>
-        <p><span data-f="meglerTittel">Eiendomsmegler</span> · <span data-f="meglerFirma">FYLL INN: Meglerfirma</span></p>
-        <p style="margin-top:6px"><a data-f-href="meglerTlfHref" data-f="meglerTlf" href="tel:">FYLL INN: telefon</a> · <a data-f-href="meglerEpostHref" data-f="meglerEpost" href="mailto:">FYLL INN: e-post</a></p>
+        <h3 data-f="meglerNavn">Aleksander Lenning</h3>
+        <p><span data-f="meglerTittel">Eiendomsmegler / partner</span> · <span data-f="meglerFirma">Aktiv Eiendomsmegling Bergen Sentrum</span></p>
+        <p style="margin-top:6px"><a data-f-href="meglerTlfHref" data-f="meglerTlf" href="tel:+4791650495">916 50 495</a> · <a data-f-href="meglerEpostHref" data-f="meglerEpost" href="mailto:aleksander.lenning@aktiv.no">aleksander.lenning@aktiv.no</a></p>
       </div>
       <div class="links">
         <a data-f-href="finnUrl" href="https://www.finn.no/411431396" target="_blank" rel="noopener">Annonsen på FINN →</a>
-        <a data-f-href="meglerUrl" href="#" target="_blank" rel="noopener">Komplett salgsoppgave →</a>
+        <a data-f-href="meglerUrl" href="https://aktiv.no/bolig/boliger-til-salgs/uggdal-bardsund-10-117003569" target="_blank" rel="noopener">Komplett salgsoppgave →</a>
       </div>
     </div>
   </div>
@@ -219,7 +221,7 @@
 
 <footer>
   <div class="wrap">
-    <span data-f="adresse">FYLL INN: Adresse</span> · Annonsert på <a data-f-href="finnUrl" href="https://www.finn.no/411431396" target="_blank" rel="noopener">FINN.no</a>
+    <span data-f="adresse">Litla Bjørnarøy, Uggdal – Tysnes</span> · Annonsert på <a data-f-href="finnUrl" href="https://www.finn.no/411431396" target="_blank" rel="noopener">FINN.no</a>
   </div>
 </footer>
 
@@ -227,76 +229,75 @@
 
 <script>
 /* ============================================================
-   FYLL INN ALT HER – resten av siden oppdaterer seg selv.
-   Tips: kopier tallene rett fra FINN-annonsen og salgsoppgaven.
+   ALT INNHOLD REDIGERES HER – resten av siden oppdaterer seg selv.
    ============================================================ */
 const EIENDOM = {
-  adresse:        "FYLL INN: Gateadresse 1, 0000 Sted",
-  badge:          "Til salgs",                       // f.eks. "Til salgs", "Visning søndag!", "Ny pris"
-  overskrift:     "FYLL INN: Fengende overskrift om boligen",
-  undertittel:    "FYLL INN: Én setning som selger drømmen – ikke bare boligen.",
-  prisantydning:  "FYLL INN: 0 000 000",             // kun tallet, f.eks. "4 500 000"
+  adresse:        "Litla Bjørnarøy, Uggdal – Tysnes",
+  badge:          "Privat øy til salgs",
+  overskrift:     "Din egen private øy i Tysnes-skjærgården",
+  undertittel:    "Ca. 75 mål med skog, lyng og sandstrender. To oppgraderte hytter, to kaier – og ikke en eneste nabo. Ti minutter med båt fra Uggdal.",
+  prisantydning:  "12 900 000",
   finnUrl:        "https://www.finn.no/411431396",
-  meglerUrl:      "FYLL INN: lenke til megler sin side / salgsoppgave",
+  meglerUrl:      "https://aktiv.no/bolig/boliger-til-salgs/uggdal-bardsund-10-117003569",
 
-  // Nøkkeltall som vises som "chips" i toppen – rediger fritt
   chips: [
-    "FYLL INN: 000 m² BRA-i",
-    "FYLL INN: X soverom",
-    "FYLL INN: Byggeår 0000",
-    "FYLL INN: Tomt 000 m²"
+    "Hel øy · ca. 75 mål",
+    "2 hytter · 4 soverom",
+    "2 kaier og sandstrender",
+    "10 min med båt fra Uggdal"
   ],
 
-  // De tre sterkeste salgsargumentene
   hoydepunkter: [
-    { tittel: "FYLL INN: Høydepunkt 1", tekst: "FYLL INN: Kort forklaring – hvorfor betyr dette noe for kjøperen?" },
-    { tittel: "FYLL INN: Høydepunkt 2", tekst: "FYLL INN: Kort forklaring." },
-    { tittel: "FYLL INN: Høydepunkt 3", tekst: "FYLL INN: Kort forklaring." }
+    { tittel: "Du eier hele øyen – alene",
+      tekst: "Ca. 75 mål med variert og frodig natur: skog, lyng, svaberg og egne sandstrender. Fullstendig skjermet og privat – et fristed det knapt finnes maken til i Vestland." },
+    { tittel: "To hytter i god stand",
+      tekst: "Bårdsund 10 og 12 er omfattende oppgradert de siste årene, med nye tak i aluminium og store innvendige forbedringer. Til sammen fire soverom – perfekt for storfamilie eller generasjonsprosjekt." },
+    { tittel: "Sjøliv rett utenfor døren",
+      tekst: "To solide kaier gir trygg tilkomst for båt, og fastlandet ligger under ti minutter unna. Mulighet for å overta selgers båtplass i Uggdal Båtlag (forutsatt godkjenning fra båtlaget)." }
   ],
 
-  omTittel: "Velkommen inn",
-  // Ett avsnitt per linje – lim gjerne inn (og kort ned) meglers tekst
+  omTittel: "Velkommen til Litla Bjørnarøy",
   beskrivelse: [
-    "FYLL INN: Avsnitt 1 – det store bildet: beliggenhet, følelse, hvem passer boligen for.",
-    "FYLL INN: Avsnitt 2 – innvendig: planløsning, kjøkken, bad, standard, oppussing.",
-    "FYLL INN: Avsnitt 3 – utvendig og nærområde: tomt, utsikt, garasje, skole, butikk, natur."
+    "Nå har du en sjelden mulighet til å sikre deg din egen private øy. Litla Bjørnarøy ligger like utenfor Uggdal på Tysnes og byr på det ultimate fristedet – perfekt for ro, rekreasjon og naturopplevelser, med en idyllisk blanding av skog, lyng og åpne områder.",
+    "På øyen står to sjarmerende hytter med fantastisk utsikt. Begge er i god stand etter omfattende oppgraderinger de siste årene, blant annet nye tak i aluminium og betydelige innvendige forbedringer. Hovedhytten rommer stue og kjøkken i åpen løsning, bad og to soverom – og med begge hyttene har dere fire soverom og god plass til familie og gjester.",
+    "Her får du følelsen av å være i ditt eget paradis, samtidig som du kun er en kort båttur unna alle fasiliteter i Uggdal. Dette er et unikt og sjeldent tilbud – perfekte rammer for familiehytte, generasjonsprosjekt, eller for deg som rett og slett drømmer om ditt eget lille paradis."
   ],
 
-  // Nøkkelinfo-tabellen
   fakta: [
-    ["Prisantydning",   "FYLL INN: kr 0 000 000"],
-    ["Totalpris",       "FYLL INN: kr 0 000 000"],
-    ["Omkostninger",    "FYLL INN: kr 000 000"],
-    ["Felleskostnader", "FYLL INN: kr 0 000 / mnd (fjern raden hvis ikke aktuelt)"],
-    ["Boligtype",       "FYLL INN: Enebolig / leilighet / ..."],
-    ["Eierform",        "FYLL INN: Eier (selveier) / andel"],
-    ["Internt bruksareal (BRA-i)", "FYLL INN: 000 m²"],
-    ["Soverom",         "FYLL INN: X"],
-    ["Byggeår",         "FYLL INN: 0000"],
-    ["Tomt",            "FYLL INN: 000 m² eiet tomt"],
-    ["Energimerking",   "FYLL INN: f.eks. E – oransje"]
+    ["Prisantydning",   "kr 12 900 000"],
+    ["Totalpris",       "kr 13 223 850"],
+    ["Omkostninger",    "kr 323 850"],
+    ["Type",            "Fritidseiendom – hel øy"],
+    ["Eierform",        "Eiet (selveier)"],
+    ["Bygninger",       "2 hytter (Bårdsund 10 og 12)"],
+    ["Soverom",         "4 totalt"],
+    ["Byggeår",         "1969 – omfattende oppgradert"],
+    ["Tomt",            "ca. 75 mål – hele øyen"],
+    ["Kai",             "2 solide kaier"],
+    ["Til fastlandet",  "Under 10 min med båt"]
   ],
 
   // Bilder: legg filene i mappen eiendom/bilder/ og list dem opp her.
   // Første bilde blir stort toppbilde i galleriet. Legg også et bilde som
   // heter hero.jpg i samme mappe – det brukes som bakgrunn øverst på siden.
+  // Tips: be megler om originalbildene (og dronefoto/video) fra fotografen.
   bilder: [
-    // { fil: "bilder/stue.jpg",    tekst: "Lys og luftig stue" },
-    // { fil: "bilder/kjokken.jpg", tekst: "Kjøkken fra 2021" },
+    // { fil: "bilder/oyen-dronefoto.jpg", tekst: "Litla Bjørnarøy fra luften" },
+    // { fil: "bilder/hytte-utsikt.jpg",   tekst: "Utsikt fra hovedhytten" },
   ],
 
   visninger: [
-    "FYLL INN: Søndag 00.00.0000 kl. 13:00–14:00",
-    "Privat visning? Ta kontakt – vi er fleksible."
+    "Visning etter avtale – ta kontakt med megler",
+    "Husk å avtale båtskyss ved visning"
   ],
 
-  meglerNavn:   "FYLL INN: Meglers navn",
-  meglerTittel: "Eiendomsmegler",
-  meglerFirma:  "FYLL INN: Meglerfirma",
-  meglerTlf:    "FYLL INN: 000 00 000",
-  meglerEpost:  "FYLL INN: navn@meglerfirma.no"
+  meglerNavn:   "Aleksander Lenning",
+  meglerTittel: "Eiendomsmegler / partner",
+  meglerFirma:  "Aktiv Eiendomsmegling Bergen Sentrum",
+  meglerTlf:    "916 50 495",
+  meglerEpost:  "aleksander.lenning@aktiv.no"
 };
-/* ============ SLUTT PÅ UTFYLLING – ikke rediger under ============ */
+/* ============ SLUTT PÅ REDIGERING – ikke endre under ============ */
 
 (function render(){
   const d = EIENDOM;
@@ -356,7 +357,6 @@ const EIENDOM = {
   img.src = "bilder/hero.jpg";
 
   if (todo) document.getElementById("todo-banner").style.display = "block";
-  if (!isPh(d.adresse)) document.title = d.adresse + " – til salgs";
 })();
 </script>
 </body>
