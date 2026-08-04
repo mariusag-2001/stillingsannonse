@@ -9,7 +9,7 @@
 <meta property="og:title" content="Din egen private øy – Litla Bjørnarøy er til salgs">
 <meta property="og:description" content="Ca. 75 mål, to hytter, to kaier og egne sandstrender – ti minutter med båt fra Uggdal på Tysnes. Prisantydning 12 900 000 kr.">
 <meta property="og:url" content="https://mariusag-2001.github.io/stillingsannonse/eiendom/">
-<meta property="og:image" content="https://mariusag-2001.github.io/stillingsannonse/eiendom/bilder/01-drone-oversikt.jpg">
+<meta property="og:image" content="https://mariusag-2001.github.io/stillingsannonse/eiendom/bilder/00-drone-begge-hytter.jpg">
 <meta property="og:locale" content="nb_NO">
 <meta name="twitter:card" content="summary_large_image">
 <style>
@@ -70,21 +70,14 @@
   .topbar .addr .pin{color:var(--lime)}
   .topbar .btn{padding:10px 20px;font-size:.92rem;flex-shrink:0}
 
-  /* ---------- HERO ---------- */
-  .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink)}
-  .hero .scene{position:absolute;inset:0}
-  .hero .scene svg{width:100%;height:100%}
-  .hero .slides{position:absolute;inset:0}
-  .hero .slides .sl{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.6s ease;transform:scale(1.04)}
-  .hero .slides .sl.on{opacity:1;animation:kb 8s ease-in-out forwards}
-  @keyframes kb{from{transform:scale(1.04)}to{transform:scale(1.14)}}
-  .hero.has-photo .scene{opacity:0;transition:opacity 1s ease}
-  @media (prefers-reduced-motion: reduce){.hero .slides .sl.on{animation:none;transform:none}}
-  .hero::after{content:"";position:absolute;inset:0;background:
-    linear-gradient(100deg,rgba(9,28,25,.8) 0%,rgba(9,28,25,.4) 34%,rgba(9,28,25,0) 55%),
-    linear-gradient(180deg,rgba(12,37,33,.18) 0%,rgba(12,37,33,0) 30%,rgba(9,28,25,.88) 92%);pointer-events:none}
-  .hero .wrap{position:relative;z-index:2;color:#fff;padding-top:90px;padding-bottom:72px;width:100%}
-  .hero .badge{display:inline-flex;align-items:center;gap:.6em;background:var(--lime);color:var(--ink);font-weight:800;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:8px 18px;border-radius:999px;margin-bottom:22px;animation:pulse 2.6s ease-in-out infinite}
+  /* ---------- HERO (ett fast bilde, vises i sin helhet) ---------- */
+  .hero{position:relative;background:linear-gradient(170deg,var(--ink) 0%,#0c2521 100%);overflow:hidden}
+  .hero .wrap{position:relative;z-index:2;color:#fff;padding-top:56px;padding-bottom:56px;width:100%}
+  .hero-img{margin:30px 0 6px;border-radius:20px;overflow:hidden;box-shadow:0 30px 70px -28px rgba(0,0,0,.65);width:fit-content;max-width:100%}
+  .hero-img img{width:100%;height:auto;display:block}
+  @media (min-width:900px){.hero-img img{max-height:56vh;width:auto;max-width:100%}}
+  .hero-img figcaption{font-size:.8rem;color:#c9c5b5;margin-top:10px;text-align:right}
+  .hero .badge{display:inline-flex;align-items:center;gap:.6em;background:var(--lime);color:var(--ink);font-weight:800;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:8px 18px;border-radius:999px;margin-bottom:18px;animation:pulse 2.6s ease-in-out infinite}
   @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(220,242,99,.45)}50%{box-shadow:0 0 0 12px rgba(220,242,99,0)}}
   .hero h1{font-size:clamp(2.4rem,6.6vw,4.6rem);color:#fff;max-width:20ch;line-height:1.04;text-shadow:0 4px 30px rgba(9,28,25,.5)}
   .hero h1 em{font-style:italic;color:var(--gold)}
@@ -221,130 +214,11 @@
 </header>
 
 <section class="hero" id="hero">
-  <div class="scene" aria-hidden="true">
-    <!-- Illustrert øy-scene. Erstattes automatisk av bilder/hero.jpg når den finnes. -->
-    <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustrasjon av Litla Bjørnarøy i solnedgang">
-      <defs>
-        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#f7e9c6"/>
-          <stop offset=".45" stop-color="#eed9a8"/>
-          <stop offset=".8" stop-color="#d9b98a"/>
-          <stop offset="1" stop-color="#c8a377"/>
-        </linearGradient>
-        <linearGradient id="seaG" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#8a9a76"/>
-          <stop offset=".25" stop-color="#3f6a58"/>
-          <stop offset=".7" stop-color="#173f3b"/>
-          <stop offset="1" stop-color="#0c2b28"/>
-        </linearGradient>
-        <radialGradient id="sunG" cx=".5" cy=".5" r=".5">
-          <stop offset="0" stop-color="#fff8dd"/>
-          <stop offset=".55" stop-color="#f9e29e"/>
-          <stop offset="1" stop-color="#f9e29e" stop-opacity="0"/>
-        </radialGradient>
-        <linearGradient id="glint" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#f9e7ae" stop-opacity=".85"/>
-          <stop offset="1" stop-color="#f9e7ae" stop-opacity="0"/>
-        </linearGradient>
-        <style>
-          .drift1{animation:dr 26s linear infinite alternate}
-          .drift2{animation:dr 34s linear infinite alternate-reverse}
-          @keyframes dr{from{transform:translateX(0)}to{transform:translateX(40px)}}
-          .bob{animation:bob 5s ease-in-out infinite}
-          @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
-          .shimmer line{stroke:#f6e6b0;stroke-linecap:round;animation:sh 4.2s ease-in-out infinite}
-          .shimmer line:nth-child(2){animation-delay:1.1s}
-          .shimmer line:nth-child(3){animation-delay:2.2s}
-          .shimmer line:nth-child(4){animation-delay:.6s}
-          .shimmer line:nth-child(5){animation-delay:1.7s}
-          @keyframes sh{0%,100%{opacity:.12}50%{opacity:.55}}
-          .bird{animation:fly 9s ease-in-out infinite}
-          .bird.b2{animation-delay:2.5s}
-          @keyframes fly{0%,100%{transform:translate(0,0)}50%{transform:translate(-26px,-10px)}}
-        </style>
-      </defs>
-
-      <!-- Himmel og sol -->
-      <rect width="1440" height="470" fill="url(#sky)"/>
-      <circle cx="1190" cy="215" r="200" fill="url(#sunG)"/>
-      <circle cx="1190" cy="215" r="70" fill="#fdf3cf"/>
-
-      <!-- Fugler -->
-      <g stroke="#5b4a33" stroke-width="3.4" stroke-linecap="round" fill="none" opacity=".75">
-        <path class="bird" d="M330 170 q12 -12 24 0 q12 -12 24 0"/>
-        <path class="bird b2" d="M430 128 q9 -9 18 0 q9 -9 18 0" opacity=".6"/>
-      </g>
-
-      <!-- Fjern skjærgård -->
-      <g class="drift2" opacity=".5" fill="#7f8f6d">
-        <path d="M-40 452 q120 -34 260 -10 q110 20 220 6 l0 30 l-480 0 z"/>
-        <path d="M1040 448 q140 -40 300 -12 q80 14 140 8 l0 34 l-540 0 z"/>
-      </g>
-
-      <!-- Sjø -->
-      <rect y="460" width="1440" height="440" fill="url(#seaG)"/>
-      <!-- Solstripe i vannet -->
-      <path d="M1155 462 L1225 462 L1275 900 L1095 900 Z" fill="url(#glint)" opacity=".45"/>
-      <g class="shimmer" stroke-width="4">
-        <line x1="1145" y1="520" x2="1245" y2="520"/>
-        <line x1="1170" y1="580" x2="1240" y2="580"/>
-        <line x1="1120" y1="660" x2="1260" y2="660"/>
-        <line x1="1155" y1="750" x2="1275" y2="750"/>
-        <line x1="1110" y1="840" x2="1290" y2="840"/>
-      </g>
-
-      <!-- ØYA -->
-      <g transform="translate(300 70) scale(.85)">
-      <g class="drift1">
-        <!-- speiling -->
-        <ellipse cx="620" cy="620" rx="360" ry="46" fill="#0e2f2b" opacity=".55"/>
-        <!-- sandstrand -->
-        <path d="M280 596 q80 26 180 24 q220 6 380 -8 q90 -8 130 -22 q-30 -30 -120 -40 l-450 0 q-90 16 -120 46z" fill="#e8d9ae"/>
-        <!-- landmasse -->
-        <path d="M300 590 q-10 -60 60 -86 q40 -64 130 -70 q60 -46 150 -38 q90 -30 160 8 q80 6 112 52 q60 24 54 78 q10 34 -36 46 q-140 26 -320 26 q-190 2 -280 -10 q-36 -4 -30 -6z" fill="#2c5747"/>
-        <path d="M330 560 q10 -44 66 -62 q36 -50 116 -54 q56 -38 132 -30 q78 -24 138 10 q64 8 88 44 q40 20 34 54 q-160 30 -300 28 q-170 0 -274 10z" fill="#37684f" opacity=".8"/>
-        <!-- trær -->
-        <g fill="#1d4536">
-          <path d="M395 528 l16 -44 l16 44 z"/><path d="M403 506 l8 -24 l8 24 z" fill="#265743"/>
-          <path d="M470 500 l18 -52 l18 52 z"/><path d="M479 474 l9 -28 l9 28 z" fill="#265743"/>
-          <path d="M840 502 l17 -48 l17 48 z"/><path d="M848 478 l9 -26 l9 26 z" fill="#265743"/>
-          <path d="M905 522 l14 -38 l14 38 z"/>
-        </g>
-        <!-- Hytte 1 (Bårdsund 10) -->
-        <g>
-          <rect x="560" y="470" width="86" height="52" rx="3" fill="#efe6cd"/>
-          <path d="M550 472 L603 432 L656 472 Z" fill="#4a5a60"/>
-          <rect x="573" y="486" width="18" height="20" rx="2" fill="#f4d977"/>
-          <rect x="613" y="486" width="18" height="20" rx="2" fill="#f4d977"/>
-          <rect x="598" y="440" width="10" height="16" fill="#3c4b50"/>
-        </g>
-        <!-- Hytte 2 (Bårdsund 12) -->
-        <g>
-          <rect x="705" y="488" width="66" height="42" rx="3" fill="#e6dcc0"/>
-          <path d="M697 490 L738 458 L779 490 Z" fill="#55666c"/>
-          <rect x="717" y="500" width="14" height="16" rx="2" fill="#f4d977"/>
-          <rect x="746" y="500" width="14" height="16" rx="2" fill="#f4d977"/>
-        </g>
-        <!-- Kai + båt -->
-        <g>
-          <rect x="618" y="596" width="120" height="10" rx="3" fill="#6d5638"/>
-          <rect x="628" y="604" width="6" height="20" fill="#5a4630"/>
-          <rect x="672" y="604" width="6" height="20" fill="#5a4630"/>
-          <rect x="716" y="604" width="6" height="20" fill="#5a4630"/>
-          <g class="bob">
-            <path d="M758 616 q40 -12 84 0 q-10 22 -42 22 q-32 0 -42 -22z" fill="#efe6cd"/>
-            <rect x="792" y="588" width="5" height="28" fill="#4a5a60"/>
-          </g>
-        </g>
-      </g>
-      </g>
-    </svg>
-  </div>
-  <div class="slides" id="hero-slides"></div>
 
   <div class="wrap">
     <span class="badge" data-f="badge">Privat øy til salgs</span>
     <h1>Drømmen om <em>egen øy</em> er til salgs</h1>
+    <figure class="hero-img"><img src="bilder/00-drone-begge-hytter.jpg" alt="Litla Bjørnarøy fra luften – begge hyttene og bukten"></figure>
     <p class="tagline" data-f="undertittel">Litla Bjørnarøy: ca. 75 mål med skog, lyng og egne sandstrender. To oppgraderte hytter, to kaier – ti minutter med båt fra Uggdal på Tysnes.</p>
     <div class="price"><span data-f="prisantydning">12 900 000</span> <small>kr · prisantydning</small></div>
     <div class="meta-row" id="chips"></div>
@@ -353,7 +227,6 @@
       <a class="btn lg ghost" data-f-href="finnUrl" href="https://www.finn.no/411431396" target="_blank" rel="noopener">Se annonsen på FINN</a>
     </div>
   </div>
-  <div class="scrollhint">Utforsk øyen<span class="arr"></span></div>
 </section>
 
 <div class="stats-band">
@@ -451,9 +324,6 @@ const EIENDOM = {
   prisantydning:  "12 900 000",
   finnUrl:        "https://www.finn.no/411431396",
   meglerUrl:      "https://aktiv.no/bolig/boliger-til-salgs/uggdal-bardsund-10-117003569",
-
-  // Bildet som vises først bak teksten øverst (resten ruller etterpå)
-  heroBilde: "bilder/00-drone-begge-hytter.jpg",
 
   chips: [
     "Hel øy · ca. 75 mål",
@@ -645,31 +515,6 @@ const EIENDOM = {
     `<div class="v${isPh(v)?' ph':''}"><span>⚓</span> ${v}</div>`).join("");
   d.visninger.forEach(v => { if(isPh(v)) todo = true; });
 
-  // Hero: automatisk bildefremvisning tar over for illustrasjonen så snart
-  // bildelisten har innhold (eller bilder/hero.jpg finnes lokalt)
-  const heroSlides = document.getElementById("hero-slides");
-  function startHeroShow(list){
-    document.getElementById("hero").classList.add("has-photo");
-    heroSlides.innerHTML = list.map(u => `<div class="sl" style="background-image:url('${u.replace(/'/g,"%27")}')"></div>`).join("");
-    const hs = [...heroSlides.children];
-    let hi = 0;
-    hs[0].classList.add("on");
-    if (hs.length > 1) setInterval(() => {
-      hs[hi].classList.remove("on");
-      hi = (hi + 1) % hs.length;
-      hs[hi].classList.add("on");
-    }, 8000);
-  }
-  if (BILDER.length) {
-    const heroList = BILDER.map(b => b.fil);
-    const hi = d.heroBilde ? heroList.indexOf(d.heroBilde) : -1;
-    if (hi > 0) heroList.unshift(heroList.splice(hi, 1)[0]);
-    startHeroShow(heroList);
-  } else {
-    const img = new Image();
-    img.onload = () => startHeroShow(["bilder/hero.jpg"]);
-    img.src = "bilder/hero.jpg";
-  }
 
   if (todo) document.getElementById("todo-banner").style.display = "block";
 
