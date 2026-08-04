@@ -526,10 +526,12 @@
     if(sessionStorage.getItem('fag_talt')) return;
     sessionStorage.setItem('fag_talt','1');
     var ns='faginnredning-annonse';
-    fetch('https://api.counterapi.dev/v1/'+ns+'/sidevisninger/up').catch(function(){});
     var ref=(document.referrer||'').toLowerCase();
     var src = (ref.indexOf('facebook')>-1||ref.indexOf('fb.')>-1) ? 'kilde-facebook' : (ref.indexOf('linkedin')>-1||ref.indexOf('lnkd')>-1) ? 'kilde-linkedin' : (ref==='' ? 'kilde-direkte-qr' : 'kilde-annet');
-    fetch('https://api.counterapi.dev/v1/'+ns+'/'+src+'/up').catch(function(){});
+    ['sidevisninger', src].forEach(function(k){
+      fetch('https://abacus.jasoncameron.dev/hit/'+ns+'/'+k).catch(function(){});
+      fetch('https://api.counterapi.dev/v1/'+ns+'/'+k+'/up').catch(function(){});
+    });
   }catch(e){}
 })();
 </script>

@@ -53,22 +53,22 @@ const GRUPPER = {
   ]}
 };
 async function tall(ns, key){
-  // Prøver flere endepunkt-varianter og svarformater hos counterapi.dev
-  const urls = [
-    'https://api.counterapi.dev/v1/'+ns+'/'+key,
-    'https://api.counterapi.dev/v1/'+ns+'/'+key+'/',
-    'https://counterapi.dev/api/v1/'+ns+'/'+key
+  // Leser fra begge tjenester og viser høyeste tilgjengelige tall
+  const kilder = [
+    'https://abacus.jasoncameron.dev/get/'+ns+'/'+key,
+    'https://api.counterapi.dev/v1/'+ns+'/'+key
   ];
-  for (const u of urls){
+  let best = null, feilet = 0;
+  for (const u of kilder){
     try{
       const r = await fetch(u + '?t=' + Date.now(), {cache:'no-store'});
-      if(!r.ok) continue;
+      if(!r.ok){ if(r.status===404) best = Math.max(best ?? 0, 0); else feilet++; continue; }
       const j = await r.json();
-      const v = j.count ?? j.value ?? (j.data && (j.data.count ?? j.data.up_count ?? j.data.value));
-      if (typeof v === 'number') return v;
-    }catch(e){}
+      const v = j.value ?? j.count ?? (j.data && (j.data.count ?? j.data.up_count ?? j.data.value));
+      if (typeof v === 'number') best = Math.max(best ?? 0, v);
+    }catch(e){ feilet++; }
   }
-  return '–';
+  return best !== null ? best : '–';
 }
 async function hent(){
   for (const [id,g] of Object.entries(GRUPPER)){
