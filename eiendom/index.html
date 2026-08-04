@@ -456,5 +456,25 @@ const I18N = {"no": {"title": "Litla Bjørnarøy – din egen private øy til sa
   document.querySelectorAll(".reveal").forEach(el => io.observe(el));
 })();
 </script>
+<script>
+/* Besøksteller – teller kun på publisert side, én gang per økt */
+(function(){
+  try{
+    if (location.hostname.indexOf('github.io') === -1) return;
+    if (sessionStorage.getItem('oy_talt')) return;
+    sessionStorage.setItem('oy_talt','1');
+    var ns='litla-bjornaroy-annonse';
+    fetch('https://api.counterapi.dev/v1/'+ns+'/sidevisninger/up').catch(function(){});
+    var ref=(document.referrer||'').toLowerCase();
+    var src = (ref.indexOf('facebook')>-1||ref.indexOf('fb.')>-1||ref.indexOf('messenger')>-1) ? 'kilde-facebook'
+            : (ref.indexOf('tiktok')>-1) ? 'kilde-tiktok'
+            : (ref.indexOf('instagram')>-1) ? 'kilde-instagram'
+            : (ref.indexOf('linkedin')>-1||ref.indexOf('lnkd')>-1) ? 'kilde-linkedin'
+            : (ref.indexOf('finn.no')>-1) ? 'kilde-finn'
+            : (ref==='' ? 'kilde-direkte' : 'kilde-annet');
+    fetch('https://api.counterapi.dev/v1/'+ns+'/'+src+'/up').catch(function(){});
+  }catch(e){}
+})();
+</script>
 </body>
 </html>
