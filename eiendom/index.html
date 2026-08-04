@@ -194,6 +194,12 @@
   .stickycta .btn{width:100%}
 
   @media (max-width:900px){
+    /* Mobil: stort bilde øverst i riktig utsnitt, tekst under (ingen over-zoom) */
+    .hero{display:block;min-height:0;background:#0c2521}
+    .hero .bgimg{position:relative;inset:auto;height:52svh;min-height:320px;background-position:center 42%}
+    .hero::after{display:none}
+    .hero .wrap{padding-top:26px;padding-bottom:40px}
+    .hero .badge{margin-top:0}
     .stats{grid-template-columns:repeat(2,1fr);gap:34px 20px}
     .high-grid{grid-template-columns:1fr}
     .about-grid{grid-template-columns:1fr}
