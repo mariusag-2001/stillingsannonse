@@ -69,6 +69,13 @@
   .topbar .addr{color:#fff;font-weight:700;font-size:1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:10px}
   .topbar .addr .pin{color:var(--lime)}
   .topbar .btn{padding:10px 20px;font-size:.92rem;flex-shrink:0}
+  .topbar .actions{display:flex;align-items:center;gap:10px}
+  .langwrap{position:relative;display:inline-flex;align-items:center}
+  .langwrap .globe{position:absolute;left:13px;width:15px;height:15px;color:var(--lime);pointer-events:none}
+  .langwrap::after{content:"";position:absolute;right:14px;width:7px;height:7px;border-right:1.6px solid var(--cream);border-bottom:1.6px solid var(--cream);transform:rotate(45deg);margin-top:-3px;pointer-events:none}
+  #lang{appearance:none;-webkit-appearance:none;background:rgba(239,230,205,.12);border:1px solid rgba(239,230,205,.35);color:#fff;font-weight:600;font-size:.9rem;font-family:var(--sans);padding:10px 32px 10px 36px;border-radius:999px;cursor:pointer;transition:border-color .15s ease,background .15s ease}
+  #lang:hover{border-color:var(--cream);background:rgba(239,230,205,.2)}
+  #lang option{color:var(--ink);background:#fff}
 
   /* ---------- HERO (ett fast bilde, vises i sin helhet) ---------- */
   .hero{position:relative;background:linear-gradient(170deg,var(--ink) 0%,#0c2521 100%);overflow:hidden}
@@ -209,22 +216,37 @@
 <header class="topbar">
   <div class="wrap">
     <div class="addr"><span class="pin">◉</span><span data-f="adresse">Litla Bjørnarøy, Uggdal – Tysnes</span></div>
-    <a class="btn" href="#kontakt">Meld interesse</a>
+    <div class="actions">
+      <span class="langwrap">
+        <svg class="globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <select id="lang" aria-label="Language">
+          <option value="no">Norsk</option>
+          <option value="en">English</option>
+          <option value="de">Deutsch</option>
+          <option value="fr">Français</option>
+          <option value="nl">Nederlands</option>
+          <option value="it">Italiano</option>
+          <option value="es">Español</option>
+          <option value="sv">Svenska</option>
+        </select>
+      </span>
+      <a class="btn" data-i="cta" href="#kontakt">Meld interesse</a>
+    </div>
   </div>
 </header>
 
 <section class="hero" id="hero">
 
   <div class="wrap">
-    <span class="badge" data-f="badge">Privat øy til salgs</span>
-    <h1>Drømmen om <em>egen øy</em> er til salgs</h1>
+    <span class="badge" data-i="badge">Privat øy til salgs</span>
+    <h1 id="h1">Drømmen om <em>egen øy</em> er til salgs</h1>
     <figure class="hero-img"><img src="bilder/00-drone-begge-hytter.jpg" alt="Litla Bjørnarøy fra luften – begge hyttene og bukten"></figure>
-    <p class="tagline" data-f="undertittel">Litla Bjørnarøy: ca. 75 mål med skog, lyng og egne sandstrender. To oppgraderte hytter, to kaier – ti minutter med båt fra Uggdal på Tysnes.</p>
-    <div class="price"><span data-f="prisantydning">12 900 000</span> <small>kr · prisantydning</small></div>
+    <p class="tagline" data-i="tagline"></p>
+    <div class="price"><span>12 900 000</span> <small data-i="price_label">kr · prisantydning</small></div>
     <div class="meta-row" id="chips"></div>
     <div class="hero-cta">
-      <a class="btn lg" href="#kontakt">Meld interesse</a>
-      <a class="btn lg ghost" data-f-href="finnUrl" href="https://www.finn.no/411431396" target="_blank" rel="noopener">Se annonsen på FINN</a>
+      <a class="btn lg" data-i="cta" href="#kontakt">Meld interesse</a>
+      <a class="btn lg ghost" data-i="cta_finn" data-f-href="finnUrl" href="https://www.finn.no/411431396" target="_blank" rel="noopener">Se annonsen på FINN</a>
     </div>
   </div>
 </section>
@@ -232,20 +254,21 @@
 <div class="stats-band">
   <div class="wrap">
     <div class="stats">
-      <div class="stat reveal"><div class="n">75<small> mål</small></div><div class="l">Hel øy – alt er ditt</div></div>
-      <div class="stat reveal"><div class="n">2<small> hytter</small></div><div class="l">4 soverom totalt</div></div>
-      <div class="stat reveal"><div class="n">2<small> kaier</small></div><div class="l">+ egne sandstrender</div></div>
-      <div class="stat reveal"><div class="n">10<small> min</small></div><div class="l">Med båt fra Uggdal</div></div>
+      <div class="stat reveal"><div class="n" id="s1n"></div><div class="l" id="s1l"></div></div>
+      <div class="stat reveal"><div class="n" id="s2n"></div><div class="l" id="s2l"></div></div>
+      <div class="stat reveal"><div class="n" id="s3n"></div><div class="l" id="s3l"></div></div>
+      <div class="stat reveal"><div class="n" id="s4n"></div><div class="l" id="s4l"></div></div>
     </div>
   </div>
+</div>
 </div>
 
 <section class="pad">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">Høydepunkter</div>
-      <h2>Dette må du få med deg</h2>
-      <p class="lead">Hele øyer med bebyggelse kommer nesten aldri for salg. Her er de tre viktigste grunnene til at Litla Bjørnarøy skiller seg ut.</p>
+      <div class="eyebrow" data-i="hl_eyebrow"></div>
+      <h2 data-i="hl_title"></h2>
+      <p class="lead" data-i="hl_lead"></p>
     </div>
     <div class="high-grid" id="highlights"></div>
   </div>
@@ -255,14 +278,14 @@
   <div class="wrap">
     <div class="about-grid">
       <div class="desc reveal">
-        <div class="eyebrow">Om eiendommen</div>
-        <h2 data-f="omTittel">Velkommen til Litla Bjørnarøy</h2>
+        <div class="eyebrow" data-i="about_eyebrow"></div>
+        <h2 data-i="about_title"></h2>
         <div id="beskrivelse" style="margin-top:18px"></div>
       </div>
       <aside class="facts reveal">
-        <h3>Nøkkelinfo</h3>
+        <h3 data-i="facts_title"></h3>
         <table id="fakta"></table>
-        <p class="note">Se komplett salgsoppgave hos megler for alle detaljer og forbehold.</p>
+        <p class="note" data-i="facts_note"></p>
       </aside>
     </div>
   </div>
@@ -271,9 +294,9 @@
 <section class="pad">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">Bildegalleri</div>
-      <h2>Se deg rundt</h2>
-      <p class="lead">Len deg tilbake – visningen går av seg selv. Du kan også bla med pilene eller miniatyrbildene.</p>
+      <div class="eyebrow" data-i="gal_eyebrow"></div>
+      <h2 data-i="gal_title"></h2>
+      <p class="lead" data-i="gal_lead"></p>
     </div>
     <div id="galleri"></div>
   </div>
@@ -283,9 +306,9 @@
   <div class="wrap">
     <div class="band reveal">
       <div class="inner">
-        <div class="eyebrow on-dark">Visning</div>
-        <h2>Opplev øyen selv</h2>
-        <p>Bilder yter ikke en hel øy rettferdighet. Ta kontakt med megler for å avtale visning – så ordner vi båtturen ut.</p>
+        <div class="eyebrow on-dark" data-i="vis_eyebrow"></div>
+        <h2 data-i="vis_title"></h2>
+        <p data-i="vis_text"></p>
         <div class="visning" id="visninger"></div>
       </div>
     </div>
@@ -294,12 +317,12 @@
       <div class="avatar" data-f="meglerInitialer">AL</div>
       <div>
         <h3 data-f="meglerNavn">Aleksander Lenning</h3>
-        <p><span data-f="meglerTittel">Eiendomsmegler / partner</span> · <span data-f="meglerFirma">Aktiv Eiendomsmegling Bergen Sentrum</span></p>
+        <p><span data-i="broker_role">Eiendomsmegler / partner</span> · <span>Aktiv Eiendomsmegling Bergen Sentrum</span></p>
         <p style="margin-top:6px"><a data-f-href="meglerTlfHref" data-f="meglerTlf" href="tel:+4791650495">916 50 495</a> · <a data-f-href="meglerEpostHref" data-f="meglerEpost" href="mailto:aleksander.lenning@aktiv.no">aleksander.lenning@aktiv.no</a></p>
       </div>
       <div class="links">
-        <a data-f-href="finnUrl" href="https://www.finn.no/411431396" target="_blank" rel="noopener">Annonsen på FINN →</a>
-        <a data-f-href="meglerUrl" href="https://aktiv.no/bolig/boliger-til-salgs/uggdal-bardsund-10-117003569" target="_blank" rel="noopener">Komplett salgsoppgave →</a>
+        <a data-i="link_finn" data-f-href="finnUrl" href="https://www.finn.no/411431396" target="_blank" rel="noopener">Annonsen på FINN →</a>
+        <a data-i="link_prospect" data-f-href="meglerUrl" href="https://aktiv.no/bolig/boliger-til-salgs/uggdal-bardsund-10-117003569" target="_blank" rel="noopener">Komplett salgsoppgave →</a>
       </div>
     </div>
   </div>
@@ -307,218 +330,122 @@
 
 <footer>
   <div class="wrap">
-    <span data-f="adresse">Litla Bjørnarøy, Uggdal – Tysnes</span> · Annonsert på <a data-f-href="finnUrl" href="https://www.finn.no/411431396" target="_blank" rel="noopener">FINN.no</a>
+    <span data-f="adresse">Litla Bjørnarøy, Uggdal – Tysnes</span> · <span data-i="footer_pre">Annonsert på</span> <a data-f-href="finnUrl" href="https://www.finn.no/411431396" target="_blank" rel="noopener">FINN.no</a>
   </div>
 </footer>
 
-<div class="stickycta"><a class="btn lg" href="#kontakt">Meld interesse</a></div>
+<div class="stickycta"><a class="btn lg" data-i="cta" href="#kontakt">Meld interesse</a></div>
 
 <script>
-/* ============================================================
-   ALT INNHOLD REDIGERES HER – resten av siden oppdaterer seg selv.
-   ============================================================ */
 const EIENDOM = {
-  adresse:        "Litla Bjørnarøy, Uggdal – Tysnes",
-  badge:          "Privat øy til salgs",
-  undertittel:    "Litla Bjørnarøy: ca. 75 mål med skog, lyng og egne sandstrender. To oppgraderte hytter, to kaier – ti minutter med båt fra Uggdal på Tysnes.",
-  prisantydning:  "12 900 000",
-  finnUrl:        "https://www.finn.no/411431396",
-  meglerUrl:      "https://aktiv.no/bolig/boliger-til-salgs/uggdal-bardsund-10-117003569",
-
-  chips: [
-    "Hel øy · ca. 75 mål",
-    "2 hytter · 4 soverom",
-    "2 kaier og sandstrender",
-    "10 min med båt fra Uggdal"
-  ],
-
-  hoydepunkter: [
-    { ikon: "island",
-      tittel: "Du eier hele øyen – alene",
-      tekst: "Ca. 75 mål med variert og frodig natur: skog, lyng, svaberg og egne sandstrender. Fullstendig skjermet og privat – et fristed det knapt finnes maken til i Vestland." },
-    { ikon: "cabin",
-      tittel: "To hytter i god stand",
-      tekst: "Bårdsund 10 og 12 er omfattende oppgradert de siste årene, med nye tak i aluminium og store innvendige forbedringer. Til sammen fire soverom – perfekt for storfamilie eller generasjonsprosjekt." },
-    { ikon: "boat",
-      tittel: "Sjøliv rett utenfor døren",
-      tekst: "To solide kaier gir trygg tilkomst for båt, og fastlandet ligger under ti minutter unna. Mulighet for å overta selgers båtplass i Uggdal Båtlag (forutsatt godkjenning fra båtlaget)." }
-  ],
-
-  omTittel: "Velkommen til Litla Bjørnarøy",
-  beskrivelse: [
-    "Nå har du en sjelden mulighet til å sikre deg din egen private øy. Litla Bjørnarøy ligger like utenfor Uggdal på Tysnes og byr på det ultimate fristedet – perfekt for ro, rekreasjon og naturopplevelser, med en idyllisk blanding av skog, lyng og åpne områder.",
-    "På øyen står to sjarmerende hytter med fantastisk utsikt. Begge er i god stand etter omfattende oppgraderinger de siste årene, blant annet nye tak i aluminium og betydelige innvendige forbedringer. Hovedhytten rommer stue og kjøkken i åpen løsning, bad og to soverom – og med begge hyttene har dere fire soverom og god plass til familie og gjester.",
-    "Her får du følelsen av å være i ditt eget paradis, samtidig som du kun er en kort båttur unna alle fasiliteter i Uggdal. Dette er et unikt og sjeldent tilbud – perfekte rammer for familiehytte, generasjonsprosjekt, eller for deg som rett og slett drømmer om ditt eget lille paradis."
-  ],
-
-  fakta: [
-    ["Prisantydning",   "kr 12 900 000"],
-    ["Totalpris",       "kr 13 223 850"],
-    ["Omkostninger",    "kr 323 850"],
-    ["Type",            "Fritidseiendom – hel øy"],
-    ["Eierform",        "Eiet (selveier)"],
-    ["Bygninger",       "2 hytter (Bårdsund 10 og 12)"],
-    ["Soverom",         "4 totalt"],
-    ["Byggeår",         "1969 – omfattende oppgradert"],
-    ["Tomt",            "ca. 75 mål – hele øyen"],
-    ["Kai",             "2 solide kaier"],
-    ["Til fastlandet",  "Under 10 min med båt"]
-  ],
-
-  // ======== BILDER – slik henter du dem fra megler sin nettside ========
-  // 1) Åpne annonsen: https://aktiv.no/bolig/boliger-til-salgs/uggdal-bardsund-10-117003569
-  // 2) Åpne bildegalleriet, HØYREKLIKK på et bilde → «Kopier bildeadresse»
-  // 3) Lim inn adressen her – én linje per bilde. Både fulle https://-adresser
-  //    (vises direkte fra meglers bildeserver) og lokale filer i eiendom/bilder/
-  //    fungerer. Ren tekst-URL eller { fil, tekst } med bildetekst – begge går.
-  // Første bilde brukes også som første bilde i toppen av siden.
-  // Så snart listen har bilder, starter den automatiske visningen av seg selv.
-  // Samme rekkefølge som meglers annonse på aktiv.no (bildenr. 2, 10, 11, 12, 14, 15, 81, 82 av 85),
-  // deretter egne bilder til slutt
-  bilder: [
-    { fil: "bilder/00-drone-begge-hytter.jpg",tekst: "Litla Bjørnarøy fra luften – begge hyttene, bukten og båtplassen" },
-    { fil: "bilder/05b-kajakk.jpg",           tekst: "Rett fra stranden ut i et padle-eldorado av viker og holmer" },
-    { fil: "bilder/04c-hytten-svaberg.jpg",   tekst: "Pent opparbeidet med stier og trapper rundt hyttene" },
-    { fil: "bilder/01-drone-oversikt.jpg",    tekst: "Hytten troner over egen bukt" },
-    { fil: "bilder/04b-hytten-hoyden.jpg",    tekst: "Bårdsund 10 på høyden – terrasse på begge sider" },
-    { fil: "bilder/03-hytten.jpg",            tekst: "Bårdsund 10 med terrasse rett over sjøkanten" },
-    { fil: "bilder/04-terrasse.jpg",          tekst: "Romslig terrasse med bålpanne og sjøutsikt" },
-    { fil: "bilder/06b-strandbukt.jpg",       tekst: "Nydelig sandstrand – egen liten badeplass" },
-    { fil: "bilder/02-drone-bukt.jpg",        tekst: "Øyen sett fra sjøen – begge hyttene mellom furuene" },
-    { fil: "bilder/05-sandstrand.jpg",        tekst: "Egen skjellsandstrand med krystallklart vann" },
-    { fil: "bilder/06-kveld-strand.jpg",      tekst: "Kveldsstemning ved stranden" },
-    { fil: "bilder/07-solnedgang-bukt.jpg",   tekst: "Solnedgang over badebukten" },
-    { fil: "bilder/08-solnedgang-veranda.jpg",tekst: "Utsikten fra verandaen en sommerkveld" },
-  ],
-
-  // Forslagsliste som vises i tomme rammer til bildene er på plass
-  bildeForslag: [
-    "Dronefoto av hele øyen",
-    "Hyttene i kveldssol",
-    "Sandstranden",
-    "Kaien og båtlivet",
-    "Utsikten mot Uggdal"
-  ],
-
-  visninger: [
-    "Visning etter avtale – ta kontakt med megler",
-    "Husk å avtale båtskyss ved visning"
-  ],
-
+  adresse:      "Litla Bjørnarøy, Uggdal – Tysnes",
+  finnUrl:      "https://www.finn.no/411431396",
+  meglerUrl:    "https://aktiv.no/bolig/boliger-til-salgs/uggdal-bardsund-10-117003569",
   meglerNavn:   "Aleksander Lenning",
-  meglerTittel: "Eiendomsmegler / partner",
-  meglerFirma:  "Aktiv Eiendomsmegling Bergen Sentrum",
   meglerTlf:    "916 50 495",
   meglerEpost:  "aleksander.lenning@aktiv.no"
 };
-/* ============ SLUTT PÅ REDIGERING – ikke endre under ============ */
+const BILDER = [{"fil": "bilder/00-drone-begge-hytter.jpg", "no": "Litla Bjørnarøy fra luften – begge hyttene, bukten og båtplassen", "en": "Litla Bjørnarøy from above – both cabins, the bay and the mooring"}, {"fil": "bilder/05b-kajakk.jpg", "no": "Rett fra stranden ut i et padle-eldorado av viker og holmer", "en": "Straight from the beach into a kayaking paradise of coves and islets"}, {"fil": "bilder/04c-hytten-svaberg.jpg", "no": "Pent opparbeidet med stier og trapper rundt hyttene", "en": "Well-kept paths and stairs around the cabins"}, {"fil": "bilder/01-drone-oversikt.jpg", "no": "Hytten troner over egen bukt", "en": "The cabin overlooking its own bay"}, {"fil": "bilder/04b-hytten-hoyden.jpg", "no": "Bårdsund 10 på høyden – terrasse på begge sider", "en": "Bårdsund 10 on the hill – terraces on both sides"}, {"fil": "bilder/03-hytten.jpg", "no": "Bårdsund 10 med terrasse rett over sjøkanten", "en": "Bårdsund 10 with a terrace right above the water"}, {"fil": "bilder/04-terrasse.jpg", "no": "Romslig terrasse med bålpanne og sjøutsikt", "en": "Spacious terrace with fire pit and fjord views"}, {"fil": "bilder/06b-strandbukt.jpg", "no": "Nydelig sandstrand – egen liten badeplass", "en": "Beautiful sandy beach – your own private swimming spot"}, {"fil": "bilder/02-drone-bukt.jpg", "no": "Øyen sett fra sjøen – begge hyttene mellom furuene", "en": "The island from the sea – both cabins among the pines"}, {"fil": "bilder/05-sandstrand.jpg", "no": "Egen skjellsandstrand med krystallklart vann", "en": "Private shell-sand beach with crystal-clear water"}, {"fil": "bilder/06-kveld-strand.jpg", "no": "Kveldsstemning ved stranden", "en": "Evening light on the beach"}, {"fil": "bilder/07-solnedgang-bukt.jpg", "no": "Solnedgang over badebukten", "en": "Sunset over the bathing cove"}, {"fil": "bilder/08-solnedgang-veranda.jpg", "no": "Utsikten fra verandaen en sommerkveld", "en": "The view from the veranda on a summer evening"}];
+const I18N = {"no": {"title": "Litla Bjørnarøy – din egen private øy til salgs | Tysnes", "badge": "Privat øy til salgs", "h1": "Drømmen om <em>egen øy</em> er til salgs", "tagline": "Litla Bjørnarøy: ca. 75 mål med skog, lyng og egne sandstrender. To oppgraderte hytter, to kaier – ti minutter med båt fra Uggdal på Tysnes.", "price_label": "kr · prisantydning", "cta": "Meld interesse", "cta_finn": "Se annonsen på FINN", "chips": ["Hel øy · ca. 75 mål", "2 hytter · 4 soverom", "2 kaier og sandstrender", "10 min med båt fra Uggdal"], "stats": [["75<small> mål</small>", "Hel øy – alt er ditt"], ["2<small> hytter</small>", "4 soverom totalt"], ["2<small> kaier</small>", "+ egne sandstrender"], ["10<small> min</small>", "Med båt fra Uggdal"]], "hl_eyebrow": "Høydepunkter", "hl_title": "Dette må du få med deg", "hl_lead": "Hele øyer med bebyggelse kommer nesten aldri for salg. Her er de tre viktigste grunnene til at Litla Bjørnarøy skiller seg ut.", "cards": [["Du eier hele øyen – alene", "Ca. 75 mål med variert og frodig natur: skog, lyng, svaberg og egne sandstrender. Fullstendig skjermet og privat – et fristed det knapt finnes maken til i Vestland."], ["To hytter i god stand", "Bårdsund 10 og 12 er omfattende oppgradert de siste årene, med nye tak i aluminium og store innvendige forbedringer. Til sammen fire soverom – perfekt for storfamilie eller generasjonsprosjekt."], ["Sjøliv rett utenfor døren", "To solide kaier gir trygg tilkomst for båt, og fastlandet ligger under ti minutter unna. Mulighet for å overta selgers båtplass i Uggdal Båtlag (forutsatt godkjenning fra båtlaget)."]], "about_eyebrow": "Om eiendommen", "about_title": "Velkommen til Litla Bjørnarøy", "paras": ["Nå har du en sjelden mulighet til å sikre deg din egen private øy. Litla Bjørnarøy ligger like utenfor Uggdal på Tysnes og byr på det ultimate fristedet – perfekt for ro, rekreasjon og naturopplevelser, med en idyllisk blanding av skog, lyng og åpne områder.", "På øyen står to sjarmerende hytter med fantastisk utsikt. Begge er i god stand etter omfattende oppgraderinger de siste årene, blant annet nye tak i aluminium og betydelige innvendige forbedringer. Hovedhytten rommer stue og kjøkken i åpen løsning, bad og to soverom – og med begge hyttene har dere fire soverom og god plass til familie og gjester.", "Her får du følelsen av å være i ditt eget paradis, samtidig som du kun er en kort båttur unna alle fasiliteter i Uggdal. Dette er et unikt og sjeldent tilbud – perfekte rammer for familiehytte, generasjonsprosjekt, eller for deg som rett og slett drømmer om ditt eget lille paradis."], "facts_title": "Nøkkelinfo", "facts": [["Prisantydning", "kr 12 900 000"], ["Totalpris", "kr 13 223 850"], ["Omkostninger", "kr 323 850"], ["Type", "Fritidseiendom – hel øy"], ["Eierform", "Eiet (selveier)"], ["Bygninger", "2 hytter (Bårdsund 10 og 12)"], ["Soverom", "4 totalt"], ["Byggeår", "1969 – omfattende oppgradert"], ["Tomt", "ca. 75 mål – hele øyen"], ["Kai", "2 solide kaier"], ["Til fastlandet", "Under 10 min med båt"]], "facts_note": "Se komplett salgsoppgave hos megler for alle detaljer og forbehold.", "gal_eyebrow": "Bildegalleri", "gal_title": "Se deg rundt", "gal_lead": "Len deg tilbake – visningen går av seg selv. Du kan også bla med pilene eller miniatyrbildene.", "vis_eyebrow": "Visning", "vis_title": "Opplev øyen selv", "vis_text": "Bilder yter ikke en hel øy rettferdighet. Ta kontakt med megler for å avtale visning – så ordner vi båtturen ut.", "vis_items": ["Visning etter avtale – ta kontakt med megler", "Husk å avtale båtskyss ved visning"], "broker_role": "Eiendomsmegler / partner", "link_finn": "Annonsen på FINN →", "link_prospect": "Komplett salgsoppgave →", "footer_pre": "Annonsert på"}, "en": {"title": "Private Island for Sale – Litla Bjørnarøy, Norway", "badge": "Private island for sale", "h1": "The dream of <em>your own island</em> is for sale", "tagline": "Litla Bjørnarøy: a 75,000 m² private island with forest, heather and its own sandy beaches. Two upgraded cabins, two quays – ten minutes by boat from the mainland, about an hour from Bergen.", "price_label": "NOK · asking price (≈ €1.1M)", "cta": "Register interest", "cta_finn": "View the listing on FINN", "chips": ["Entire island · 75,000 m²", "2 cabins · 4 bedrooms", "2 quays & sandy beaches", "10 min by boat to the mainland"], "stats": [["75<small>,000 m²</small>", "One island – all yours"], ["2<small> cabins</small>", "4 bedrooms in total"], ["2<small> quays</small>", "+ private sandy beaches"], ["10<small> min</small>", "By boat to the mainland"]], "hl_eyebrow": "Highlights", "hl_title": "What makes it extraordinary", "hl_lead": "Entire private islands with buildings almost never come to market in Norway. Three reasons Litla Bjørnarøy stands out.", "cards": [["You own the entire island", "About 75,000 m² of varied, lush nature: forest, heather, smooth coastal rock and private sandy beaches. Completely secluded – a retreat with few equals on Norway's west coast."], ["Two well-kept cabins", "Bårdsund 10 and 12 have been extensively upgraded in recent years, including new aluminium roofs and major interior improvements. Four bedrooms in total – ideal for a large family or a shared purchase."], ["The fjord at your doorstep", "Two solid quays give safe access by boat, and the mainland is less than ten minutes away. The seller's berth in the local marina may be taken over (subject to approval)."]], "about_eyebrow": "The property", "about_title": "Welcome to Litla Bjørnarøy", "paras": ["A rare opportunity to secure your own private island. Litla Bjørnarøy lies just off Uggdal on the island of Tysnes, about an hour from Bergen – the ultimate retreat for peace, recreation and unspoilt Norwegian nature.", "The island holds two charming cabins with magnificent views, both in good condition after extensive upgrades in recent years, including new aluminium roofs. The main cabin offers an open-plan living room and kitchen, a bathroom and two bedrooms – four bedrooms in all across the two cabins.", "Here you get the feeling of your own paradise, yet every amenity is only a short boat ride away. A truly rare offering – perfect as a family retreat, a generational project, or simply for anyone who dreams of their own island in the Norwegian fjords."], "facts_title": "Key facts", "facts": [["Asking price", "NOK 12,900,000 (≈ €1.1M)"], ["Total price", "NOK 13,223,850"], ["Costs", "NOK 323,850"], ["Type", "Leisure property – entire island"], ["Ownership", "Freehold"], ["Buildings", "2 cabins (Bårdsund 10 & 12)"], ["Bedrooms", "4 in total"], ["Built", "1969 – extensively upgraded"], ["Land", "≈ 75,000 m² – the entire island"], ["Quays", "2 solid quays"], ["To the mainland", "Under 10 min by boat"]], "facts_note": "See the complete prospectus from the agent for all details and reservations.", "gal_eyebrow": "Gallery", "gal_title": "Look around", "gal_lead": "Sit back – the tour plays by itself. You can also browse with the arrows or the thumbnails.", "vis_eyebrow": "Viewing", "vis_title": "Experience the island yourself", "vis_text": "Pictures never do a whole island justice. Contact the agent to arrange a private viewing, and we will arrange the boat trip out.", "vis_items": ["Viewings by appointment – contact the agent", "International buyers welcome – viewings in English"], "broker_role": "Real estate agent / partner", "link_finn": "The listing on FINN →", "link_prospect": "Complete prospectus →", "footer_pre": "Listed on"}, "de": {"title": "Privatinsel zu verkaufen – Litla Bjørnarøy, Norwegen", "badge": "Privatinsel zu verkaufen", "h1": "Der Traum von der <em>eigenen Insel</em> steht zum Verkauf", "tagline": "Litla Bjørnarøy: 75.000 m² Privatinsel mit Wald, Heide und eigenen Sandstränden. Zwei modernisierte Hütten, zwei Kais – zehn Bootsminuten vom Festland, rund eine Stunde von Bergen.", "price_label": "NOK · Preisvorstellung (≈ 1,1 Mio. €)", "cta": "Interesse melden", "cta_finn": "Inserat auf FINN ansehen", "chips": ["Ganze Insel · 75.000 m²", "2 Hütten · 4 Schlafzimmer", "2 Kais & Sandstrände", "10 Bootsminuten zum Festland"], "stats": [["75<small>.000 m²</small>", "Eine Insel – ganz für Sie"], ["2<small> Hütten</small>", "4 Schlafzimmer insgesamt"], ["2<small> Kais</small>", "+ eigene Sandstrände"], ["10<small> Min.</small>", "Mit dem Boot zum Festland"]], "hl_eyebrow": "Höhepunkte", "hl_title": "Was diese Insel besonders macht", "hl_lead": "Ganze Privatinseln mit Gebäuden kommen in Norwegen fast nie auf den Markt. Drei Gründe, warum Litla Bjørnarøy heraussticht.", "cards": [["Die ganze Insel gehört Ihnen", "Rund 75.000 m² abwechslungsreiche Natur: Wald, Heide, Felsen und eigene Sandstrände. Völlig abgeschirmt und privat – ein Refugium, wie es an Norwegens Westküste kaum ein zweites gibt."], ["Zwei gepflegte Hütten", "Bårdsund 10 und 12 wurden in den letzten Jahren umfassend modernisiert, u. a. mit neuen Aluminiumdächern. Insgesamt vier Schlafzimmer – ideal für Großfamilien oder den gemeinsamen Kauf."], ["Der Fjord vor der Tür", "Zwei solide Kais bieten sicheren Bootszugang, das Festland liegt keine zehn Minuten entfernt. Der Liegeplatz des Verkäufers im örtlichen Bootshafen kann übernommen werden (vorbehaltlich Genehmigung)."]], "about_eyebrow": "Die Immobilie", "about_title": "Willkommen auf Litla Bjørnarøy", "paras": ["Eine seltene Gelegenheit, sich die eigene Privatinsel zu sichern. Litla Bjørnarøy liegt direkt vor Uggdal auf Tysnes, etwa eine Stunde von Bergen – das ultimative Refugium für Ruhe, Erholung und unberührte norwegische Natur.", "Auf der Insel stehen zwei charmante Hütten mit herrlicher Aussicht, beide nach umfassenden Modernisierungen in gutem Zustand, u. a. mit neuen Aluminiumdächern. Die Haupthütte bietet Wohnzimmer und Küche in offener Lösung, Bad und zwei Schlafzimmer – insgesamt vier Schlafzimmer in beiden Hütten.", "Hier haben Sie Ihr eigenes Paradies – und sind doch nur eine kurze Bootsfahrt von allen Annehmlichkeiten entfernt. Ein wahrhaft seltenes Angebot: perfekt als Familienrefugium, Generationenprojekt oder für alle, die von der eigenen Insel im Fjord träumen."], "facts_title": "Eckdaten", "facts": [["Preisvorstellung", "NOK 12.900.000 (≈ 1,1 Mio. €)"], ["Gesamtpreis", "NOK 13.223.850"], ["Nebenkosten", "NOK 323.850"], ["Art", "Freizeitimmobilie – ganze Insel"], ["Eigentum", "Volleigentum"], ["Gebäude", "2 Hütten (Bårdsund 10 & 12)"], ["Schlafzimmer", "4 insgesamt"], ["Baujahr", "1969 – umfassend modernisiert"], ["Grundstück", "≈ 75.000 m² – die ganze Insel"], ["Kais", "2 solide Kais"], ["Zum Festland", "Unter 10 Min. mit dem Boot"]], "facts_note": "Alle Details und Vorbehalte finden Sie im vollständigen Exposé des Maklers.", "gal_eyebrow": "Galerie", "gal_title": "Sehen Sie sich um", "gal_lead": "Lehnen Sie sich zurück – die Tour läuft von selbst. Sie können auch mit den Pfeilen oder Vorschaubildern blättern.", "vis_eyebrow": "Besichtigung", "vis_title": "Erleben Sie die Insel selbst", "vis_text": "Bilder werden einer ganzen Insel nie gerecht. Kontaktieren Sie den Makler für eine private Besichtigung – die Bootsfahrt wird organisiert.", "vis_items": ["Besichtigung nach Vereinbarung – Makler kontaktieren", "Internationale Käufer willkommen – Besichtigung auf Englisch"], "broker_role": "Immobilienmakler / Partner", "link_finn": "Inserat auf FINN →", "link_prospect": "Vollständiges Exposé →", "footer_pre": "Inseriert auf"}, "fr": {"title": "Île privée à vendre – Litla Bjørnarøy, Norvège", "badge": "Île privée à vendre", "h1": "Le rêve d'une <em>île privée</em> est à vendre", "tagline": "Litla Bjørnarøy : une île privée de 75 000 m² avec forêt, bruyère et plages de sable privées. Deux chalets rénovés, deux quais – à dix minutes en bateau du continent, environ une heure de Bergen.", "price_label": "NOK · prix indicatif (≈ 1,1 M€)", "cta": "Manifester son intérêt", "cta_finn": "Voir l'annonce sur FINN", "chips": ["Île entière · 75 000 m²", "2 chalets · 4 chambres", "2 quais et plages de sable", "À 10 min en bateau du continent"], "stats": [["75<small> 000 m²</small>", "Une île entière – à vous"], ["2<small> chalets</small>", "4 chambres au total"], ["2<small> quais</small>", "+ plages de sable privées"], ["10<small> min</small>", "En bateau du continent"]], "hl_eyebrow": "Points forts", "hl_title": "Ce qui la rend exceptionnelle", "hl_lead": "Des îles privées entières avec bâtiments n'arrivent presque jamais sur le marché en Norvège. Trois raisons pour lesquelles Litla Bjørnarøy se distingue.", "cards": [["L'île entière vous appartient", "Environ 75 000 m² de nature variée et luxuriante : forêt, bruyère, rochers côtiers et plages de sable privées. Totalement isolée – un refuge presque sans égal sur la côte ouest de la Norvège."], ["Deux chalets bien entretenus", "Bårdsund 10 et 12 ont été largement rénovés ces dernières années, notamment avec de nouveaux toits en aluminium. Quatre chambres au total – idéal pour une grande famille ou un achat partagé."], ["Le fjord à votre porte", "Deux quais solides offrent un accès sûr en bateau, et le continent est à moins de dix minutes. La place de bateau du vendeur au port local peut être reprise (sous réserve d'approbation)."]], "about_eyebrow": "La propriété", "about_title": "Bienvenue à Litla Bjørnarøy", "paras": ["Une occasion rare d'acquérir votre propre île privée. Litla Bjørnarøy se situe juste au large d'Uggdal sur Tysnes, à environ une heure de Bergen – le refuge ultime pour le calme, la détente et la nature norvégienne préservée.", "L'île abrite deux charmants chalets avec une vue magnifique, tous deux en bon état après d'importantes rénovations, dont de nouveaux toits en aluminium. Le chalet principal offre un séjour-cuisine ouvert, une salle de bains et deux chambres – quatre chambres au total dans les deux chalets.", "Ici, vous vivez dans votre propre paradis, tout en restant à quelques minutes en bateau de toutes les commodités. Une offre véritablement rare – parfaite comme refuge familial, projet générationnel, ou pour quiconque rêve de sa propre île dans les fjords."], "facts_title": "Informations clés", "facts": [["Prix indicatif", "NOK 12 900 000 (≈ 1,1 M€)"], ["Prix total", "NOK 13 223 850"], ["Frais", "NOK 323 850"], ["Type", "Résidence de loisirs – île entière"], ["Propriété", "Pleine propriété"], ["Bâtiments", "2 chalets (Bårdsund 10 et 12)"], ["Chambres", "4 au total"], ["Construction", "1969 – largement rénovés"], ["Terrain", "≈ 75 000 m² – l'île entière"], ["Quais", "2 quais solides"], ["Vers le continent", "Moins de 10 min en bateau"]], "facts_note": "Consultez le dossier de vente complet auprès de l'agent pour tous les détails et réserves.", "gal_eyebrow": "Galerie", "gal_title": "Regardez autour de vous", "gal_lead": "Installez-vous – la visite défile toute seule. Vous pouvez aussi naviguer avec les flèches ou les miniatures.", "vis_eyebrow": "Visite", "vis_title": "Venez découvrir l'île", "vis_text": "Les photos ne rendent jamais justice à une île entière. Contactez l'agent pour organiser une visite privée – la traversée en bateau sera organisée.", "vis_items": ["Visites sur rendez-vous – contactez l'agent", "Acheteurs internationaux bienvenus – visites en anglais"], "broker_role": "Agent immobilier / associé", "link_finn": "L'annonce sur FINN →", "link_prospect": "Dossier de vente complet →", "footer_pre": "Annoncé sur"}, "nl": {"title": "Privé-eiland te koop – Litla Bjørnarøy, Noorwegen", "badge": "Privé-eiland te koop", "h1": "De droom van een <em>eigen eiland</em> staat te koop", "tagline": "Litla Bjørnarøy: een privé-eiland van 75.000 m² met bos, heide en eigen zandstranden. Twee gerenoveerde huisjes, twee kades – tien minuten varen van het vasteland, ongeveer een uur van Bergen.", "price_label": "NOK · vraagprijs (≈ € 1,1 mln)", "cta": "Interesse melden", "cta_finn": "Bekijk de advertentie op FINN", "chips": ["Heel eiland · 75.000 m²", "2 huisjes · 4 slaapkamers", "2 kades & zandstranden", "10 min varen naar het vasteland"], "stats": [["75<small>.000 m²</small>", "Eén eiland – helemaal van u"], ["2<small> huisjes</small>", "4 slaapkamers in totaal"], ["2<small> kades</small>", "+ eigen zandstranden"], ["10<small> min</small>", "Varen naar het vasteland"]], "hl_eyebrow": "Hoogtepunten", "hl_title": "Wat dit eiland bijzonder maakt", "hl_lead": "Complete privé-eilanden met bebouwing komen in Noorwegen vrijwel nooit op de markt. Drie redenen waarom Litla Bjørnarøy eruit springt.", "cards": [["Het hele eiland is van u", "Zo'n 75.000 m² gevarieerde, weelderige natuur: bos, heide, rotsen en eigen zandstranden. Volledig afgeschermd – een toevluchtsoord dat aan de Noorse westkust zijn gelijke niet kent."], ["Twee goed onderhouden huisjes", "Bårdsund 10 en 12 zijn de afgelopen jaren grondig gerenoveerd, onder meer met nieuwe aluminium daken. In totaal vier slaapkamers – ideaal voor een groot gezin of gezamenlijke aankoop."], ["De fjord voor de deur", "Twee stevige kades bieden veilige toegang per boot en het vasteland ligt op nog geen tien minuten. De ligplaats van de verkoper in de lokale haven kan worden overgenomen (onder voorbehoud van goedkeuring)."]], "about_eyebrow": "Het object", "about_title": "Welkom op Litla Bjørnarøy", "paras": ["Een zeldzame kans om uw eigen privé-eiland te bemachtigen. Litla Bjørnarøy ligt vlak voor Uggdal op Tysnes, ongeveer een uur van Bergen – het ultieme toevluchtsoord voor rust, recreatie en ongerepte Noorse natuur.", "Op het eiland staan twee charmante huisjes met prachtig uitzicht, beide in goede staat na grondige renovaties, waaronder nieuwe aluminium daken. Het hoofdhuisje biedt een open woonkamer met keuken, een badkamer en twee slaapkamers – vier slaapkamers in totaal.", "Hier waant u zich in uw eigen paradijs, terwijl alle voorzieningen slechts een korte boottocht verwijderd zijn. Een werkelijk zeldzaam aanbod – perfect als familieretraite, generatieproject, of voor iedereen die droomt van een eigen eiland in de fjorden."], "facts_title": "Kerngegevens", "facts": [["Vraagprijs", "NOK 12.900.000 (≈ € 1,1 mln)"], ["Totaalprijs", "NOK 13.223.850"], ["Kosten", "NOK 323.850"], ["Type", "Recreatiewoning – heel eiland"], ["Eigendom", "Volle eigendom"], ["Gebouwen", "2 huisjes (Bårdsund 10 & 12)"], ["Slaapkamers", "4 in totaal"], ["Bouwjaar", "1969 – grondig gerenoveerd"], ["Perceel", "≈ 75.000 m² – het hele eiland"], ["Kades", "2 stevige kades"], ["Naar het vasteland", "Minder dan 10 min varen"]], "facts_note": "Zie het volledige verkoopdossier bij de makelaar voor alle details en voorbehouden.", "gal_eyebrow": "Galerij", "gal_title": "Kijk rond", "gal_lead": "Leun achterover – de tour speelt vanzelf af. U kunt ook bladeren met de pijlen of miniaturen.", "vis_eyebrow": "Bezichtiging", "vis_title": "Ervaar het eiland zelf", "vis_text": "Foto's doen een heel eiland nooit recht. Neem contact op met de makelaar voor een privébezichtiging – de boottocht wordt geregeld.", "vis_items": ["Bezichtiging op afspraak – neem contact op met de makelaar", "Internationale kopers welkom – bezichtiging in het Engels"], "broker_role": "Makelaar / partner", "link_finn": "De advertentie op FINN →", "link_prospect": "Volledig verkoopdossier →", "footer_pre": "Geadverteerd op"}, "it": {"title": "Isola privata in vendita – Litla Bjørnarøy, Norvegia", "badge": "Isola privata in vendita", "h1": "Il sogno di <em>un'isola privata</em> è in vendita", "tagline": "Litla Bjørnarøy: un'isola privata di 75.000 m² con bosco, brughiera e spiagge di sabbia private. Due chalet ristrutturati, due moli – a dieci minuti di barca dalla terraferma, circa un'ora da Bergen.", "price_label": "NOK · prezzo indicativo (≈ 1,1 mln €)", "cta": "Manifesta interesse", "cta_finn": "Vedi l'annuncio su FINN", "chips": ["Isola intera · 75.000 m²", "2 chalet · 4 camere", "2 moli e spiagge di sabbia", "10 min di barca dalla terraferma"], "stats": [["75<small>.000 m²</small>", "Un'isola intera – tutta vostra"], ["2<small> chalet</small>", "4 camere in totale"], ["2<small> moli</small>", "+ spiagge private"], ["10<small> min</small>", "In barca dalla terraferma"]], "hl_eyebrow": "Punti di forza", "hl_title": "Cosa la rende straordinaria", "hl_lead": "Isole private intere con edifici non arrivano quasi mai sul mercato in Norvegia. Tre motivi per cui Litla Bjørnarøy si distingue.", "cards": [["L'intera isola è vostra", "Circa 75.000 m² di natura varia e rigogliosa: bosco, brughiera, scogli e spiagge di sabbia private. Completamente isolata – un rifugio quasi senza eguali sulla costa occidentale norvegese."], ["Due chalet ben tenuti", "Bårdsund 10 e 12 sono stati ampiamente ristrutturati negli ultimi anni, con nuovi tetti in alluminio. Quattro camere in totale – ideale per una famiglia numerosa o un acquisto condiviso."], ["Il fiordo sulla porta di casa", "Due solidi moli garantiscono un accesso sicuro in barca e la terraferma dista meno di dieci minuti. Il posto barca del venditore nel porto locale può essere rilevato (previa approvazione)."]], "about_eyebrow": "La proprietà", "about_title": "Benvenuti a Litla Bjørnarøy", "paras": ["Un'occasione rara per assicurarsi la propria isola privata. Litla Bjørnarøy si trova appena al largo di Uggdal sull'isola di Tysnes, a circa un'ora da Bergen – il rifugio definitivo per pace, relax e natura norvegese incontaminata.", "Sull'isola sorgono due incantevoli chalet con vista magnifica, entrambi in buone condizioni dopo ampie ristrutturazioni, tra cui nuovi tetti in alluminio. Lo chalet principale offre soggiorno e cucina open space, bagno e due camere – quattro camere in totale.", "Qui vivrete nel vostro paradiso privato, restando a pochi minuti di barca da ogni comodità. Un'offerta davvero rara – perfetta come rifugio di famiglia, progetto generazionale, o per chi sogna la propria isola nei fiordi."], "facts_title": "Dati principali", "facts": [["Prezzo indicativo", "NOK 12.900.000 (≈ 1,1 mln €)"], ["Prezzo totale", "NOK 13.223.850"], ["Spese", "NOK 323.850"], ["Tipo", "Immobile per vacanze – isola intera"], ["Proprietà", "Piena proprietà"], ["Edifici", "2 chalet (Bårdsund 10 e 12)"], ["Camere", "4 in totale"], ["Anno di costruzione", "1969 – ampiamente ristrutturati"], ["Terreno", "≈ 75.000 m² – l'intera isola"], ["Moli", "2 moli solidi"], ["Alla terraferma", "Meno di 10 min in barca"]], "facts_note": "Per tutti i dettagli e le riserve, consultare il fascicolo di vendita completo presso l'agente.", "gal_eyebrow": "Galleria", "gal_title": "Guardatevi intorno", "gal_lead": "Rilassatevi – il tour scorre da solo. Potete anche sfogliare con le frecce o le miniature.", "vis_eyebrow": "Visita", "vis_title": "Vivete l'isola di persona", "vis_text": "Le foto non rendono mai giustizia a un'isola intera. Contattate l'agente per una visita privata – la traversata in barca sarà organizzata.", "vis_items": ["Visite su appuntamento – contattare l'agente", "Acquirenti internazionali benvenuti – visite in inglese"], "broker_role": "Agente immobiliare / partner", "link_finn": "L'annuncio su FINN →", "link_prospect": "Fascicolo di vendita completo →", "footer_pre": "Annunciato su"}, "es": {"title": "Isla privada en venta – Litla Bjørnarøy, Noruega", "badge": "Isla privada en venta", "h1": "El sueño de <em>una isla propia</em> está en venta", "tagline": "Litla Bjørnarøy: una isla privada de 75.000 m² con bosque, brezales y playas de arena propias. Dos cabañas renovadas, dos muelles – a diez minutos en barco del continente, aproximadamente una hora de Bergen.", "price_label": "NOK · precio orientativo (≈ 1,1 M€)", "cta": "Mostrar interés", "cta_finn": "Ver el anuncio en FINN", "chips": ["Isla entera · 75.000 m²", "2 cabañas · 4 dormitorios", "2 muelles y playas de arena", "10 min en barco al continente"], "stats": [["75<small>.000 m²</small>", "Una isla entera – toda suya"], ["2<small> cabañas</small>", "4 dormitorios en total"], ["2<small> muelles</small>", "+ playas privadas"], ["10<small> min</small>", "En barco al continente"]], "hl_eyebrow": "Puntos destacados", "hl_title": "Qué la hace extraordinaria", "hl_lead": "Islas privadas enteras con edificaciones casi nunca salen al mercado en Noruega. Tres razones por las que Litla Bjørnarøy destaca.", "cards": [["La isla entera es suya", "Unos 75.000 m² de naturaleza variada y exuberante: bosque, brezales, rocas costeras y playas de arena privadas. Totalmente aislada – un refugio casi sin igual en la costa oeste de Noruega."], ["Dos cabañas bien cuidadas", "Bårdsund 10 y 12 han sido ampliamente renovadas en los últimos años, incluyendo nuevos tejados de aluminio. Cuatro dormitorios en total – ideal para una familia numerosa o una compra compartida."], ["El fiordo en la puerta", "Dos muelles sólidos ofrecen acceso seguro en barco, y el continente está a menos de diez minutos. El amarre del vendedor en el puerto local puede transferirse (sujeto a aprobación)."]], "about_eyebrow": "La propiedad", "about_title": "Bienvenidos a Litla Bjørnarøy", "paras": ["Una oportunidad única de hacerse con su propia isla privada. Litla Bjørnarøy se encuentra frente a Uggdal en Tysnes, a una hora de Bergen – el refugio definitivo para la paz, el descanso y la naturaleza noruega virgen.", "En la isla hay dos encantadoras cabañas con vistas magníficas, ambas en buen estado tras amplias renovaciones, incluidos nuevos tejados de aluminio. La cabaña principal ofrece salón y cocina abiertos, baño y dos dormitorios – cuatro dormitorios en total.", "Aquí sentirá que vive en su propio paraíso, con todas las comodidades a solo un corto trayecto en barco. Una oferta verdaderamente excepcional – perfecta como refugio familiar, proyecto generacional, o para quien sueña con su propia isla en los fiordos."], "facts_title": "Datos clave", "facts": [["Precio orientativo", "NOK 12.900.000 (≈ 1,1 M€)"], ["Precio total", "NOK 13.223.850"], ["Gastos", "NOK 323.850"], ["Tipo", "Propiedad vacacional – isla entera"], ["Régimen", "Plena propiedad"], ["Edificaciones", "2 cabañas (Bårdsund 10 y 12)"], ["Dormitorios", "4 en total"], ["Año de construcción", "1969 – ampliamente renovadas"], ["Terreno", "≈ 75.000 m² – la isla entera"], ["Muelles", "2 muelles sólidos"], ["Al continente", "Menos de 10 min en barco"]], "facts_note": "Consulte el expediente de venta completo con el agente para todos los detalles y reservas.", "gal_eyebrow": "Galería", "gal_title": "Mire a su alrededor", "gal_lead": "Relájese – el recorrido avanza solo. También puede navegar con las flechas o las miniaturas.", "vis_eyebrow": "Visita", "vis_title": "Viva la isla en persona", "vis_text": "Las fotos nunca hacen justicia a una isla entera. Contacte con el agente para una visita privada – el trayecto en barco está organizado.", "vis_items": ["Visitas con cita previa – contacte con el agente", "Compradores internacionales bienvenidos – visitas en inglés"], "broker_role": "Agente inmobiliario / socio", "link_finn": "El anuncio en FINN →", "link_prospect": "Expediente de venta completo →", "footer_pre": "Anunciado en"}, "sv": {"title": "Privat ö till salu – Litla Bjørnarøy, Norge", "badge": "Privat ö till salu", "h1": "Drömmen om <em>en egen ö</em> är till salu", "tagline": "Litla Bjørnarøy: en privat ö på 75 000 m² med skog, ljung och egna sandstränder. Två renoverade stugor, två bryggor – tio minuter med båt från fastlandet, cirka en timme från Bergen.", "price_label": "NOK · utgångspris (≈ 1,1 M€)", "cta": "Anmäl intresse", "cta_finn": "Se annonsen på FINN", "chips": ["Hel ö · 75 000 m²", "2 stugor · 4 sovrum", "2 bryggor och sandstränder", "10 min med båt till fastlandet"], "stats": [["75<small> 000 m²</small>", "En hel ö – allt är ditt"], ["2<small> stugor</small>", "4 sovrum totalt"], ["2<small> bryggor</small>", "+ egna sandstränder"], ["10<small> min</small>", "Med båt till fastlandet"]], "hl_eyebrow": "Höjdpunkter", "hl_title": "Det som gör ön unik", "hl_lead": "Hela privata öar med bebyggelse kommer nästan aldrig ut på marknaden i Norge. Tre skäl till att Litla Bjørnarøy sticker ut.", "cards": [["Du äger hela ön – själv", "Cirka 75 000 m² varierad och frodig natur: skog, ljung, klippor och egna sandstränder. Helt avskilt – en fristad som saknar motstycke på norska västkusten."], ["Två välskötta stugor", "Bårdsund 10 och 12 har genomgått omfattande renoveringar de senaste åren, bland annat nya aluminiumtak. Fyra sovrum totalt – perfekt för storfamiljen eller ett delat köp."], ["Fjorden utanför dörren", "Två rejäla bryggor ger trygg tillgång med båt, och fastlandet ligger mindre än tio minuter bort. Säljarens båtplats i den lokala hamnen kan tas över (efter godkännande)."]], "about_eyebrow": "Om fastigheten", "about_title": "Välkommen till Litla Bjørnarøy", "paras": ["En sällsynt möjlighet att säkra din egen privata ö. Litla Bjørnarøy ligger strax utanför Uggdal på Tysnes, ungefär en timme från Bergen – den ultimata fristaden för lugn, rekreation och orörd norsk natur.", "På ön står två charmiga stugor med fantastisk utsikt, båda i gott skick efter omfattande renoveringar, bland annat nya aluminiumtak. Huvudstugan rymmer vardagsrum och kök i öppen lösning, badrum och två sovrum – fyra sovrum totalt.", "Här får du känslan av ett eget paradis, samtidigt som alla bekvämligheter bara är en kort båttur bort. Ett verkligt sällsynt erbjudande – perfekt som familjeställe, generationsprojekt eller för dig som drömmer om en egen ö i fjordarna."], "facts_title": "Nyckelfakta", "facts": [["Utgångspris", "NOK 12 900 000 (≈ 1,1 M€)"], ["Totalpris", "NOK 13 223 850"], ["Kostnader", "NOK 323 850"], ["Typ", "Fritidsfastighet – hel ö"], ["Ägandeform", "Äganderätt"], ["Byggnader", "2 stugor (Bårdsund 10 och 12)"], ["Sovrum", "4 totalt"], ["Byggår", "1969 – omfattande renoverade"], ["Tomt", "≈ 75 000 m² – hela ön"], ["Bryggor", "2 rejäla bryggor"], ["Till fastlandet", "Under 10 min med båt"]], "facts_note": "Se den fullständiga objektbeskrivningen hos mäklaren för alla detaljer och förbehåll.", "gal_eyebrow": "Bildgalleri", "gal_title": "Se dig omkring", "gal_lead": "Luta dig tillbaka – visningen rullar av sig själv. Du kan också bläddra med pilarna eller miniatyrerna.", "vis_eyebrow": "Visning", "vis_title": "Upplev ön själv", "vis_text": "Bilder gör aldrig en hel ö rättvisa. Kontakta mäklaren för en privat visning – båtturen ordnas.", "vis_items": ["Visning enligt överenskommelse – kontakta mäklaren", "Internationella köpare välkomna – visning på engelska"], "broker_role": "Fastighetsmäklare / partner", "link_finn": "Annonsen på FINN →", "link_prospect": "Fullständig objektbeskrivning →", "footer_pre": "Annonserad på"}};
 
-(function render(){
+(function(){
   const d = EIENDOM;
-  const isPh = v => typeof v === "string" && v.includes("FYLL INN");
-  let todo = false;
-  const mark = (el,v) => { el.textContent = v; if(isPh(v)){ el.classList.add("ph"); todo = true; } };
-
   const IKON = {
     island: '<svg viewBox="0 0 24 24" fill="none" stroke="#dcf263" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20c1.5-1 3-1 4.5 0s3 1 4.5 0 3-1 4.5 0 3 1 4.5 0"/><path d="M6 16c0-4 2.5-7 6-7s6 3 6 7"/><path d="M12 9V4"/><path d="M12 4c2 0 3.5 1 4 2.5C14 7 12.5 6.5 12 5"/><path d="M12 4c-2 .5-3.5 2-3.5 4C10.5 8 12 6.5 12 5"/></svg>',
     cabin:  '<svg viewBox="0 0 24 24" fill="none" stroke="#dcf263" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><rect x="10" y="14" width="4" height="6"/></svg>',
-    boat:   '<svg viewBox="0 0 24 24" fill="none" stroke="#dcf263" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15h16l-2 4H6z"/><path d="M12 15V5"/><path d="M12 5c3 1 5 3.5 5.5 7H12z"/><path d="M2 21c1.5-1 3-1 4.5 0s3 1 4.5 0 3-1 4.5 0 3 1 4.5 0"/></svg>'
+    boat:   '<svg viewBox="0 0 24 24" fill="none" stroke="#dcf263" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15h16l-2 4H6z"/><path d="M12 15V5"/><path d="M12 5c3 1 5 3.5 7 7H12z"/><path d="M2 21c1.5-1 3-1 4.5 0s3 1 4.5 0 3-1 4.5 0 3 1 4.5 0"/></svg>'
   };
+  const IKONER = ["island","cabin","boat"];
 
-  document.querySelectorAll("[data-f]").forEach(el => {
-    const k = el.getAttribute("data-f");
-    if (k === "meglerInitialer") {
-      const n = d.meglerNavn || "";
-      el.textContent = isPh(n) ? "M" : n.split(/\s+/).map(w=>w[0]).join("").slice(0,2).toUpperCase();
-      return;
-    }
-    if (k in d) mark(el, d[k]);
-  });
-  document.querySelectorAll("[data-f-href]").forEach(el => {
+  // Statisk info (språkuavhengig)
+  document.querySelectorAll('[data-f="adresse"]').forEach(el => el.textContent = d.adresse);
+  document.querySelectorAll('[data-f="meglerNavn"]').forEach(el => el.textContent = d.meglerNavn);
+  document.querySelectorAll('[data-f="meglerTlf"]').forEach(el => el.textContent = d.meglerTlf);
+  document.querySelectorAll('[data-f="meglerEpost"]').forEach(el => el.textContent = d.meglerEpost);
+  document.querySelectorAll('[data-f="meglerInitialer"]').forEach(el => el.textContent = d.meglerNavn.split(/\s+/).map(w=>w[0]).join("").slice(0,2).toUpperCase());
+  document.querySelectorAll('[data-f-href]').forEach(el => {
     const k = el.getAttribute("data-f-href");
-    if (k === "meglerTlfHref" && !isPh(d.meglerTlf)) el.href = "tel:" + d.meglerTlf.replace(/\s/g,"");
-    else if (k === "meglerEpostHref" && !isPh(d.meglerEpost)) el.href = "mailto:" + d.meglerEpost;
-    else if (k in d && !isPh(d[k])) el.href = d[k];
+    if (k === "meglerTlfHref") el.href = "tel:+47" + d.meglerTlf.replace(/\s/g,"");
+    else if (k === "meglerEpostHref") el.href = "mailto:" + d.meglerEpost;
+    else if (k in d) el.href = d[k];
   });
 
-  document.getElementById("chips").innerHTML = d.chips.map(c =>
-    `<span class="chip${isPh(c)?' ph':''}">${c}</span>`).join("");
-  d.chips.forEach(c => { if(isPh(c)) todo = true; });
-
-  document.getElementById("highlights").innerHTML = d.hoydepunkter.map(h =>
-    `<div class="card reveal"><div class="ic">${IKON[h.ikon]||''}</div><h3${isPh(h.tittel)?' class="ph"':''}>${h.tittel}</h3><p${isPh(h.tekst)?' class="ph"':''}>${h.tekst}</p></div>`).join("");
-  d.hoydepunkter.forEach(h => { if(isPh(h.tittel)||isPh(h.tekst)) todo = true; });
-
-  document.getElementById("beskrivelse").innerHTML = d.beskrivelse.map(p =>
-    `<p${isPh(p)?' class="ph"':''}>${p}</p>`).join("");
-  d.beskrivelse.forEach(p => { if(isPh(p)) todo = true; });
-
-  document.getElementById("fakta").innerHTML = d.fakta.map(([k,v]) =>
-    `<tr><td>${k}</td><td${isPh(v)?' class="ph"':''}>${v}</td></tr>`).join("");
-  d.fakta.forEach(([,v]) => { if(isPh(v)) todo = true; });
-
-  // Normaliser bildelisten: både "url" og {fil, tekst} støttes
-  const BILDER = d.bilder.map(b => typeof b === "string" ? { fil: b, tekst: "" } : b);
-
-  const gal = document.getElementById("galleri");
-  if (BILDER.length) {
-    // KINO-MODUS: automatisk fremvisning med Ken Burns-effekt
+  let kinoTimer = null;
+  function byggKino(lang){
+    const t = c => c[lang] || c.en || c.no;
+    const gal = document.getElementById("galleri");
+    if (kinoTimer) { clearInterval(kinoTimer); kinoTimer = null; }
     gal.innerHTML = `
-      <div class="kino reveal" id="kino">
-        ${BILDER.map(b => `<div class="sl"><img src="${b.fil}" alt="${b.tekst||''}" loading="lazy"><div class="cap">${b.tekst||''}</div></div>`).join("")}
+      <div class="kino" id="kino">
+        ${BILDER.map(b => `<div class="sl"><img src="${b.fil}" alt="${t(b)}" loading="lazy"><div class="cap">${t(b)}</div></div>`).join("")}
         <div class="live"><span class="dot"></span><span id="kino-count">1 / ${BILDER.length}</span></div>
-        <button class="nav prev" aria-label="Forrige bilde">‹</button>
-        <button class="nav next" aria-label="Neste bilde">›</button>
+        <button class="nav prev" aria-label="Forrige">‹</button>
+        <button class="nav next" aria-label="Neste">›</button>
         <div class="bar"></div>
       </div>
       <div class="thumbs" id="thumbs">
-        ${BILDER.map((b,i) => `<button aria-label="Bilde ${i+1}"><img src="${b.fil}" alt="" loading="lazy"></button>`).join("")}
+        ${BILDER.map((b,i) => `<button aria-label="${i+1}"><img src="${b.fil}" alt="" loading="lazy"></button>`).join("")}
       </div>`;
-
     const kino = document.getElementById("kino");
     const slides = [...kino.querySelectorAll(".sl")];
     const thumbs = [...document.querySelectorAll("#thumbs button")];
     const bar = kino.querySelector(".bar");
     const count = document.getElementById("kino-count");
-    let idx = 0, timer = null;
+    let idx = 0;
     const VIS_MS = 7000;
-
     function show(i){
       idx = (i + slides.length) % slides.length;
       slides.forEach((s,j) => s.classList.toggle("on", j === idx));
-      thumbs.forEach((t,j) => t.classList.toggle("on", j === idx));
+      thumbs.forEach((tb,j) => tb.classList.toggle("on", j === idx));
       count.textContent = (idx+1) + " / " + slides.length;
       bar.classList.remove("run"); void bar.offsetWidth; bar.classList.add("run");
-      const tb = document.getElementById("thumbs"), t = thumbs[idx];
-      tb.scrollTo({ left: t.offsetLeft - tb.clientWidth/2 + t.clientWidth/2, behavior: "smooth" });
+      const tbx = document.getElementById("thumbs"), tb = thumbs[idx];
+      tbx.scrollTo({ left: tb.offsetLeft - tbx.clientWidth/2 + tb.clientWidth/2, behavior: "smooth" });
     }
-    function play(){ stop(); timer = setInterval(() => show(idx+1), VIS_MS); }
-    function stop(){ if (timer) clearInterval(timer); timer = null; }
-
+    function play(){ stop(); kinoTimer = setInterval(() => show(idx+1), VIS_MS); }
+    function stop(){ if (kinoTimer) clearInterval(kinoTimer); kinoTimer = null; }
     kino.querySelector(".prev").addEventListener("click", () => { show(idx-1); play(); });
     kino.querySelector(".next").addEventListener("click", () => { show(idx+1); play(); });
-    thumbs.forEach((t,i) => t.addEventListener("click", () => { show(i); play(); }));
+    thumbs.forEach((tb,i) => tb.addEventListener("click", () => { show(i); play(); }));
     kino.addEventListener("mouseenter", stop);
     kino.addEventListener("mouseleave", play);
-    document.addEventListener("visibilitychange", () => document.hidden ? stop() : play());
-
     show(0); play();
-  } else {
-    const cam = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v12H4z"/><circle cx="12" cy="14" r="4"/></svg>';
-    gal.className = "gallery";
-    gal.innerHTML = d.bildeForslag.map(t =>
-      `<div class="frame empty reveal">${cam}<div class="t">${t}</div><div class="s">Lim inn bilde-URL fra meglers side i EIENDOM.bilder</div></div>`).join("");
-    todo = true;
   }
 
-  document.getElementById("visninger").innerHTML = d.visninger.map(v =>
-    `<div class="v${isPh(v)?' ph':''}"><span>⚓</span> ${v}</div>`).join("");
-  d.visninger.forEach(v => { if(isPh(v)) todo = true; });
+  function applyLang(lang){
+    const T = I18N[lang] || I18N.no;
+    document.documentElement.lang = lang;
+    document.title = T.title;
+    document.querySelectorAll("[data-i]").forEach(el => {
+      const k = el.getAttribute("data-i");
+      if (k in T) el.textContent = T[k];
+    });
+    document.getElementById("h1").innerHTML = T.h1;
+    document.getElementById("chips").innerHTML = T.chips.map(c => `<span class="chip">${c}</span>`).join("");
+    T.stats.forEach((st,i) => {
+      document.getElementById("s"+(i+1)+"n").innerHTML = st[0];
+      document.getElementById("s"+(i+1)+"l").textContent = st[1];
+    });
+    document.getElementById("highlights").innerHTML = T.cards.map((c,i) =>
+      `<div class="card reveal in"><div class="ic">${IKON[IKONER[i]]}</div><h3>${c[0]}</h3><p>${c[1]}</p></div>`).join("");
+    document.getElementById("beskrivelse").innerHTML = T.paras.map(p => `<p>${p}</p>`).join("");
+    document.getElementById("fakta").innerHTML = T.facts.map(f => `<tr><td>${f[0]}</td><td>${f[1]}</td></tr>`).join("");
+    document.getElementById("visninger").innerHTML = T.vis_items.map(v => `<div class="v"><span>⚓</span> ${v}</div>`).join("");
+    byggKino(lang);
+    try { localStorage.setItem("oy-lang", lang); } catch(e){}
+  }
 
+  const sel = document.getElementById("lang");
+  let lang = new URLSearchParams(location.search).get("lang");
+  try { lang = lang || localStorage.getItem("oy-lang"); } catch(e){}
+  if (!lang || !(lang in I18N)) {
+    const nav = (navigator.language || "no").slice(0,2).toLowerCase();
+    lang = (nav in I18N) ? nav : ((nav === "nb" || nav === "nn") ? "no" : "en");
+  }
+  sel.value = lang;
+  applyLang(lang);
+  sel.addEventListener("change", () => applyLang(sel.value));
 
-  if (todo) document.getElementById("todo-banner").style.display = "block";
-
-  // Scroll-reveal
   const io = new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
   }), { threshold: .15 });
