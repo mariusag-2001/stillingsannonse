@@ -53,12 +53,22 @@ const GRUPPER = {
   ]}
 };
 async function tall(ns, key){
-  try{
-    const r = await fetch('https://api.counterapi.dev/v1/'+ns+'/'+key);
-    if(!r.ok) return 0;
-    const j = await r.json();
-    return j.count ?? j.value ?? 0;
-  }catch(e){ return '–'; }
+  // Prøver flere endepunkt-varianter og svarformater hos counterapi.dev
+  const urls = [
+    'https://api.counterapi.dev/v1/'+ns+'/'+key,
+    'https://api.counterapi.dev/v1/'+ns+'/'+key+'/',
+    'https://counterapi.dev/api/v1/'+ns+'/'+key
+  ];
+  for (const u of urls){
+    try{
+      const r = await fetch(u + '?t=' + Date.now(), {cache:'no-store'});
+      if(!r.ok) continue;
+      const j = await r.json();
+      const v = j.count ?? j.value ?? (j.data && (j.data.count ?? j.data.up_count ?? j.data.value));
+      if (typeof v === 'number') return v;
+    }catch(e){}
+  }
+  return '–';
 }
 async function hent(){
   for (const [id,g] of Object.entries(GRUPPER)){
