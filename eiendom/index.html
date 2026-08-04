@@ -453,7 +453,7 @@ const EIENDOM = {
   meglerUrl:      "https://aktiv.no/bolig/boliger-til-salgs/uggdal-bardsund-10-117003569",
 
   // Bildet som vises først bak teksten øverst (resten ruller etterpå)
-  heroBilde: "bilder/02-drone-bukt.jpg",
+  heroBilde: "bilder/00-drone-begge-hytter.jpg",
 
   chips: [
     "Hel øy · ca. 75 mål",
@@ -503,15 +503,19 @@ const EIENDOM = {
   //    fungerer. Ren tekst-URL eller { fil, tekst } med bildetekst – begge går.
   // Første bilde brukes også som første bilde i toppen av siden.
   // Så snart listen har bilder, starter den automatiske visningen av seg selv.
+  // Samme rekkefølge som meglers annonse på aktiv.no (bildenr. 2, 10, 11, 12, 14, 15, 81, 82 av 85),
+  // deretter egne bilder til slutt
   bilder: [
-    { fil: "bilder/01-drone-oversikt.jpg",    tekst: "Litla Bjørnarøy fra luften – hytten troner over egen bukt" },
-    { fil: "bilder/02-drone-bukt.jpg",        tekst: "Øyen sett fra sjøen – begge hyttene mellom furuene" },
+    { fil: "bilder/00-drone-begge-hytter.jpg",tekst: "Litla Bjørnarøy fra luften – begge hyttene, bukten og båtplassen" },
+    { fil: "bilder/05b-kajakk.jpg",           tekst: "Rett fra stranden ut i et padle-eldorado av viker og holmer" },
+    { fil: "bilder/04c-hytten-svaberg.jpg",   tekst: "Pent opparbeidet med stier og trapper rundt hyttene" },
+    { fil: "bilder/01-drone-oversikt.jpg",    tekst: "Hytten troner over egen bukt" },
+    { fil: "bilder/04b-hytten-hoyden.jpg",    tekst: "Bårdsund 10 på høyden – terrasse på begge sider" },
     { fil: "bilder/03-hytten.jpg",            tekst: "Bårdsund 10 med terrasse rett over sjøkanten" },
     { fil: "bilder/04-terrasse.jpg",          tekst: "Romslig terrasse med bålpanne og sjøutsikt" },
-    { fil: "bilder/04b-hytten-hoyden.jpg",    tekst: "Bårdsund 10 på høyden – terrasse på begge sider" },
-    { fil: "bilder/04c-hytten-svaberg.jpg",   tekst: "Pent opparbeidet med stier og trapper rundt hyttene" },
+    { fil: "bilder/06b-strandbukt.jpg",       tekst: "Nydelig sandstrand – egen liten badeplass" },
+    { fil: "bilder/02-drone-bukt.jpg",        tekst: "Øyen sett fra sjøen – begge hyttene mellom furuene" },
     { fil: "bilder/05-sandstrand.jpg",        tekst: "Egen skjellsandstrand med krystallklart vann" },
-    { fil: "bilder/05b-kajakk.jpg",           tekst: "Rett fra stranden ut i et padle-eldorado av viker og holmer" },
     { fil: "bilder/06-kveld-strand.jpg",      tekst: "Kveldsstemning ved stranden" },
     { fil: "bilder/07-solnedgang-bukt.jpg",   tekst: "Solnedgang over badebukten" },
     { fil: "bilder/08-solnedgang-veranda.jpg",tekst: "Utsikten fra verandaen en sommerkveld" },
