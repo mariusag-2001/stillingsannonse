@@ -452,6 +452,9 @@ const EIENDOM = {
   finnUrl:        "https://www.finn.no/411431396",
   meglerUrl:      "https://aktiv.no/bolig/boliger-til-salgs/uggdal-bardsund-10-117003569",
 
+  // Bildet som vises først bak teksten øverst (resten ruller etterpå)
+  heroBilde: "bilder/02-drone-bukt.jpg",
+
   chips: [
     "Hel øy · ca. 75 mål",
     "2 hytter · 4 soverom",
@@ -654,7 +657,10 @@ const EIENDOM = {
     }, 8000);
   }
   if (BILDER.length) {
-    startHeroShow(BILDER.map(b => b.fil));
+    const heroList = BILDER.map(b => b.fil);
+    const hi = d.heroBilde ? heroList.indexOf(d.heroBilde) : -1;
+    if (hi > 0) heroList.unshift(heroList.splice(hi, 1)[0]);
+    startHeroShow(heroList);
   } else {
     const img = new Image();
     img.onload = () => startHeroShow(["bilder/hero.jpg"]);
