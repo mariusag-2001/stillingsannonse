@@ -41,6 +41,13 @@
   <p class="foot">Telleren teller én visning per besøksøkt. «Direkte» = lenke åpnet fra SMS/e-post/QR eller skrevet inn manuelt. Tall lagres hos counterapi.dev.</p>
 </div>
 <script>
+/* Startverdier fra den gamle telleren (counterapi.dev, død aug. 2026).
+   Legg inn siste kjente tall her – de legges oppå den nye tellingen. */
+const STARTVERDIER = {
+  'faginnredning-annonse':   { 'sidevisninger': 0, 'kilde-facebook': 0, 'kilde-linkedin': 0, 'kilde-direkte-qr': 0, 'kilde-annet': 0 },
+  'litla-bjornaroy-annonse': { 'sidevisninger': 0 }
+};
+
 const GRUPPER = {
   oy: { ns:'litla-bjornaroy-annonse', tellere:[
     ['sidevisninger','Totalvisninger',true],
@@ -68,7 +75,8 @@ async function tall(ns, key){
       if (typeof v === 'number') best = Math.max(best ?? 0, v);
     }catch(e){ feilet++; }
   }
-  return best !== null ? best : '–';
+  const start = (STARTVERDIER[ns] && STARTVERDIER[ns][key]) || 0;
+  return best !== null ? best + start : (start > 0 ? start : '–');
 }
 async function hent(){
   for (const [id,g] of Object.entries(GRUPPER)){
