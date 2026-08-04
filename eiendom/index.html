@@ -35,8 +35,8 @@
     --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{font-family:var(--sans);color:var(--text);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  html{scroll-behavior:smooth;overflow-x:hidden;max-width:100vw;background:#0c2521}
+  body{font-family:var(--sans);color:var(--text);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;max-width:100vw}
   img,video,svg{display:block;max-width:100%}
   a{color:inherit}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
@@ -77,13 +77,12 @@
   #lang:hover{border-color:var(--cream);background:rgba(239,230,205,.2)}
   #lang option{color:var(--ink);background:#fff}
 
-  /* ---------- HERO (ett fast bilde, vises i sin helhet) ---------- */
-  .hero{position:relative;background:linear-gradient(170deg,var(--ink) 0%,#0c2521 100%);overflow:hidden}
-  .hero .wrap{position:relative;z-index:2;color:#fff;padding-top:56px;padding-bottom:56px;width:100%}
-  .hero-img{margin:30px 0 6px;border-radius:20px;overflow:hidden;box-shadow:0 30px 70px -28px rgba(0,0,0,.65);width:fit-content;max-width:100%}
-  .hero-img img{width:100%;height:auto;display:block}
-  @media (min-width:900px){.hero-img img{max-height:56vh;width:auto;max-width:100%}}
-  .hero-img figcaption{font-size:.8rem;color:#c9c5b5;margin-top:10px;text-align:right}
+  /* ---------- HERO (fullskjerms wow-bilde, som stillingsannonsen) ---------- */
+  .hero{position:relative;min-height:92vh;min-height:92svh;display:flex;align-items:flex-end;overflow:hidden;background:#0c2521}
+  .hero .bgimg{position:absolute;inset:0;background:url('bilder/00-drone-begge-hytter.jpg') center 38%/cover no-repeat}
+  .hero::after{content:"";position:absolute;inset:0;background:
+    linear-gradient(180deg,rgba(12,37,33,.35) 0%,rgba(12,37,33,.05) 35%,rgba(9,28,25,.88) 88%,rgba(9,28,25,.96) 100%);pointer-events:none}
+  .hero .wrap{position:relative;z-index:2;color:#fff;padding-top:80px;padding-bottom:56px;width:100%}
   .hero .badge{display:inline-flex;align-items:center;gap:.6em;background:var(--lime);color:var(--ink);font-weight:800;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:8px 18px;border-radius:999px;margin-bottom:18px;animation:pulse 2.6s ease-in-out infinite}
   @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(220,242,99,.45)}50%{box-shadow:0 0 0 12px rgba(220,242,99,0)}}
   .hero h1{font-size:clamp(2.4rem,6.6vw,4.6rem);color:#fff;max-width:20ch;line-height:1.04;text-shadow:0 4px 30px rgba(9,28,25,.5)}
@@ -236,11 +235,10 @@
 </header>
 
 <section class="hero" id="hero">
-
+  <div class="bgimg" role="img" aria-label="Litla Bjørnarøy fra luften – begge hyttene og bukten"></div>
   <div class="wrap">
     <span class="badge" data-i="badge">Privat øy til salgs</span>
     <h1 id="h1">Drømmen om <em>egen øy</em> er til salgs</h1>
-    <figure class="hero-img"><img src="bilder/00-drone-begge-hytter.jpg" alt="Litla Bjørnarøy fra luften – begge hyttene og bukten"></figure>
     <p class="tagline" data-i="tagline"></p>
     <div class="price"><span>12 900 000</span> <small data-i="price_label">kr · prisantydning</small></div>
     <div class="meta-row" id="chips"></div>
